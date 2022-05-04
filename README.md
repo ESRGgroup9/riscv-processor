@@ -6,6 +6,8 @@ It is intended to build a single cycle RISC-V processor, based on the given diag
 
 ## Tools
 - Xilinx Vivado 2019.02
+- [Online RISC-V Interpreter](https://www.cs.cornell.edu/courses/cs3410/2019sp/riscv/interpreter/)
+- [Online RISC-V Assembler](https://riscvasm.lucasteske.dev/#)
 
 ## Setup
 Firstly, clone the repo:
@@ -18,7 +20,7 @@ Create the single-cycle-risc-v processor Vivado project:
 $ cd single-cycle-risc-v/
 $ vivado &
 ```
-When Vivado opens, go to `Tools > Run Tcl script...` and run **create_proj.tcl**.
+When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**.
 **Enjoy**!
 
 ## Support Documents
