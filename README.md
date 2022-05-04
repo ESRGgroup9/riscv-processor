@@ -29,6 +29,63 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 - [RISC-V Reference Card](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/RISC-V_referenceCard.pdf)
 - [Digital Design and Computer Architecture RISC-V Edition](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/Digital-Design-And-Computer-Architecture-RISC-V-Edition.pdf) - Chapter 7 (PDF pages 421-470)
 
+# Single-cycle Processor
+Supported instructions:
+
+**I Type**
+- [ ] lb
+- [ ] lh
+- [x] lw
+- [ ] lbu
+- [ ] lhu
+- [x] addi
+- [ ] slli
+- [ ] slti
+- [ ] sltiu
+- [ ] xori
+- [ ] srli
+- [ ] srai
+- [ ] ori
+- [ ] andi
+- [x] jalr
+
+---
+**S Type**
+- [ ] sb
+- [ ] sh
+- [x] sw
+
+---
+**R Type**
+- [x] add
+- [x] sub
+- [ ] sll
+- [x] slt
+- [ ] sltu
+- [ ] xor
+- [ ] srl
+- [ ] sra
+- [x] or
+- [x] and
+
+---
+**U Type**
+- [x] auipc
+- [x] lui
+
+---
+**B Type**
+- [x] beq
+- [ ] bne
+- [ ] blt
+- [ ] bge
+- [ ] bltu
+- [ ] bgeu
+
+---
+**J Type**
+- [x] jal
+
 -----
 **Done by:**
 
