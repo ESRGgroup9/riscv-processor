@@ -9,7 +9,7 @@ module controller (
 	ALUSrc,
 	RegWrite,
 	Jump,
-	PCTarget,
+    PCResultSrc,
 	ImmSrc,
 	ALUControl
 );
@@ -18,13 +18,13 @@ module controller (
 	input wire funct7b5;
 	input wire Zero;
 	
-	output wire [1:0] ResultSrc;
+	output wire [2:0] ResultSrc;
 	output wire MemWrite;
 	output wire PCSrc;
 	output wire ALUSrc;
 	output wire RegWrite;
 	output wire Jump;
-	output wire PCTarget;
+    output wire PCResultSrc;
 	output wire [2:0] ImmSrc;
 	output wire [2:0] ALUControl;
 
@@ -39,7 +39,7 @@ module controller (
 		.ALUSrc(ALUSrc),
 		.RegWrite(RegWrite),
 		.Jump(Jump),
-		.PCTarget(PCTarget),
+		.PCResultSrc(PCResultSrc),
 		.ImmSrc(ImmSrc),
 		.ALUOp(ALUOp)
 	);

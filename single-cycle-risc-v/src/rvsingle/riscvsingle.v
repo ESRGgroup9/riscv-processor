@@ -21,10 +21,10 @@ module riscvsingle (
 	wire RegWrite;
 	wire Jump;
 	wire Zero;
-	wire [1:0] ResultSrc;
-	wire PCTarget;
+	wire [2:0] ResultSrc;
 	wire [2:0] ImmSrc;
 	wire [2:0] ALUControl;
+	wire PCResultSrc;
 	wire PCSrc;
 	
 	controller c(
@@ -38,7 +38,7 @@ module riscvsingle (
 		ALUSrc,
 		RegWrite,
 		Jump,
-		PCTarget,
+        PCResultSrc,
 		ImmSrc,
 		ALUControl
 	);
@@ -52,6 +52,7 @@ module riscvsingle (
 		RegWrite,
 		ImmSrc,
 		ALUControl,
+		PCResultSrc,
 		Zero,
 		PC,
 		Instr,

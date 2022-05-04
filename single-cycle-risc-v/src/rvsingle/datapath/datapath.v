@@ -7,6 +7,7 @@ module datapath (
 	RegWrite,
 	ImmSrc,
 	ALUControl,
+	PCResultSrc,
 	Zero,
 	PC,
 	Instr,
@@ -16,13 +17,14 @@ module datapath (
 );
 	input wire clk;
 	input wire reset;
-	input wire [1:0] ResultSrc;
+	input wire [2:0] ResultSrc;
 	input wire PCSrc;
 	input wire ALUSrc;
 	input wire RegWrite;
 	input wire [2:0] ImmSrc;
 	input wire [2:0] ALUControl;
-	
+    input wire PCResultSrc;
+		
 	output wire Zero;
 	output wire [31:0] PC;
 	input wire [31:0] Instr;
@@ -33,6 +35,7 @@ module datapath (
 	wire [31:0] PCNext;
 	wire [31:0] PCPlus4;
 	wire [31:0] PCTarget;
+	wire [31:0] PCResult; // result of mux ALUResult and PCTarget
 	wire [31:0] ImmExt;
 	wire [31:0] SrcA;
 	wire [31:0] SrcB;
@@ -59,7 +62,7 @@ module datapath (
 	
 	mux2 #(32) pcmux(
 		PCPlus4,
-		PCTarget,
+		PCResult,
 		PCSrc,
 		PCNext
 	);
@@ -96,11 +99,19 @@ module datapath (
 		.Zero(Zero)
 	);
 	
-	mux4 #(32) resultmux(
+	mux2 #(32) pcresultmux(
+        PCTarget,
+		ALUResult,
+		PCResultSrc,
+		PCResult
+	);
+	
+	mux5 #(32) resultmux(
 		ALUResult,
 		ReadData,
 		PCPlus4,
 		ImmExt,
+		PCResult,
 		ResultSrc,
 		Result
 	);
