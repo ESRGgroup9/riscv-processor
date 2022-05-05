@@ -1,3 +1,5 @@
+`include "../aluops.v"
+
 module aludec (
 	opb5,
 	funct3,
@@ -24,19 +26,22 @@ module aludec (
 					3'b000:
 						if (RtypeSub)
 						    // SUB
-							ALUControl = 3'b001;
+							ALUControl = `SUB_OP;
 						else
 						    // ADD
-							ALUControl = 3'b000;
+							ALUControl = `ADD_OP;
 					
-					// set less than
-					3'b010: ALUControl = 3'b101;
+					// set less than signed
+					3'b010: ALUControl = `SLT_OP;
+					// set less than unsigned
+					3'b011: ALUControl = `SLTU_OP;
+
 					// or
-					3'b110: ALUControl = 3'b011;
+					3'b110: ALUControl = `OR_OP;
 					// and
-					3'b111: ALUControl = 3'b010;
+					3'b111: ALUControl = `AND_OP;
 					
-					default: ALUControl = 3'bxxx;
+					default: ALUControl = `NOP_OP;
 				endcase
 		endcase
 endmodule

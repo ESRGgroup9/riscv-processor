@@ -1,3 +1,5 @@
+`include "../aluops.v"
+
 module alu (
 	SrcA,
 	SrcB,
@@ -12,15 +14,19 @@ module alu (
 	output reg [31:0] ALUResult;
 	output wire Zero;
 
-	assign Zero = ALUResult == 32'b00000000000000000000000000000000;
-
+	assign Zero = (ALUResult == {32{1'b0}});
+	// assign bltz = SrcA < SrcB;
+	// assign bgez = SrcA >= SrcB;
+	
 	always @(*)
 		case (ALUControl)
-			3'b000: ALUResult = SrcA + SrcB;
-			3'b001: ALUResult = SrcA - SrcB;
-			3'b010: ALUResult = SrcA & SrcB;
-			3'b011: ALUResult = SrcA | SrcB;
-			3'b101: ALUResult = SrcA < SrcB;
+			`ADD_OP	: ALUResult = SrcA + SrcB;
+			`SUB_OP	: ALUResult = SrcA - SrcB;
+			`AND_OP	: ALUResult = SrcA & SrcB;
+			`OR_OP	: ALUResult = SrcA | SrcB;
+			`SLT_OP	: ALUResult = $signed(SrcA) < $signed(SrcB);
+			`SLTU_OP: ALUResult = SrcA < SrcB;
+
 			default: ALUResult = ALUResult;
 		endcase
 endmodule
