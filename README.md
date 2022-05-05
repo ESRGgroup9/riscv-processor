@@ -61,7 +61,7 @@ Supported instructions:
 - [x] sub
 - [ ] sll
 - [x] slt
-- [ ] sltu
+- [x] sltu
 - [ ] xor
 - [ ] srl
 - [ ] sra
