@@ -9,6 +9,8 @@ module datapath (
 	ALUControl,
 	PCResultSrc,
 	Zero,
+	blt,
+	bltu,
 	PC,
 	Instr,
 	ALUResult,
@@ -26,6 +28,8 @@ module datapath (
     input wire PCResultSrc;
 		
 	output wire Zero;
+	output wire blt;
+	output wire bltu;
 	output wire [31:0] PC;
 	input wire [31:0] Instr;
 	output wire [31:0] ALUResult;
@@ -96,7 +100,9 @@ module datapath (
 		.SrcB(SrcB),
 		.ALUControl(ALUControl),
 		.ALUResult(ALUResult),
-		.Zero(Zero)
+		.Zero(Zero),
+		.blt(blt),
+		.bltu(bltu)
 	);
 	
 	mux2 #(32) pcresultmux(

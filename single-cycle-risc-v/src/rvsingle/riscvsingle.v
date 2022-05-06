@@ -19,8 +19,11 @@ module riscvsingle (
 	
 	wire ALUSrc;
 	wire RegWrite;
-	wire Jump;
+
 	wire Zero;
+	wire blt;
+	wire bltu;
+
 	wire [2:0] ResultSrc;
 	wire [2:0] ImmSrc;
 	wire [2:0] ALUControl;
@@ -32,12 +35,13 @@ module riscvsingle (
 		Instr[14:12],
 		Instr[30],
 		Zero,
+		blt,
+		bltu,
 		ResultSrc,
 		MemWrite,
 		PCSrc,
 		ALUSrc,
 		RegWrite,
-		Jump,
         PCResultSrc,
 		ImmSrc,
 		ALUControl
@@ -54,6 +58,8 @@ module riscvsingle (
 		ALUControl,
 		PCResultSrc,
 		Zero,
+		blt,
+		bltu,
 		PC,
 		Instr,
 		ALUResult,

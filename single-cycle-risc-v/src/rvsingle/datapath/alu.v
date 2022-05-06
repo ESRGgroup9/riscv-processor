@@ -5,7 +5,9 @@ module alu (
 	SrcB,
 	ALUControl,
 	ALUResult,
-	Zero
+	Zero,
+	blt,
+	bltu
 );
 	input wire [31:0] SrcA;
 	input wire [31:0] SrcB;
@@ -13,10 +15,11 @@ module alu (
 
 	output reg [31:0] ALUResult;
 	output wire Zero;
+	output wire lt;
+	output wire ltu;
 
 	assign Zero = (ALUResult == {32{1'b0}});
-	// assign bltz = SrcA < SrcB;
-	// assign bgez = SrcA >= SrcB;
+	assign lt = SrcA < SrcB;
 	
 	always @(*)
 		case (ALUControl)

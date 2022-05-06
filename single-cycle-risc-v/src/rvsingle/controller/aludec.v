@@ -19,8 +19,10 @@ module aludec (
 	
 	always @(*)
 		case (ALUOp)
-			2'b00: ALUControl = 3'b000;
-			2'b01: ALUControl = 3'b001;
+			// I Type
+			2'b00: ALUControl = `ADD_OP;
+			// BEQ
+			2'b01: ALUControl = `SUB_OP;
 			default:
 				case (funct3)
 					3'b000:
