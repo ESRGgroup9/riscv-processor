@@ -2,9 +2,11 @@ module controller (
 	op,
 	funct3,
 	funct7b5,
+	
 	Zero,
-	blt,
-	bltu,
+	Overflow,
+	Carry,
+	Negative,
 
 	ResultSrc,
 	MemWrite,
@@ -18,9 +20,12 @@ module controller (
 	input wire [6:0] op;
 	input wire [2:0] funct3;
 	input wire funct7b5;
+
+	// ALU flags
 	input wire Zero;
-	input wire blt;
-	input wire bltu;
+	input wire Overflow;
+	input wire Carry;
+	input wire Negative;
 
 	output wire [2:0] ResultSrc;
 	output wire MemWrite;
@@ -36,9 +41,12 @@ module controller (
 	jumpdec jd(
 		.op(op),
 		.funct3(funct3),
+
 		.Zero(Zero),
-		.blt(blt),
-		.bltu(bltu),
+		.Overflow(Overflow),
+		.Carry(Carry),
+		.Negative(Negative),
+		
 		.PCSrc(PCSrc)
 	);
 

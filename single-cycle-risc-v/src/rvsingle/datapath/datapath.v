@@ -8,9 +8,13 @@ module datapath (
 	ImmSrc,
 	ALUControl,
 	PCResultSrc,
+	
+	// ALU flags
 	Zero,
-	blt,
-	bltu,
+	Overflow,
+	Carry,
+	Negative,
+
 	PC,
 	Instr,
 	ALUResult,
@@ -27,9 +31,12 @@ module datapath (
 	input wire [2:0] ALUControl;
     input wire PCResultSrc;
 		
+	// ALU flags
 	output wire Zero;
-	output wire blt;
-	output wire bltu;
+	output wire Overflow;
+	output wire Carry;
+	output wire Negative;
+
 	output wire [31:0] PC;
 	input wire [31:0] Instr;
 	output wire [31:0] ALUResult;
@@ -101,8 +108,9 @@ module datapath (
 		.ALUControl(ALUControl),
 		.ALUResult(ALUResult),
 		.Zero(Zero),
-		.blt(blt),
-		.bltu(bltu)
+		.Overflow(Overflow),
+		.Carry(Carry),
+		.Negative(Negative)
 	);
 	
 	mux2 #(32) pcresultmux(

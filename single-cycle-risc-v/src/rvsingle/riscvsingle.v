@@ -20,9 +20,11 @@ module riscvsingle (
 	wire ALUSrc;
 	wire RegWrite;
 
+	// ALU flags
 	wire Zero;
-	wire blt;
-	wire bltu;
+	wire Overflow;
+	wire Carry;
+	wire Negative;
 
 	wire [2:0] ResultSrc;
 	wire [2:0] ImmSrc;
@@ -34,9 +36,13 @@ module riscvsingle (
 		Instr[6:0],
 		Instr[14:12],
 		Instr[30],
+
+		// ALU flags
 		Zero,
-		blt,
-		bltu,
+		Overflow,
+		Carry,
+		Negative,
+		
 		ResultSrc,
 		MemWrite,
 		PCSrc,
@@ -57,9 +63,13 @@ module riscvsingle (
 		ImmSrc,
 		ALUControl,
 		PCResultSrc,
+
+		// ALU flags
 		Zero,
-		blt,
-		bltu,
+		Overflow,
+		Carry,
+		Negative,
+
 		PC,
 		Instr,
 		ALUResult,

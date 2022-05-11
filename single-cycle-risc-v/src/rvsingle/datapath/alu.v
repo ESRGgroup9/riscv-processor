@@ -6,30 +6,51 @@ module alu (
 	ALUControl,
 	ALUResult,
 	Zero,
-	blt,
-	bltu
+	Overflow,
+	Carry,
+	Negative
 );
 	input wire [31:0] SrcA;
 	input wire [31:0] SrcB;
 	input wire [2:0] ALUControl;
 
 	output reg [31:0] ALUResult;
+	// ALU flags
 	output wire Zero;
-	output wire lt;
-	output wire ltu;
+	output wire Overflow;
+	output wire Carry;
+	output wire Negative;
 
-	assign Zero = (ALUResult == {32{1'b0}});
-	assign lt = SrcA < SrcB;
+	wire [31:0] Sum;
+    wire [31:0] muxInvResult;
+    
+	mux2 #(32) muxInv(
+		SrcB,
+	    ~SrcB + 1,
+		ALUControl[0],
+		muxInvResult
+	);
+
+	 assign Zero = (ALUResult == {32{1'b0}});
+	 assign Negative = ALUResult[31];
+	 assign Carry = ~ALUControl[1] & Cout;
+	 assign Overflow = (~(ALUControl[0] ^ SrcA[31] ^ SrcB[31]) & (SrcA[31] ^ Sum[31]) & ~ALUControl[1]);
 	
-	always @(*)
+	 assign {Cout, Sum} = SrcA + muxInvResult;
+
+    reg debug;
+    
+	always @(*) begin
 		case (ALUControl)
-			`ADD_OP	: ALUResult = SrcA + SrcB;
-			`SUB_OP	: ALUResult = SrcA - SrcB;
+			`ADD_OP	: ALUResult = Sum;
+			`SUB_OP	: ALUResult = Sum;
 			`AND_OP	: ALUResult = SrcA & SrcB;
 			`OR_OP	: ALUResult = SrcA | SrcB;
-			`SLT_OP	: ALUResult = $signed(SrcA) < $signed(SrcB);
-			`SLTU_OP: ALUResult = SrcA < SrcB;
+			`SLT_OP	: ALUResult = {{31{1'b0}}, Overflow ^ Sum[31]};
+			`SLTU_OP: ALUResult = {{31{1'b0}}, ~Carry};
 
 			default: ALUResult = ALUResult;
 		endcase
+		debug = 0;
+    end
 endmodule

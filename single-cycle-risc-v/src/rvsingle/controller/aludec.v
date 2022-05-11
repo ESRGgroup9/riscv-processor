@@ -17,13 +17,15 @@ module aludec (
 	wire RtypeSub;
 	assign RtypeSub = funct7b5 & opb5;
 	
+	reg debug;
+	
 	always @(*)
 		case (ALUOp)
 			// I Type
 			2'b00: ALUControl = `ADD_OP;
 			// BEQ
 			2'b01: ALUControl = `SUB_OP;
-			default:
+			default: begin
 				case (funct3)
 					3'b000:
 						if (RtypeSub)
@@ -45,5 +47,7 @@ module aludec (
 					
 					default: ALUControl = `NOP_OP;
 				endcase
+				debug = 0;
+            end
 		endcase
 endmodule

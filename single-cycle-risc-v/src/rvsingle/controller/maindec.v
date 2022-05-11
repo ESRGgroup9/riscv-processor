@@ -23,7 +23,7 @@ module maindec (
 `define CTRL_SIZE 12
 	reg [`CTRL_SIZE-1:0] controls;
 
-    // reg a;
+     reg a;
 	// 		1bit	  3bits   1bit	  1bit      3bits	   2bits  1bit 
 	assign {RegWrite, ImmSrc, ALUSrc, MemWrite, ResultSrc, ALUOp, PCResultSrc} = controls;
 	
@@ -58,6 +58,6 @@ module maindec (
 
 			default: controls = {12{1'bx}};
 		endcase
-		// a = 0;
+		a = 0;
 end
 endmodule
