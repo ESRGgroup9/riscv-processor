@@ -33,11 +33,11 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 Supported instructions:
 
 **I Type**
-- [ ] lb
-- [ ] lh
+- [x] lb
+- [x] lh
 - [x] lw
-- [ ] lbu
-- [ ] lhu
+- [x] lbu
+- [x] lhu
 - [x] addi
 - [ ] slli
 - [ ] slti
@@ -76,11 +76,11 @@ Supported instructions:
 ---
 **B Type**
 - [x] beq
-- [ ] bne
-- [ ] blt
-- [ ] bge
-- [ ] bltu
-- [ ] bgeu
+- [x] bne
+- [x] blt
+- [x] bge
+- [x] bltu
+- [x] bgeu
 
 ---
 **J Type**

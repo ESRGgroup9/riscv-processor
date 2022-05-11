@@ -12,7 +12,7 @@ module aludec (
 	input wire funct7b5;
 	input wire [1:0] ALUOp;
 	
-	output reg [2:0] ALUControl;
+	output reg [3:0] ALUControl;
 	
 	wire RtypeSub;
 	assign RtypeSub = funct7b5 & opb5;

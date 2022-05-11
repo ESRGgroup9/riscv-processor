@@ -12,7 +12,7 @@ module alu (
 );
 	input wire [31:0] SrcA;
 	input wire [31:0] SrcB;
-	input wire [2:0] ALUControl;
+	input wire [3:0] ALUControl;
 
 	output reg [31:0] ALUResult;
 	// ALU flags

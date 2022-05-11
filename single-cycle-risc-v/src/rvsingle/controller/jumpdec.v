@@ -7,34 +7,35 @@ module jumpdec(
 	input Carry,
 	input Negative,
 
-	output PCSrc
+	output reg PCSrc
 );
 
-assign PCSrc = 0;
-// always @(*)
-// 	case (op)
-// 		// branch
-// 		7'b1100011:
-// 			case (funct3)
-// 				// beq
-// 				3'b000: PCSrc = Zero;
-// 				// bne
-// 				3'b001: PCSrc = ~Zero;
-// 				// blt
-// 				3'b100: PCSrc = blt;
-// 				// bge
-// 				3'b101: PCSrc = ~blt;
-// 				// bltu
-// 				3'b110: PCSrc = bltu;
-// 				// bgeu
-// 				3'b111: PCSrc = ~bltu;
-// 			endcase
+always @(*) begin
+	case (op)
+		// branch ops
+		7'b110_0011:
+			case (funct3)
+				// beq: if =
+				3'b000: PCSrc = Zero;
+				// bne: if !=
+				3'b001: PCSrc = ~Zero;
+				// blt: if <
+				3'b100: PCSrc = Negative ^ Overflow;
+				// bge: if >=
+				3'b101: PCSrc = ~Zero & ~(Negative ^ Overflow);
+				// bltu: if < unsigned
+				3'b110: PCSrc = ~Carry;
+				// bgeu: if >= unsigned
+				3'b111: PCSrc = Carry;
+			endcase
 
-// 		// jalr
-// 		7'b1100111: PCSrc = 1;
-// 		// jal
-// 		7'b1101111: PCSrc = 1;
-// 		default: PCSrc = 0;
-// 	endcase
+		// jalr
+		7'b1100111: PCSrc = 1;
+		// jal
+		7'b1101111: PCSrc = 1;
+
+		default: PCSrc = 0;
+	endcase
+end
 
 endmodule

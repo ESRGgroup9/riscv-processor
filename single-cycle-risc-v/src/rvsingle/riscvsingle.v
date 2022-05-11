@@ -28,7 +28,7 @@ module riscvsingle (
 
 	wire [2:0] ResultSrc;
 	wire [2:0] ImmSrc;
-	wire [2:0] ALUControl;
+	wire [3:0] ALUControl;
 	wire PCResultSrc;
 	wire PCSrc;
 	

@@ -1,4 +1,4 @@
-module extend (
+module extendImm (
 	instr,
 	immsrc,
 	immext

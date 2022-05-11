@@ -34,7 +34,7 @@ module controller (
 	output wire RegWrite;
     output wire PCResultSrc;
 	output wire [2:0] ImmSrc;
-	output wire [2:0] ALUControl;
+	output wire [3:0] ALUControl;
 
 	wire [1:0] ALUOp;
 	

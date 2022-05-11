@@ -24,6 +24,30 @@ end:    add x2, x2, x9          # x2 = (7 + 18) = 25        48          00910133
         sw  x2, 0x20(x3)        # [100] = 25                4C          0221A023
 done:   beq x2, x2, done        # infinite loop             50          00210063
 
+
+
+
+addi x2, x0, 5     
+addi x3, x0, 12    
+addi x7, x3, -9    
+or   x4, x7, x2    
+and  x5, x3, x4    
+add  x5, x5, x4    
+beq  x5, x7, 72 # to end
+slt  x4, x3, x4    
+beq  x4, x0, 40 # to around
+addi x5, x0, 0     
+slt x4, x7, x2 # :around
+add x7, x4, x5
+sub x7, x7, x2
+sw  x7, 84(x3)
+lw  x2, 96(x0)
+add x9, x2, x5
+jal x3, 72 # to end  
+addi x2, x0, 1
+add x2, x2, x9 # :end
+sw  x2, 0x20(x3)
+
 00500113
 00c00193
 ff718393
@@ -44,9 +68,11 @@ ff718393
 00100113
 00910133
 0221a023
+
 00210063
 
 ##########################################################
+# sw
 ##########################################################
 // if ((DataAdr == 100) & (WriteData == 400)) begin
 addi x2, x0, 100
@@ -74,8 +100,8 @@ sw  x1, 0(x2)		# [100] = 4096
 ##########################################################
 // if ((DataAdr == 100) & (WriteData == 4100)) begin
 addi x2, x0, 100
-auipc x1, 1
-sw  x1, 0(x2) 		# [100] = 4100
+auipc x1, 1             # PC = 4
+sw  x1, 0(x2) 		# [100] = 4096 + 4
 
 06400113
 00001097
@@ -118,7 +144,7 @@ fff00113
 ##########################################################
 addi x2, x0, -1
 addi x3, x0, 2
-sltu x4, x2, x3
+sltu x4, x2, x3 # x4 = (unsigned)x2 < (unsigned)x3 = 0xFFFFFFFF < 0x02
 sw x4, 100(x0)  # x4 = 0
 
 fff00113

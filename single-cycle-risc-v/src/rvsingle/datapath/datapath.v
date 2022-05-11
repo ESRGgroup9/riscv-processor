@@ -28,7 +28,7 @@ module datapath (
 	input wire ALUSrc;
 	input wire RegWrite;
 	input wire [2:0] ImmSrc;
-	input wire [2:0] ALUControl;
+	input wire [3:0] ALUControl;
     input wire PCResultSrc;
 		
 	// ALU flags
@@ -43,10 +43,12 @@ module datapath (
 	output wire [31:0] WriteData;
 	input wire [31:0] ReadData;
 	
+	wire [31:0] ReadDataExt;
 	wire [31:0] PCNext;
 	wire [31:0] PCPlus4;
 	wire [31:0] PCTarget;
 	wire [31:0] PCResult; // result of mux ALUResult and PCTarget
+	
 	wire [31:0] ImmExt;
 	wire [31:0] SrcA;
 	wire [31:0] SrcB;
@@ -89,10 +91,16 @@ module datapath (
 		.rd2(WriteData)
 	);
 	
-	extend ext(
+	extendImm extImm(
 		Instr[31:7],
 		ImmSrc,
 		ImmExt
+	);
+
+	extendAddr extAddr(
+		Instr[14:12],
+		ReadData,
+		ReadDataExt
 	);
 	
 	mux2 #(32) srcbmux(
@@ -122,7 +130,7 @@ module datapath (
 	
 	mux5 #(32) resultmux(
 		ALUResult,
-		ReadData,
+		ReadDataExt,
 		PCPlus4,
 		ImmExt,
 		PCResult,
