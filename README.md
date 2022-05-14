@@ -24,6 +24,7 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 **Enjoy**!
 
 ## Support Documents
+- [RISC-V Instruction Set Specifications](https://msyksphinz-self.github.io/riscv-isadoc/html/index.html)
 - [RISC-V Instruction Set Manual](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/riscv-spec-20191213.pdf)
 - [RISC-V Instruction Set Summary](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/RISC-V-Instruction-Set-Summary.pdf)
 - [RISC-V Reference Card](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/RISC-V_referenceCard.pdf)
@@ -33,38 +34,38 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 Supported instructions:
 
 **I Type**
-- [x] lb
-- [x] lh
-- [x] lw
-- [x] lbu
-- [x] lhu
+- [ ] lb
+- [ ] lh
+- [ ] lw
+- [ ] lbu
+- [ ] lhu
 - [x] addi
-- [ ] slli
-- [ ] slti
-- [ ] sltiu
-- [ ] xori
-- [ ] srli
-- [ ] srai
-- [ ] ori
-- [ ] andi
+- [x] slli
+- [x] slti
+- [x] sltiu
+- [x] xori
+- [x] srli
+- [x] srai
+- [x] ori
+- [x] andi
 - [x] jalr
 
 ---
 **S Type**
 - [ ] sb
 - [ ] sh
-- [x] sw
+- [ ] sw
 
 ---
 **R Type**
 - [x] add
 - [x] sub
-- [ ] sll
+- [x] sll
 - [x] slt
 - [x] sltu
-- [ ] xor
-- [ ] srl
-- [ ] sra
+- [x] xor
+- [x] srl
+- [x] sra
 - [x] or
 - [x] and
 

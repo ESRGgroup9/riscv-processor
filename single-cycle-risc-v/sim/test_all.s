@@ -20,21 +20,26 @@ end:    add x2, x2, x9          # x2 = (7 + 18) = 25        48          00910133
         sw  x2, 0x20(x3)        # [100] = 25                4C          0221A023
 lui x1, 0x01            # x1 = 4096
 sw  x1, 104(x0)
+
 auipc x1, 1            # x1 = 4096 + PC(88) = 4184
 sw  x1, 108(x0)
+
 addi x3, x0, 97          # PC = 96
 jalr x1, x3, 0xF        # PC = 100 ; x1 = 104, PC = x3 + 15 = 16
 addi x3, x0, 1          # PC = 104 ; dummy - jump over
 addi x3, x0, 2          # PC = 108 ; dummy - jump over
 sw  x1, 112(x0)         # PC = 112
+
 addi x2, x0, -1
 addi x3, x0, 2
 slt x4, x2, x3
 sw x4, 116(x0)
+
 addi x2, x0, -1
 addi x3, x0, 2
 sltu x4, x2, x3
 sw x4, 120(x0)
+
 addi x1, x0, 9
 addi x2, x0, 9
 beq x1, x2, beq_label
@@ -71,21 +76,78 @@ bgeu x1, x2, bgeu_label
 addi x1, x0, 8 # jump over
 bgeu_label: sw x1, 144(x0)
 
-lui x1, 0xaaaa
-addi x1, x1, 0xaa
-sw x1, 96(x0)
+addi x1, x0, 0x54
+addi x2, x0, 0xaa
+xor x3, x1, x2 # 0x54 ^ 0xaa = 254
+sw x3, 148(x0)
 
-lbu x2, 96(x0) # x2 = 0xaa = 170
-sw x2, 152(x0)
+addi x1, x0, 0x98
+xori x3, x1, 0x26 # 0x98 ^ 0x26 = 190
+sw x3, 152(x0)
 
-lhu x2, 96(x0) # x2 = 0xa0aa = 41130
-sw x2, 156(x0)
+ori x3, x1, 0x72  # 0x98 | 0x26 = 250
+sw x3, 156(x0)
 
-lb x2, 96(x0) # x2 = 0xffffffaa = 4294967210
-sw x2, 160(x0)
+andi x3, x1, 0x6a # 0x98 & 0x6a = 8
+sw x3, 160(x0)
 
-lh x2, 96(x0) # x2 = 0xffffa0aa = 4294942890
-sw x2, 164(x0)
+slti x3, x1, -1 # 0x98 < 0xfff = 0
+sw x3, 164(x0)
+
+# slti x3, x1, 0x9f # 0x98 < 0x9f = 1
+# sw x3, 168(x0)
+
+sltiu x3, x1, -1 # 0x98 < 0xfff = 1
+sw x3, 172(x0)
+
+# sltiu x3, x1, 0x92 # 0x98 < 0x92 = 0
+# sw x3, 176(x0)
+
+
+addi x1, x0, -77
+slli x3, x1, 0x1
+sw x3, 100(x0)
+
+srli x3, x1, 0x1
+sw x3, 104(x0)
+
+srai x3, x1, 0x1
+sw x3, 108(x0)
+
+
+addi x2, x0, 0x1
+sll x3, x1, x2
+sw x3, 112(x0)
+
+srl x3, x1, x2
+sw x3, 116(x0)
+
+sra x3, x1, x2
+sw x3, 120(x0)
+
+# lui x1, 0xaaaa
+# addi x1, x1, 0xaa
+# sw x1, 96(x0)
+
+# lbu x2, 96(x0) # x2 = 0xaa = 170
+# sw x2, 152(x0)
+
+# lhu x2, 96(x0) # x2 = 0xa0aa = 41130
+# sw x2, 156(x0)
+
+# lb x2, 96(x0) # x2 = 0xffffffaa = 4294967210
+# sw x2, 160(x0)
+
+# lh x2, 96(x0) # x2 = 0xffffa0aa = 4294942890
+# sw x2, 164(x0)
+
+# addi x2, x0, 0xee
+# sb x2, 164(x0) # [168] = 0xffffa0ee
+# lw x2, 164(x0)
+# sw x2, 172(x0)
+
+# addi x2, x0, 0xee
+# sh x2, 164(x0) # [164] = 0xffff00ee
 
 # ------- end simulation
 addi x2, x0, 30

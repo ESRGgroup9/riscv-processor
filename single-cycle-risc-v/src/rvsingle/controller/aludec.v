@@ -35,10 +35,25 @@ module aludec (
 						    // ADD
 							ALUControl = `ADD_OP;
 					
+					// shift left logical
+					3'b001: ALUControl = `SL_OP;
+
 					// set less than signed
 					3'b010: ALUControl = `SLT_OP;
 					// set less than unsigned
 					3'b011: ALUControl = `SLTU_OP;
+
+					// xor
+					3'b100: ALUControl = `XOR_OP;
+
+					// shift right
+					3'b101: 
+						if(funct7b5)
+							// arithmetic
+							ALUControl = `SRA_OP;
+						else
+							// logic
+							ALUControl = `SR_OP;
 
 					// or
 					3'b110: ALUControl = `OR_OP;
