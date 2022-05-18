@@ -87,23 +87,26 @@ always @(negedge clk) begin
 		else if ((DataAdr == 120) & (WriteData == -39)) 		`printOK("sra",count)
 
 		// load
-		// else if ((DataAdr == 152) & (WriteData == 170)) 	`printOK("lbu",count)
-		// else if ((DataAdr == 156) & (WriteData == 41130)) 	`printOK("lhu",count)
-		// else if ((DataAdr == 160) & (WriteData == -86)) 	`printOK("lb",count)
-		// else if ((DataAdr == 164) & (WriteData == -24406)) 	`printOK("lh",count)
+		 // else if ((DataAdr == 152) & (WriteData == 170)) 	`printOK("lbu",count)
+		 // else if ((DataAdr == 156) & (WriteData == 41130)) 	`printOK("lhu",count)
+	 	else if ((DataAdr == 160) & (WriteData == -35)) 	`printOK("lb 96",count)
+	 	else if ((DataAdr == 164) & (WriteData == -64)) 	`printOK("lb 97",count)
+	 	else if ((DataAdr == 168) & (WriteData == 11)) 	`printOK("lb 98",count)
+	 	else if ((DataAdr == 172) & (WriteData == -86)) 	`printOK("lb 99",count)
+		 // else if ((DataAdr == 164) & (WriteData == -24406)) `printOK("lh",count)
 
 		// store
 		// else if ((DataAdr == 172) & (WriteData == -24338)) 	`printOK("sb",count)
 		// else if ((DataAdr == 164) & (WriteData == -65298)) 	`printOK("sh",count)
 
 		// --------------------------------------------------------
-		else if ((DataAdr == 96) & (WriteData == 30)) begin
+		else if ((DataAdr == 40) && (WriteData == 30)) begin
         	$display("\nSimulation completed");
         	$display("  %2d/37 instructions PASSED\n", count);
 			$stop;
         end
         
-		else if ((DataAdr != 96) && (DataAdr != 164)) begin
+		else if (WriteData == 30) begin //&& (DataAdr != 30)) begin
 			$display("\nSimulation failed");
 			$display("  dataAddr  = %d", DataAdr);
 			$display("  writeData = %d\n", WriteData); 

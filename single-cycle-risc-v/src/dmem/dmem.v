@@ -21,13 +21,14 @@ module dmem (
 	reg [31:0] RAM [255:0];
 	assign rd = RAM[a[31:2]];
 	wire [31:0] addr = a[31:2];
-	
+
+
 	reg debug;
 	always @(posedge clk) begin
 		if (we) begin
 			case(be)
 			    // sb
-				 4'b0001: RAM[a[31:2]] <= (RAM[a[31:2]] & 32'b11111111111111111111111100000000) | wd[7:0];
+				4'b0001: RAM[a[31:2]] <= (RAM[a[31:2]] & 32'b11111111111111111111111100000000) | wd[7:0];
 				// sh
 				4'b0011: RAM[a[31:2]] <= (RAM[a[31:2]] & 32'b11111111111111111111111100000000) | wd[15:0];
 				// sw

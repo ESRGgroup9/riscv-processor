@@ -125,30 +125,23 @@ sw x3, 116(x0)
 sra x3, x1, x2
 sw x3, 120(x0)
 
-# lui x1, 0xaaaa
-# addi x1, x1, 0xaa
-# sw x1, 96(x0)
+lui x1, 0xaa0bc
+addi x1, x1, 0xdd
+sw x1, 96(x0) # x1 = 0xaa0bc0dd
 
-# lbu x2, 96(x0) # x2 = 0xaa = 170
-# sw x2, 152(x0)
+lb x2, 96(x0) # x2 = 0xFFFFFFdd = -35
+sw x2, 160(x0)
 
-# lhu x2, 96(x0) # x2 = 0xa0aa = 41130
-# sw x2, 156(x0)
+lb x2, 97(x0) # x2 = 0xFFFFFFc0 = -64
+sw x2, 164(x0)
 
-# lb x2, 96(x0) # x2 = 0xffffffaa = 4294967210
-# sw x2, 160(x0)
+lb x2, 98(x0) # x2 = 0x0000000b = 11
+sw x2, 168(x0)
 
-# lh x2, 96(x0) # x2 = 0xffffa0aa = 4294942890
-# sw x2, 164(x0)
+lb x2, 99(x0) # x2 = 0xFFFFFFaa = -86
+sw x2, 172(x0)
 
-# addi x2, x0, 0xee
-# sb x2, 164(x0) # [168] = 0xffffa0ee
-# lw x2, 164(x0)
-# sw x2, 172(x0)
-
-# addi x2, x0, 0xee
-# sh x2, 164(x0) # [164] = 0xffff00ee
 
 # ------- end simulation
 addi x2, x0, 30
-sw  x2, 96(x0)
+sw  x2, 40(x0)

@@ -7,7 +7,7 @@ module imem (
 	// read data reg
 	output wire [31:0] rd;
 	
-	reg [31:0] RAM [127:0];
+	reg [31:0] RAM [255:0];
 	initial $readmemh("riscvtest.txt", RAM);
 	
 	// access RAM 'a' position

@@ -19,7 +19,7 @@ module datapath (
 	Instr,
 	ALUResult,
 	WriteData,
-	ReadData
+	MemData
 );
 	input wire clk;
 	input wire reset;
@@ -41,9 +41,10 @@ module datapath (
 	input wire [31:0] Instr;
 	output wire [31:0] ALUResult;
 	output wire [31:0] WriteData;
-	input wire [31:0] ReadData;
+	input wire [31:0] MemData;
 	
-	wire [31:0] ReadDataExt;
+	// wire [31:0] ReadDataExt;
+	wire [31:0] ReadData;
 	wire [31:0] PCNext;
 	wire [31:0] PCPlus4;
 	wire [31:0] PCTarget;
@@ -97,12 +98,6 @@ module datapath (
 		ImmExt
 	);
 
-	extendAddr extAddr(
-		Instr[14:12],
-		ReadData,
-		ReadDataExt
-	);
-	
 	mux2 #(32) srcbmux(
 		WriteData,
 		ImmExt,
@@ -130,11 +125,20 @@ module datapath (
 	
 	mux5 #(32) resultmux(
 		ALUResult,
-		ReadDataExt,
+		ReadData,
 		PCPlus4,
 		ImmExt,
 		PCResult,
 		ResultSrc,
 		Result
 	);
+
+	loaddec loaddec(
+		MemData,
+		Instr[14:12],
+		ALUResult[1:0],
+
+		ReadData
+	);
+
 endmodule
