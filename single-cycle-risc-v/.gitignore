@@ -1,3 +1,5 @@
 # project name
 riscvp/
 .Xil/
+*.sublime-project
+*.sublime-workspace
