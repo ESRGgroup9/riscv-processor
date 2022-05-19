@@ -4,7 +4,7 @@ module top (
 	WriteData,
 	DataAdr,
 	MemWrite,
-	byteEnable
+	func3_debug
 );
 	input wire clk;
 	input wire reset;
@@ -16,7 +16,10 @@ module top (
 	wire [31:0] PC;
 	wire [31:0] Instr;
 	wire [31:0] ReadData;
-	output wire [3:0] byteEnable;
+	
+	output wire [1:0] func3_debug;
+
+    assign func3_debug = Instr[13:12];
 
 	riscvsingle rvsingle(
 		clk,
@@ -24,7 +27,6 @@ module top (
 		PC,
 		Instr,
 		MemWrite,
-		byteEnable,
 		DataAdr,
 		WriteData,
 		ReadData
@@ -40,7 +42,7 @@ module top (
 		.we(MemWrite),
 		.a(DataAdr),
 		.wd(WriteData),
-		.be(byteEnable),
+		.be(Instr[13:12]),
 		.rd(ReadData)
 	);
 endmodule

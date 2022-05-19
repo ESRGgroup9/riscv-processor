@@ -142,6 +142,75 @@ lb x2, 99(x0) # x2 = 0xFFFFFFaa = -86
 sw x2, 172(x0)
 
 
+lh x2, 96(x0) # x2 = 0xFFFFc0dd = -16163
+sw x2, 176(x0)
+
+lh x2, 97(x0) # x2 = 0x00000bc0 = 3008
+sw x2, 180(x0)
+
+lh x2, 98(x0) # x2 = 0xFFFFaa0b = -22005
+sw x2, 184(x0)
+
+lh x2, 99(x0) # x2 = 0xFFFFddaa = -8790
+sw x2, 188(x0)
+
+
+lbu x2, 96(x0) # x2 = 0x000000dd = 221
+sw x2, 100(x0)
+
+lbu x2, 97(x0) # x2 = 0x000000c0 = 192
+sw x2, 104(x0)
+
+lbu x2, 98(x0) # x2 = 0x0000000b = 11
+sw x2, 108(x0)
+
+lbu x2, 99(x0) # x2 = 0x000000aa = 170
+sw x2, 112(x0)
+
+
+lhu x2, 96(x0) # x2 = 0x0000c0dd = 49373
+sw x2, 116(x0)
+
+lhu x2, 97(x0) # x2 = 0x00000bc0 = 3008
+sw x2, 120(x0)
+
+lhu x2, 98(x0) # x2 = 0x0000aa0b = 43531
+sw x2, 124(x0)
+
+lhu x2, 99(x0) # x2 = 0x0000ddaa = 56746
+sw x2, 128(x0)
+
+
+
+lui x1, 0xaa0bc
+addi x1, x1, 0xdd # x1 = 0xaa0bc0dd
+sw x1, 96(x0)
+
+addi x2, x0, 0x77
+sb x2, 99(x0) # [96] = 0x770bc0dd
+lw x3, 96(x0) 
+sw x3, 100(x0)
+
+addi x2, x0, 0x11
+sb x2, 98(x0) # [96] = 0x7711c0dd
+lw x3, 96(x0) 
+sw x3, 104(x0)
+
+addi x2, x0, 0x22
+sb x2, 97(x0) # [96] = 0x771122dd
+lw x3, 96(x0) 
+sw x3, 108(x0)
+
+addi x2, x0, 0x33
+sb x2, 96(x0) # [96] = 0x77112233
+lw x3, 96(x0) 
+sw x3, 112(x0)
+# addi x2, x0, 0x77
+# sb x2, 96(x0) # [96] = 0xaa0bc077
+
+
+
+
 # ------- end simulation
 addi x2, x0, 30
 sw  x2, 40(x0)

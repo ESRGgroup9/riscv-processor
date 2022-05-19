@@ -4,7 +4,6 @@ module riscvsingle (
 	PC,
 	Instr,
 	MemWrite,
-	byteEnable,
 	ALUResult,
 	WriteData,
 	ReadData
@@ -14,7 +13,6 @@ module riscvsingle (
 	output wire [31:0] PC;
 	input wire [31:0] Instr;
 	output wire MemWrite;
-	output wire [3:0] byteEnable;
 	output wire [31:0] ALUResult;
 	output wire [31:0] WriteData;
 	input wire [31:0] ReadData;
@@ -47,7 +45,6 @@ module riscvsingle (
 		
 		ResultSrc,
 		MemWrite,
-		byteEnable,
 		PCSrc,
 		ALUSrc,
 		RegWrite,

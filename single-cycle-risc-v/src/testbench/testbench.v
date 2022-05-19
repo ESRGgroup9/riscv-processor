@@ -12,7 +12,7 @@ reg reset;
 wire [31:0] WriteData;
 wire [31:0] DataAdr;
 wire MemWrite;
-wire [3:0] byteEnable;
+wire [1:0] func3_debug;
 
 top dut(
 	clk,
@@ -20,7 +20,7 @@ top dut(
 	WriteData,
 	DataAdr,
 	MemWrite,
-	byteEnable
+	func3_debug
 );
 
 initial begin
@@ -91,13 +91,33 @@ always @(negedge clk) begin
 		 // else if ((DataAdr == 156) & (WriteData == 41130)) 	`printOK("lhu",count)
 	 	else if ((DataAdr == 160) & (WriteData == -35)) 	`printOK("lb 96",count)
 	 	else if ((DataAdr == 164) & (WriteData == -64)) 	`printOK("lb 97",count)
-	 	else if ((DataAdr == 168) & (WriteData == 11)) 	`printOK("lb 98",count)
+	 	else if ((DataAdr == 168) & (WriteData == 11)) 	    `printOK("lb 98",count)
 	 	else if ((DataAdr == 172) & (WriteData == -86)) 	`printOK("lb 99",count)
-		 // else if ((DataAdr == 164) & (WriteData == -24406)) `printOK("lh",count)
+
+    	else if ((DataAdr == 176) & (WriteData == -16163)) 	`printOK("lh 96",count)
+	 	else if ((DataAdr == 180) & (WriteData == 3008)) 	`printOK("lh 97",count)
+	 	else if ((DataAdr == 184) & (WriteData == -22005)) 	`printOK("lh 98",count)
+	 	else if ((DataAdr == 188) & (WriteData == -8790)) 	`printOK("lh 99",count)
+	 	
+	 	else if ((DataAdr == 100) & (WriteData == 221)) 	`printOK("lbu 96",count)
+	 	else if ((DataAdr == 104) & (WriteData == 192)) 	`printOK("lbu 97",count)
+	 	else if ((DataAdr == 108) & (WriteData == 11)) 	    `printOK("lbu 98",count)
+	 	else if ((DataAdr == 112) & (WriteData == 170)) 	`printOK("lbu 99",count)
+
+    	else if ((DataAdr == 116) & (WriteData == 49373)) 	`printOK("lhu 96",count)
+	 	else if ((DataAdr == 120) & (WriteData == 3008)) 	`printOK("lhu 97",count)
+	 	else if ((DataAdr == 124) & (WriteData == 43531)) 	`printOK("lhu 98",count)
+	 	else if ((DataAdr == 128) & (WriteData == 56746)) 	
+	 	     `printOK("lhu 99",count)
 
 		// store
 		// else if ((DataAdr == 172) & (WriteData == -24338)) 	`printOK("sb",count)
 		// else if ((DataAdr == 164) & (WriteData == -65298)) 	`printOK("sh",count)
+		
+		else if ((DataAdr == 100) & (WriteData == 1997258973)) 	`printOK("sb 99",count)
+	 	else if ((DataAdr == 104) & (WriteData == 1997652189)) 	`printOK("sb 98",count)
+	 	else if ((DataAdr == 108) & (WriteData == 1997611741)) 	`printOK("sb 97",count)
+	 	else if ((DataAdr == 112) & (WriteData == 1997611571)) 	`printOK("sb 96",count)
 
 		// --------------------------------------------------------
 		else if ((DataAdr == 40) && (WriteData == 30)) begin
@@ -106,7 +126,7 @@ always @(negedge clk) begin
 			$stop;
         end
         
-		else if (WriteData == 30) begin //&& (DataAdr != 30)) begin
+		else if (DataAdr != 96 && DataAdr != 97 && DataAdr != 98 && DataAdr != 99) begin
 			$display("\nSimulation failed");
 			$display("  dataAddr  = %d", DataAdr);
 			$display("  writeData = %d\n", WriteData); 

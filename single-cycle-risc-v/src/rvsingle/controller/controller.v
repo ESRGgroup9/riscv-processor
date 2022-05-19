@@ -10,7 +10,6 @@ module controller (
 
 	ResultSrc,
 	MemWrite,
-	byteEnable,
 	PCSrc,
 	ALUSrc,
 	RegWrite,
@@ -30,7 +29,6 @@ module controller (
 
 	output wire [2:0] ResultSrc;
 	output wire MemWrite;
-	output wire [3:0] byteEnable;
 	output wire PCSrc;
 	output wire ALUSrc;
 	output wire RegWrite;
@@ -58,7 +56,6 @@ module controller (
 		
 		.ResultSrc(ResultSrc),
 		.MemWrite(MemWrite),
-		.byteEnable(byteEnable),
 		.ALUSrc(ALUSrc),
 		.RegWrite(RegWrite),
 		.PCResultSrc(PCResultSrc),
