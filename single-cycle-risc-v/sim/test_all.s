@@ -205,9 +205,39 @@ addi x2, x0, 0x33
 sb x2, 96(x0) # [96] = 0x77112233
 lw x3, 96(x0) 
 sw x3, 112(x0)
-# addi x2, x0, 0x77
-# sb x2, 96(x0) # [96] = 0xaa0bc077
 
+
+lui x1, 0xaa0bc
+addi x1, x1, 0xdd # x1 = 0xaa0bc0dd
+sw x1, 96(x0)
+
+addi x2, x0, 0xaa
+slli x2, x2, 8
+addi x2, x2, 0xbb
+sh x2, 99(x0) # [96] = 0xbb0bc0aa
+lw x3, 96(x0) 
+sw x3, 116(x0)
+
+addi x2, x0, 0xcc
+slli x2, x2, 8
+addi x2, x2, 0xdd
+sh x2, 98(x0) # [96] = 0xccddc0aa
+lw x3, 96(x0) 
+sw x3, 120(x0)
+
+addi x2, x0, 0x33
+slli x2, x2, 8
+addi x2, x2, 0x44
+sh x2, 97(x0) # [96] = 0xcc3344aa
+lw x3, 96(x0) 
+sw x3, 124(x0)
+
+addi x2, x0, 0x55
+slli x2, x2, 8
+addi x2, x2, 0x66
+sh x2, 96(x0) # [96] = 0xcc335566
+lw x3, 96(x0) 
+sw x3, 128(x0)
 
 
 

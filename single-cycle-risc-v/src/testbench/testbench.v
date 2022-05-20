@@ -119,6 +119,11 @@ always @(negedge clk) begin
 	 	else if ((DataAdr == 108) & (WriteData == 1997611741)) 	`printOK("sb 97",count)
 	 	else if ((DataAdr == 112) & (WriteData == 1997611571)) 	`printOK("sb 96",count)
 
+		else if ((DataAdr == 116) & (WriteData == -1156857686)) 	`printOK("sh 99",count)
+	 	else if ((DataAdr == 120) & (WriteData == -857882454)) 	`printOK("sh 98",count)
+	 	else if ((DataAdr == 124) & (WriteData == -869055318)) 	`printOK("sh 97",count)
+	 	else if ((DataAdr == 128) & (WriteData == -869051034)) 	`printOK("sh 96",count)
+
 		// --------------------------------------------------------
 		else if ((DataAdr == 40) && (WriteData == 30)) begin
         	$display("\nSimulation completed");
