@@ -1,4 +1,4 @@
-# riscv-processor
+13:08 21/05/2022# riscv-processor
 
 ## Overview
 It is intended to build a single cycle RISC-V processor, based on the given diagram:\
@@ -24,6 +24,7 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 **Enjoy**!
 
 ## Support Documents
+- [RISC-V Instruction Set Specifications](https://msyksphinz-self.github.io/riscv-isadoc/html/index.html)
 - [RISC-V Instruction Set Manual](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/riscv-spec-20191213.pdf)
 - [RISC-V Instruction Set Summary](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/RISC-V-Instruction-Set-Summary.pdf)
 - [RISC-V Reference Card](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/RISC-V_referenceCard.pdf)
@@ -33,38 +34,38 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 Supported instructions:
 
 **I Type**
-- [ ] lb
-- [ ] lh
+- [x] lb
+- [x] lh
 - [x] lw
-- [ ] lbu
-- [ ] lhu
+- [x] lbu
+- [x] lhu
 - [x] addi
-- [ ] slli
-- [ ] slti
-- [ ] sltiu
-- [ ] xori
-- [ ] srli
-- [ ] srai
-- [ ] ori
-- [ ] andi
+- [x] slli
+- [x] slti
+- [x] sltiu
+- [x] xori
+- [x] srli
+- [x] srai
+- [x] ori
+- [x] andi
 - [x] jalr
 
 ---
 **S Type**
-- [ ] sb
-- [ ] sh
+- [x] sb
+- [x] sh
 - [x] sw
 
 ---
 **R Type**
 - [x] add
 - [x] sub
-- [ ] sll
+- [x] sll
 - [x] slt
-- [ ] sltu
-- [ ] xor
-- [ ] srl
-- [ ] sra
+- [x] sltu
+- [x] xor
+- [x] srl
+- [x] sra
 - [x] or
 - [x] and
 
@@ -76,15 +77,19 @@ Supported instructions:
 ---
 **B Type**
 - [x] beq
-- [ ] bne
-- [ ] blt
-- [ ] bge
-- [ ] bltu
-- [ ] bgeu
+- [x] bne
+- [x] blt
+- [x] bge
+- [x] bltu
+- [x] bgeu
 
 ---
 **J Type**
 - [x] jal
+
+### Datapath + Control Unit Diagram:
+![Datapaht_SC_Diagram](SingleCycle_Design/diagram.png)
+-----
 
 -----
 **Done by:**
