@@ -91,7 +91,7 @@ Supported instructions:
 ![Datapaht_SC_Diagram](SingleCycle_Design/SingleCycle_Design_Datapath.png)
 -----
 ### Control Unit Diagram:
-![ControlUnit_SC_Diagram](SingleCycle_Design/SingleCycle_Design_Controller.png)
+![ControlUnit_SC_Diagram](SingleCycle_Design/SingleCycle_Design_Controller.png){:height="36px" width="36px"}.
 -----
 
 -----
