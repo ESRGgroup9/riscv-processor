@@ -87,11 +87,8 @@ Supported instructions:
 **J Type**
 - [x] jal
 
-### Datapath Diagram:
-![Datapaht_SC_Diagram](SingleCycle_Design/SingleCycle_Design_Datapath.png)
------
-### Control Unit Diagram:
-![ControlUnit_SC_Diagram](SingleCycle_Design/SingleCycle_Design_Controller.png){:height="36px" width="36px"}
+### Datapath + Control Unit Diagram:
+![Datapaht_SC_Diagram](SingleCycle_Design/diagram.png)
 -----
 
 -----
