@@ -1,5 +1,3 @@
-13:08 21/05/2022# riscv-processor
-
 ## Overview
 It is intended to build a single cycle RISC-V processor, based on the given diagram:\
 ![Complete single-cycle processor](doc/single-cycle-proc.png)
@@ -90,7 +88,8 @@ Supported instructions:
 ### Datapath + Control Unit Diagram:
 ![Datapaht_SC_Diagram](SingleCycle_Design/diagram.png)
 -----
-
+### ALU
+![Datapaht_SC_Diagram](SingleCycle_Design/ALU.png)
 -----
 **Done by:**
 
