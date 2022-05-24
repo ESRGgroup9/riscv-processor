@@ -3,8 +3,7 @@ module top (
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite,
-	func3_debug
+	MemWrite
 );
 	input wire clk;
 	input wire reset;
@@ -16,10 +15,6 @@ module top (
 	wire [31:0] PC;
 	wire [31:0] Instr;
 	wire [31:0] ReadData;
-	
-	output wire [1:0] func3_debug;
-
-    assign func3_debug = Instr[13:12];
 
 	riscvpipeline rvpipeline(
 		clk,

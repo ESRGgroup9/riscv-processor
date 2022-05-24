@@ -1,144 +1,261 @@
 module datapath (
 	clk,
 	reset,
-	ResultSrc,
-	PCSrc,
-	ALUSrc,
-	RegWrite,
-	ImmSrc,
-	ALUControl,
-	PCResultSrc,
+	ResultSrcW,
+	PCSrcE,
+	ALUSrcE,
+	RegWriteW,
+	ImmSrcD,
+	ALUControlE,
+	PCResultSrcE,
 	
 	// ALU flags
-	Zero,
-	Overflow,
-	Carry,
-	Negative,
+	ZeroE,
+	OverflowE,
+	CarryE,
+	NegativeE,
 
-	PC,
-	Instr,
-	ALUResult,
-	WriteData,
-	MemData
+	PCF,
+	InstrF,
+	ALUResultM,
+	WriteDataM,
+	MemDataM
 );
 	input wire clk;
 	input wire reset;
-	input wire [2:0] ResultSrc;
-	input wire PCSrc;
-	input wire ALUSrc;
-	input wire RegWrite;
-	input wire [2:0] ImmSrc;
-	input wire [3:0] ALUControl;
-    input wire PCResultSrc;
-		
+	input wire [2:0] ResultSrcW;
+	input wire PCSrcE;
+	input wire ALUSrcE;
+	input wire RegWriteW;
+	input wire [2:0] ImmSrcD;
+	input wire [3:0] ALUControlE;
+    input wire PCResultSrcE;
+	
 	// ALU flags
-	output wire Zero;
-	output wire Overflow;
-	output wire Carry;
-	output wire Negative;
+	output wire ZeroE;
+	output wire OverflowE;
+	output wire CarryE;
+	output wire NegativeE;
 
-	output wire [31:0] PC;
-	input wire [31:0] Instr;
-	output wire [31:0] ALUResult;
-	output wire [31:0] WriteData;
-	input wire [31:0] MemData;
+	output wire [31:0] PCF;
+	input wire [31:0] InstrF;
+	output wire [31:0] ALUResultM;
+	output wire [31:0] WriteDataM;
+	input wire [31:0] MemDataM;
 	
-	// wire [31:0] ReadDataExt;
-	wire [31:0] ReadData;
-	wire [31:0] PCNext;
-	wire [31:0] PCPlus4;
-	wire [31:0] PCTarget;
-	wire [31:0] PCResult; // result of mux ALUResult and PCTarget
+	wire [31:0] ReadDataM;
+	wire [31:0] PCNextF;
+	wire [31:0] PCTargetE;
+	wire [31:0] PCResultE; // result of mux ALUResult and PCTarget
+
+	wire [31:0] SrcBE;
+	wire [31:0] ResultW;
 	
-	wire [31:0] ImmExt;
-	wire [31:0] SrcA;
-	wire [31:0] SrcB;
-	wire [31:0] Result;
+	// ------- pipeline Fetch - Decode
+	// inputs
+	wire [31:0] PCPlus4F;
 	
+	// outputs
+	wire [31:0] InstrD;
+	wire [31:0] PCD;
+	wire [31:0] PCPlus4D;
+
+	// ------- pipeline Decode - Execute
+	// inputs
+	wire [31:0] RD1D;
+	wire [31:0] RD2D;
+	wire [31:0] ImmExtD;
+
+	// outputs
+	wire [2:0] InstrE;
+	wire [31:0] RD1E;
+	wire [31:0] RD2E;
+	wire [31:0] PCE;
+	wire [4:0] RdE;
+	wire [31:0] ImmExtE;
+	wire [31:0] PCPlus4E;
+
+	// ------- pipeline Execute - Memory
+	// inputs
+	wire [31:0] WriteDataE;
+	wire [31:0] ALUResultE;
+
+	// outputs
+	wire [2:0] InstrM;
+	wire [31:0] ImmExtM;
+	wire [4:0] RdM;
+	wire [31:0] PCResultM;
+	wire [31:0] PCPlus4M;
+
+	// ------- pipeline Memory - WriteBack
+	// outputs
+	wire [31:0] ImmExtW;
+	wire [31:0] ALUResultW;
+	wire [31:0] ReadDataW;
+	wire [4:0] RdW;
+	wire [31:0] PCResultW;
+	wire [31:0] PCPlus4W;
+
+	assign WriteDataE = RD2E;
+
+	pipelineFD pipeFD(
+		clk,
+		reset,
+
+		InstrF,
+		PCF,
+		PCPlus4F,
+		
+		InstrD,
+		PCD,
+		PCPlus4D
+	);
+
+	pipelineDE pipeDE(
+		clk,
+		reset,
+		
+		InstrD[14:12],
+		RD1D,
+		RD2D,
+		PCD,
+		InstrD[11:7],
+		ImmExtD,
+		PCPlus4D,
+
+		InstrE,
+		RD1E,
+		RD2E,
+		PCE,
+		RdE,
+		ImmExtE,
+		PCPlus4E
+	);
+
+	pipelineEM pipeEM(
+		clk,
+		reset,
+		
+		InstrE,
+		ALUResultE,
+		WriteDataE,
+		ImmExtE,
+		RdE,
+		PCResultE,
+		PCPlus4E,
+
+		InstrM,
+		ALUResultM,
+		WriteDataM,
+		ImmExtM,
+		RdM,
+		PCResultM,
+		PCPlus4M
+	);
+
+	pipelineMW pipeMW(
+		clk,
+		reset,
+		
+		ALUResultM,
+		ReadDataM,
+		ImmExtM,
+		RdM,
+		PCResultM,
+		PCPlus4M,
+
+		ALUResultW,
+		ReadDataW,
+		ImmExtW,
+		RdW,
+		PCResultW,
+		PCPlus4W
+	);
+
 	flopr #(32) pcreg(
 		clk,
 		reset,
-		PCNext,
-		PC
+		PCNextF,
+		PCF
 	);
 	
 	adder pcadd4(
-		PC,
+		PCF,
 		32'd4,
-		PCPlus4
+		PCPlus4F
 	);
 	
 	adder pcaddbranch(
-		PC,
-		ImmExt,
-		PCTarget
+		PCE,
+		ImmExtE,
+		PCTargetE
 	);
 	
 	mux2 #(32) pcmux(
-		PCPlus4,
-		PCResult,
-		PCSrc,
-		PCNext
+		PCPlus4F,
+		PCResultE,
+		PCSrcE,
+		PCNextF
 	);
 	
 	regfile rf(
 		.clk(clk),
-		.we3(RegWrite),
-		.a1(Instr[19:15]),
-		.a2(Instr[24:20]),
-		.a3(Instr[11:7]),
-		.wd3(Result),
-		.rd1(SrcA),
-		.rd2(WriteData)
+		.we3(RegWriteW),
+		.a1(InstrD[19:15]),
+		.a2(InstrD[24:20]),
+		.a3(InstrD[11:7]),
+		.wd3(ResultW),
+		.rd1(RD1D),
+		.rd2(RD2D)
 	);
 	
 	extendImm extImm(
-		Instr[31:7],
-		ImmSrc,
-		ImmExt
+		InstrD[31:7],
+		ImmSrcD,
+		ImmExtE
 	);
 
 	mux2 #(32) srcbmux(
-		WriteData,
-		ImmExt,
-		ALUSrc,
-		SrcB
+		RD2E,
+		ImmExtE,
+		ALUSrcE,
+		SrcBE
 	);
 	
 	alu alu(
-		.SrcA(SrcA),
-		.SrcB(SrcB),
-		.ALUControl(ALUControl),
-		.ALUResult(ALUResult),
-		.Zero(Zero),
-		.Overflow(Overflow),
-		.Carry(Carry),
-		.Negative(Negative)
+		.SrcA(RD1E),
+		.SrcB(SrcBE),
+		.ALUControl(ALUControlE),
+		.ALUResult(ALUResultE),
+		.Zero(ZeroE),
+		.Overflow(OverflowE),
+		.Carry(CarryE),
+		.Negative(NegativeE)
 	);
 	
 	mux2 #(32) pcresultmux(
-        PCTarget,
-		ALUResult,
-		PCResultSrc,
-		PCResult
+        PCTargetE,
+		ALUResultE,
+		PCResultSrcE,
+		PCResultE
 	);
 	
 	mux5 #(32) resultmux(
-		ALUResult,
-		ReadData,
-		PCPlus4,
-		ImmExt,
-		PCResult,
-		ResultSrc,
-		Result
+		ALUResultW,
+		ReadDataW,
+		PCPlus4W,
+		ImmExtW,
+		PCResultW,
+		ResultSrcW,
+		ResultW
 	);
 
 	loaddec loaddec(
-		MemData,
-		Instr[14:12],
-		ALUResult[1:0],
+		MemDataM,
+		InstrM,
+		ALUResultM[1:0],
 
-		ReadData
+		ReadDataM
 	);
 
 endmodule

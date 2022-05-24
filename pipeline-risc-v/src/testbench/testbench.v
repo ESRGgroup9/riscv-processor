@@ -12,15 +12,13 @@ reg reset;
 wire [31:0] WriteData;
 wire [31:0] DataAdr;
 wire MemWrite;
-wire [1:0] func3_debug;
 
 top dut(
 	clk,
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite,
-	func3_debug
+	MemWrite
 );
 
 initial begin
