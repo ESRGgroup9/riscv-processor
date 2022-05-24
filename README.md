@@ -1,6 +1,8 @@
 ## Overview
-It is intended to build a single cycle RISC-V processor, based on the given diagram:\
-![Complete single-cycle processor](doc/single-cycle-proc.png)
+It is intended to build:
+
+- single cycle RISC-V processor;
+- pipeline RISC-V processor;
 
 ## Tools
 - Xilinx Vivado 2019.02
@@ -29,6 +31,13 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 - [Digital Design and Computer Architecture RISC-V Edition](https://github.com/TomasLAbreu/riscv-processor/blob/main/doc/Digital-Design-And-Computer-Architecture-RISC-V-Edition.pdf) - Chapter 7 (PDF pages 421-470)
 
 # Single-cycle Processor
+
+### Datapath and Control Unit Diagram
+![Datapath_SC_Diagram](single-cycle-risc-v/doc/diagram.png)
+
+### ALU
+![Datapath_SC_Diagram](single-cycle-risc-v/doc/ALU.png)
+
 Supported instructions:
 
 **I Type**
@@ -85,11 +94,6 @@ Supported instructions:
 **J Type**
 - [x] jal
 
-### Datapath + Control Unit Diagram:
-![Datapaht_SC_Diagram](SingleCycle_Design/diagram.png)
------
-### ALU
-![Datapaht_SC_Diagram](SingleCycle_Design/ALU.png)
 -----
 **Done by:**
 
