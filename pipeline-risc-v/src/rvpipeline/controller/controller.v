@@ -42,7 +42,7 @@ module controller (
 	output wire [2:0] ImmSrcD;
 	output wire [3:0] ALUControlE;
 
-	wire [1:0] ALUOp;
+	wire [1:0] ALUOpD;
 
 	// ------- pipeline Decode - Execute
 	// inputs
@@ -96,7 +96,7 @@ module controller (
 		PCResultSrcE
 	);
 
-	pipelineDE_ctrl pipeEM(
+	pipelineEM_ctrl pipeEM(
 		clk,
 		reset,
 		
@@ -109,7 +109,7 @@ module controller (
 		MemWriteM
 	);
 
-	pipelineDE_ctrl pipeMW(
+	pipelineMW_ctrl pipeMW(
 		clk,
 		reset,
 		
