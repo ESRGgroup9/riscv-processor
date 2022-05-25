@@ -1,6 +1,7 @@
 module datapath (
 	clk,
 	reset,
+
 	ResultSrcW,
 	PCSrcE,
 	ALUSrcE,
@@ -9,6 +10,25 @@ module datapath (
 	ALUControlE,
 	PCResultSrcE,
 	
+	// hazard unit flags
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE,
+
+	// outputs
+	// hazard unit inputs
+	Rs1D,
+	Rs2D,
+	Rs1E,
+	Rs2E,
+	RdE,
+
+	RdM,
+	RdW,
+
 	// ALU flags
 	ZeroE,
 	OverflowE,
@@ -23,6 +43,7 @@ module datapath (
 );
 	input wire clk;
 	input wire reset;
+
 	input wire [2:0] ResultSrcW;
 	input wire PCSrcE;
 	input wire ALUSrcE;
@@ -31,6 +52,22 @@ module datapath (
 	input wire [3:0] ALUControlE;
     input wire PCResultSrcE;
 	
+	input [1:0] ForwardAE;
+	input [1:0] ForwardBE;
+	input StallF;
+	input StallD;
+	input FlushD;
+	input FlushE;
+
+	output [4:0] Rs1D;
+	output [4:0] Rs2D;
+	output [4:0] Rs1E;
+	output [4:0] Rs2E;
+	output [4:0] RdE;
+
+	output [4:0] RdM;
+	output [4:0] RdW;
+
 	// ALU flags
 	output wire ZeroE;
 	output wire OverflowE;
@@ -48,10 +85,13 @@ module datapath (
 	wire [31:0] PCTargetE;
 	wire [31:0] PCResultE; // result of mux ALUResult and PCTarget
 
+	wire [31:0] SrcAE;
 	wire [31:0] SrcBE;
 	wire [31:0] ResultW;
-	
-	// ------- pipeline Fetch - Decode
+
+	// ============================================================================
+	// pipeline Fetch - Decode
+	// ============================================================================
 	// inputs
 	wire [31:0] PCPlus4F;
 	
@@ -60,10 +100,13 @@ module datapath (
 	wire [31:0] PCD;
 	wire [31:0] PCPlus4D;
 
-	// ------- pipeline Decode - Execute
+	// ============================================================================
+	// pipeline Decode - Execute
+	// ============================================================================
 	// inputs
 	wire [31:0] RD1D;
 	wire [31:0] RD2D;
+	wire [4:0] RdD;
 	wire [31:0] ImmExtD;
 
 	// outputs
@@ -71,11 +114,12 @@ module datapath (
 	wire [31:0] RD1E;
 	wire [31:0] RD2E;
 	wire [31:0] PCE;
-	wire [4:0] RdE;
 	wire [31:0] ImmExtE;
 	wire [31:0] PCPlus4E;
 
-	// ------- pipeline Execute - Memory
+	// ============================================================================
+	// pipeline Execute - Memory
+	// ============================================================================
 	// inputs
 	wire [31:0] WriteDataE;
 	wire [31:0] ALUResultE;
@@ -83,24 +127,27 @@ module datapath (
 	// outputs
 	wire [2:0] InstrM;
 	wire [31:0] ImmExtM;
-	wire [4:0] RdM;
 	wire [31:0] PCResultM;
 	wire [31:0] PCPlus4M;
 
-	// ------- pipeline Memory - WriteBack
+	// ============================================================================
+	// pipeline Memory - Writeback
+	// ============================================================================
 	// outputs
 	wire [31:0] ImmExtW;
 	wire [31:0] ALUResultW;
 	wire [31:0] ReadDataW;
-	wire [4:0] RdW;
 	wire [31:0] PCResultW;
 	wire [31:0] PCPlus4W;
 
-	assign WriteDataE = RD2E;
-
+	// ============================================================================
+	// pipelines instantiation
+	// ============================================================================
 	pipelineFD_dp pipeFD(
 		clk,
-		reset,
+		reset | FlushD,
+		~StallD, 	// enable
+		// FlushD, 	// clear
 
 		InstrF,
 		PCF,
@@ -113,13 +160,16 @@ module datapath (
 
 	pipelineDE_dp pipeDE(
 		clk,
-		reset,
+		reset | FlushE,
+		// FlushE, 	// clear
 		
 		InstrD[14:12],
 		RD1D,
 		RD2D,
 		PCD,
-		InstrD[11:7],
+		Rs1D,
+		Rs2D,
+		RdD,
 		ImmExtD,
 		PCPlus4D,
 
@@ -127,6 +177,8 @@ module datapath (
 		RD1E,
 		RD2E,
 		PCE,
+		Rs1E,
+		Rs2E,
 		RdE,
 		ImmExtE,
 		PCPlus4E
@@ -172,9 +224,38 @@ module datapath (
 		PCPlus4W
 	);
 
-	flopr #(32) pcreg(
+	// ============================================================================
+	// hazard unit muxes
+	// ============================================================================
+	mux3 #(32) srcaEmux(
+		RD1E,
+		ResultW,
+		ALUResultM,
+		ForwardAE,
+		SrcAE
+	);
+
+	mux3 #(32) writedataEmux(
+		RD2E,
+		ResultW,
+		ALUResultM,
+		ForwardBE,
+		WriteDataE
+	);
+
+	// ============================================================================
+	// datapath
+	// ============================================================================
+		
+	assign Rs1D = InstrD[19:15];
+	assign Rs2D = InstrD[24:20];
+	assign RdD = InstrD[11:7];
+
+	flopenr #(32) pcreg(
 		clk,
 		reset,
+		~StallF,
+
 		PCNextF,
 		PCF
 	);
@@ -190,7 +271,14 @@ module datapath (
 		ImmExtE,
 		PCTargetE
 	);
-	
+
+	mux2 #(32) pcresultmux(
+        PCTargetE,
+		ALUResultE,
+		PCResultSrcE,
+		PCResultE
+	);
+
 	mux2 #(32) pcmux(
 		PCPlus4F,
 		PCResultE,
@@ -199,12 +287,14 @@ module datapath (
 	);
 	
 	regfile rf(
-		.clk(clk),
+		.clk(~clk),
 		.we3(RegWriteW),
+
 		.a1(InstrD[19:15]),
 		.a2(InstrD[24:20]),
-		.a3(InstrD[11:7]),
+		.a3(RdW),
 		.wd3(ResultW),
+
 		.rd1(RD1D),
 		.rd2(RD2D)
 	);
@@ -212,32 +302,27 @@ module datapath (
 	extendImm extImm(
 		InstrD[31:7],
 		ImmSrcD,
-		ImmExtE
+		ImmExtD
 	);
 
 	mux2 #(32) srcbmux(
-		RD2E,
+		WriteDataE,
 		ImmExtE,
 		ALUSrcE,
 		SrcBE
 	);
 	
 	alu alu(
-		.SrcA(RD1E),
+		.SrcA(SrcAE),
 		.SrcB(SrcBE),
+
 		.ALUControl(ALUControlE),
+		
 		.ALUResult(ALUResultE),
 		.Zero(ZeroE),
 		.Overflow(OverflowE),
 		.Carry(CarryE),
 		.Negative(NegativeE)
-	);
-	
-	mux2 #(32) pcresultmux(
-        PCTargetE,
-		ALUResultE,
-		PCResultSrcE,
-		PCResultE
 	);
 	
 	mux5 #(32) resultmux(
@@ -246,6 +331,7 @@ module datapath (
 		PCPlus4W,
 		ImmExtW,
 		PCResultW,
+		
 		ResultSrcW,
 		ResultW
 	);

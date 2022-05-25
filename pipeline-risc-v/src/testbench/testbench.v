@@ -13,12 +13,28 @@ wire [31:0] WriteData;
 wire [31:0] DataAdr;
 wire MemWrite;
 
+
+wire [1:0] ForwardAE;
+wire [1:0] ForwardBE;
+wire StallF;
+wire StallD;
+wire FlushD;
+wire FlushE;
+
 top dut(
 	clk,
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite
+	MemWrite,
+
+	// -----------debug
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE
 );
 
 initial begin

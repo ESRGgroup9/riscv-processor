@@ -1,6 +1,7 @@
 module controller (
 	clk,
 	reset,
+	FlushE,
 
 	opD,
 	funct3D,
@@ -11,17 +12,23 @@ module controller (
 	CarryE,
 	NegativeE,
 
+	// outputs
 	ResultSrcW,
 	MemWriteM,
 	PCSrcE,
 	ALUSrcE,
+
+	RegWriteM,
 	RegWriteW,
+
     PCResultSrcE,
 	ImmSrcD,
-	ALUControlE
+	ALUControlE,
+	ResultSrcb0E
 );
 	input clk;
 	input reset;
+	input FlushE;
 
 	input wire [6:0] opD;
 	input wire [2:0] funct3D;
@@ -37,14 +44,20 @@ module controller (
 	output wire MemWriteM;
 	output wire PCSrcE;
 	output wire ALUSrcE;
+
 	output wire RegWriteW;
+	output wire RegWriteM;
+
     output wire PCResultSrcE;
 	output wire [2:0] ImmSrcD;
 	output wire [3:0] ALUControlE;
-
+	output wire ResultSrcb0E;
+	
 	wire [1:0] ALUOpD;
 
-	// ------- pipeline Decode - Execute
+	// ============================================================================
+	// pipeline Decode - Execute
+	// ============================================================================
 	// inputs
 	wire RegWriteD;
 	wire [2:0] ResultSrcD;
@@ -62,9 +75,11 @@ module controller (
 	// wire [3:0] ALUControlE;
 	// wire ALUSrcE;
 	
-	// ------- pipeline Execute - Memory
+	// ============================================================================
+	// pipeline Execute - Memory
+	// ============================================================================
 	// outputs
-	wire RegWriteM;
+	// wire RegWriteM;
 	wire [2:0] ResultSrcM;
 	// wire MemWriteM;
 
@@ -73,9 +88,13 @@ module controller (
 	// wire RegWriteW;
 	// wire [2:0] ResultSrcW;
 
+	// ============================================================================
+	// pipelines instantiation
+	// ============================================================================
+	
 	pipelineDE_ctrl pipeDE(
 		clk,
-		reset,
+		reset | FlushE,
 		
 		opD,
 		funct3D,
@@ -120,6 +139,12 @@ module controller (
 		ResultSrcW
 	);
 
+	// ============================================================================
+	// controller
+	// ============================================================================
+	
+	assign ResultSrcb0E = ResultSrcE[0];
+	
 	jumpdec jd(
 		.op(opE),
 		.funct3(funct3E),

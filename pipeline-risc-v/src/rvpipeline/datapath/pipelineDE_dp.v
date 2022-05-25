@@ -7,6 +7,8 @@ module pipelineDE_dp(
 	input wire [31:0] RD1D,
 	input wire [31:0] RD2D,
 	input wire [31:0] PCD,
+	input wire [4:0] Rs1D,
+	input wire [4:0] Rs2D,
 	input wire [4:0] RdD,
 	input wire [31:0] ImmExtD,
 	input wire [31:0] PCPlus4D,
@@ -16,6 +18,8 @@ module pipelineDE_dp(
 	output wire [31:0] RD1E,
 	output wire [31:0] RD2E,
 	output wire [31:0] PCE,
+	output wire [4:0] Rs1E,
+	output wire [4:0] Rs2E,
 	output wire [4:0] RdE,
 	output wire [31:0] ImmExtE,
 	output wire [31:0] PCPlus4E
@@ -47,6 +51,20 @@ flopr #(32) pcreg(
 	reset,
 	PCD,
 	PCE
+);
+
+flopr #(5) rs1reg(
+	clk,
+	reset,
+	Rs1D,
+	Rs1E
+);
+
+flopr #(5) rs2reg(
+	clk,
+	reset,
+	Rs2D,
+	Rs2E
 );
 
 flopr #(5) rdreg(
