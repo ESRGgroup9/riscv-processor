@@ -10,12 +10,12 @@ module riscvpipeline (
 	ReadDataM,
 
 	// ----------- debug
-	output [1:0] ForwardAE,
-	output [1:0] ForwardBE,
-	output StallF,
-	output StallD,
-	output FlushD,
-	output FlushE
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE
 );
 	input wire clk;
 	input wire reset;
@@ -26,7 +26,14 @@ module riscvpipeline (
 	output wire [31:0] ALUResultM;
 	output wire [31:0] WriteDataM;
 	input wire [31:0] ReadDataM;
-
+    
+    // debug
+    output [1:0] ForwardAE;
+	output [1:0] ForwardBE;
+	output StallF;
+	output StallD;
+	output FlushD;
+	output FlushE;
 	// ------ controler outputs
 	wire [2:0] ResultSrcW;
 	wire ALUSrcE;

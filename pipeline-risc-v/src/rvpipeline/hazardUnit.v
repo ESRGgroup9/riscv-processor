@@ -15,8 +15,11 @@ module hazardUnit(
 	input RegWriteM,
 	input RegWriteW,
 
-	output [1:0] ForwardAE,
-	output [1:0] ForwardBE,
+	// output [1:0] ForwardAE,
+	// output [1:0] ForwardBE,
+	output reg [1:0] ForwardAE,
+	output reg [1:0] ForwardBE,
+
 	output StallF,
 	output StallD,
 	output FlushD,
@@ -42,44 +45,44 @@ assign lwStall = ResultSrcb0E & ((Rs1D == RdE) | (Rs2D == RdE));
 assign StallF = lwStall;
 assign StallD = lwStall;
 
-// // forwarding logic for SrcAE
-// always @(posedge clk) begin
-// 	if(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) begin
-// 		// forward from Memory stage
-// 		ForwardAE <= 2'b10;
-// 	end
-// 	else if(((Rs1E == RdW) & RegWriteW) & (Rs1E != 0)) begin
-// 		// forward from Writeback stage
-// 		ForwardAE <= 2'b01;
-// 	end
-// 	else begin
-// 		// no forwarding (use RF output)
-// 		ForwardAE <= 2'b00;
-// 	end
-// end
+// forwarding logic for SrcAE
+always @(posedge clk) begin
+	if(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) begin
+		// forward from Memory stage
+		ForwardAE <= 2'b10;
+	end
+	else if(((Rs1E == RdW) & RegWriteW) & (Rs1E != 0)) begin
+		// forward from Writeback stage
+		ForwardAE <= 2'b01;
+	end
+	else begin
+		// no forwarding (use RF output)
+		ForwardAE <= 2'b00;
+	end
+end
 
-// // forwarding logic for SrcBE
-// always @(posedge clk) begin
-// 	if(((Rs2E == RdM) & RegWriteM) & (Rs2E != 0)) begin
-// 		// forward from Memory stage
-// 		ForwardBE <= 2'b10;
-// 	end
-// 	else if(((Rs2E == RdW) & RegWriteW) & (Rs2E != 0)) begin
-// 		// forward from Writeback stage
-// 		ForwardBE <= 2'b01;
-// 	end
-// 	else begin
-// 		// no forwarding (use RF output)
-// 		ForwardBE <= 2'b00;
-// 	end
-// end
+// forwarding logic for SrcBE
+always @(posedge clk) begin
+	if(((Rs2E == RdM) & RegWriteM) & (Rs2E != 0)) begin
+		// forward from Memory stage
+		ForwardBE <= 2'b10;
+	end
+	else if(((Rs2E == RdW) & RegWriteW) & (Rs2E != 0)) begin
+		// forward from Writeback stage
+		ForwardBE <= 2'b01;
+	end
+	else begin
+		// no forwarding (use RF output)
+		ForwardBE <= 2'b00;
+	end
+end
 
-assign ForwardAE = 
-	(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) ? 2'b10 :
-	((((Rs1E == RdW) & RegWriteW) & (Rs1E != 0)) ? 2'b01 : 2'b00);
+// assign ForwardAE = 
+// 	(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) ? 2'b10 :
+// 	((((Rs1E == RdW) & RegWriteW) & (Rs1E != 0)) ? 2'b01 : 2'b00);
 
-assign ForwardBE = 
-	(((Rs2E == RdM) & RegWriteM) & (Rs2E != 0)) ? 2'b10 :
-	((((Rs2E == RdW) & RegWriteW) & (Rs2E != 0)) ? 2'b01 : 2'b00);
+// assign ForwardBE = 
+// 	(((Rs2E == RdM) & RegWriteM) & (Rs2E != 0)) ? 2'b10 :
+// 	((((Rs2E == RdW) & RegWriteW) & (Rs2E != 0)) ? 2'b01 : 2'b00);
 
 endmodule

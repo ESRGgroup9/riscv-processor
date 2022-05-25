@@ -7,12 +7,13 @@ module top (
 	MemWriteM,
 
 	// ----------- debug
-	output [1:0] ForwardAE,
-	output [1:0] ForwardBE,
-	output StallF,
-	output StallD,
-	output FlushD,
-	output FlushE
+	PCF,
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE
 );
 	input wire clk;
 	input wire reset;
@@ -20,9 +21,17 @@ module top (
 	output wire [31:0] WriteDataM;
 	output wire [31:0] DataAdrM;
 	output wire MemWriteM;
+    
+    output [31:0] PCF;    
+    output [1:0] ForwardAE;
+	output [1:0] ForwardBE;
+	output StallF;
+	output StallD;
+	output FlushD;
+	output FlushE;
 
 	// ----- riscvpipeline wires
-	wire [31:0] PCF;
+//	wire [31:0] PCF;
 	wire [31:0] InstrF;
 	wire [31:0] ReadDataM;
 

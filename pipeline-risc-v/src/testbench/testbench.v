@@ -13,7 +13,7 @@ wire [31:0] WriteData;
 wire [31:0] DataAdr;
 wire MemWrite;
 
-
+wire [31:0] PCF;
 wire [1:0] ForwardAE;
 wire [1:0] ForwardBE;
 wire StallF;
@@ -29,6 +29,7 @@ top dut(
 	MemWrite,
 
 	// -----------debug
+	PCF,
 	ForwardAE,
 	ForwardBE,
 	StallF,
