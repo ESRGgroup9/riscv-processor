@@ -1,4 +1,4 @@
-module pipelineFD(
+module pipelineFD_dp(
 	input clk,
 	input reset,
 

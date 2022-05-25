@@ -33,6 +33,9 @@ module riscvpipeline (
 	wire PCSrc;
 	
 	controller c(
+		clk,
+		reset,
+		
 		Instr[6:0],
 		Instr[14:12],
 		Instr[30],

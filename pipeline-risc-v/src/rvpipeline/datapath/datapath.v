@@ -98,7 +98,7 @@ module datapath (
 
 	assign WriteDataE = RD2E;
 
-	pipelineFD pipeFD(
+	pipelineFD_dp pipeFD(
 		clk,
 		reset,
 
@@ -111,7 +111,7 @@ module datapath (
 		PCPlus4D
 	);
 
-	pipelineDE pipeDE(
+	pipelineDE_dp pipeDE(
 		clk,
 		reset,
 		
@@ -132,7 +132,7 @@ module datapath (
 		PCPlus4E
 	);
 
-	pipelineEM pipeEM(
+	pipelineEM_dp pipeEM(
 		clk,
 		reset,
 		
@@ -153,7 +153,7 @@ module datapath (
 		PCPlus4M
 	);
 
-	pipelineMW pipeMW(
+	pipelineMW_dp pipeMW(
 		clk,
 		reset,
 		

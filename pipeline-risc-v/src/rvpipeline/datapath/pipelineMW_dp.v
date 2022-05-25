@@ -1,4 +1,4 @@
-module pipelineMW(
+module pipelineMW_dp(
 	input clk,
 	input reset,
 	

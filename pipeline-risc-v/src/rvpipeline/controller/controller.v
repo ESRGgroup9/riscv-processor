@@ -1,74 +1,157 @@
 module controller (
-	op,
-	funct3,
-	funct7b5,
-	
-	Zero,
-	Overflow,
-	Carry,
-	Negative,
+	clk,
+	reset,
 
-	ResultSrc,
-	MemWrite,
-	PCSrc,
-	ALUSrc,
-	RegWrite,
-    PCResultSrc,
-	ImmSrc,
-	ALUControl
+	opD,
+	funct3D,
+	funct7b5D,
+	
+	ZeroE,
+	OverflowE,
+	CarryE,
+	NegativeE,
+
+	ResultSrcW,
+	MemWriteM,
+	PCSrcE,
+	ALUSrcE,
+	RegWriteW,
+    PCResultSrcE,
+	ImmSrcD,
+	ALUControlE
 );
-	input wire [6:0] op;
-	input wire [2:0] funct3;
-	input wire funct7b5;
+	input clk;
+	input reset;
+
+	input wire [6:0] opD;
+	input wire [2:0] funct3D;
+	input wire funct7b5D;
 
 	// ALU flags
-	input wire Zero;
-	input wire Overflow;
-	input wire Carry;
-	input wire Negative;
+	input wire ZeroE;
+	input wire OverflowE;
+	input wire CarryE;
+	input wire NegativeE;
 
-	output wire [2:0] ResultSrc;
-	output wire MemWrite;
-	output wire PCSrc;
-	output wire ALUSrc;
-	output wire RegWrite;
-    output wire PCResultSrc;
-	output wire [2:0] ImmSrc;
-	output wire [3:0] ALUControl;
+	output wire [2:0] ResultSrcW;
+	output wire MemWriteM;
+	output wire PCSrcE;
+	output wire ALUSrcE;
+	output wire RegWriteW;
+    output wire PCResultSrcE;
+	output wire [2:0] ImmSrcD;
+	output wire [3:0] ALUControlE;
 
 	wire [1:0] ALUOp;
-	
-	jumpdec jd(
-		.op(op),
-		.funct3(funct3),
 
-		.Zero(Zero),
-		.Overflow(Overflow),
-		.Carry(Carry),
-		.Negative(Negative),
+	// ------- pipeline Decode - Execute
+	// inputs
+	wire RegWriteD;
+	wire [2:0] ResultSrcD;
+	wire MemWriteD;
+	wire [3:0] ALUControlD;
+	wire ALUSrcD;
+	wire PCResultSrcD;
+
+	// outputs
+	wire [6:0] opE;
+	wire [2:0] funct3E;
+	wire RegWriteE;
+	wire [2:0] ResultSrcE;
+	wire MemWriteE;
+	// wire [3:0] ALUControlE;
+	// wire ALUSrcE;
+	
+	// ------- pipeline Execute - Memory
+	// outputs
+	wire RegWriteM;
+	wire [2:0] ResultSrcM;
+	// wire MemWriteM;
+
+	// ------- pipeline Memory - WriteBack
+	// outputs
+	// wire RegWriteW;
+	// wire [2:0] ResultSrcW;
+
+	pipelineDE_ctrl pipeDE(
+		clk,
+		reset,
 		
-		.PCSrc(PCSrc)
+		opD,
+		funct3D,
+		RegWriteD,
+		ResultSrcD,
+		MemWriteD,
+		ALUControlD,
+		ALUSrcD,
+		PCResultSrcD,
+
+		opE,
+		funct3E,
+		RegWriteE,
+		ResultSrcE,
+		MemWriteE,
+		ALUControlE,
+		ALUSrcE,
+		PCResultSrcE
+	);
+
+	pipelineDE_ctrl pipeEM(
+		clk,
+		reset,
+		
+		RegWriteE,
+		ResultSrcE,
+		MemWriteE,
+
+		RegWriteM,
+		ResultSrcM,
+		MemWriteM
+	);
+
+	pipelineDE_ctrl pipeMW(
+		clk,
+		reset,
+		
+		RegWriteM,
+		ResultSrcM,
+
+		RegWriteW,
+		ResultSrcW
+	);
+
+	jumpdec jd(
+		.op(opE),
+		.funct3(funct3E),
+
+		.Zero(ZeroE),
+		.Overflow(OverflowE),
+		.Carry(CarryE),
+		.Negative(NegativeE),
+		
+		.PCSrc(PCSrcE)
 	);
 
 	maindec md(
-		.op(op),
-		.funct3(funct3),
+		.op(opD),
+		.funct3(funct3D),
 		
-		.ResultSrc(ResultSrc),
-		.MemWrite(MemWrite),
-		.ALUSrc(ALUSrc),
-		.RegWrite(RegWrite),
-		.PCResultSrc(PCResultSrc),
-		.ImmSrc(ImmSrc),
-		.ALUOp(ALUOp)
+		.ResultSrc(ResultSrcD),
+		.MemWrite(MemWriteD),
+		.ALUSrc(ALUSrcD),
+		.RegWrite(RegWriteD),
+		.PCResultSrc(PCResultSrcD),
+		.ImmSrc(ImmSrcD),
+		.ALUOp(ALUOpD)
 	);
 	
 	aludec ad(
-		.opb5(op[5]),
-		.funct3(funct3),
-		.funct7b5(funct7b5),
-		.ALUOp(ALUOp),
-		.ALUControl(ALUControl)
+		.opb5(opD[5]),
+		.funct3(funct3D),
+		.funct7b5(funct7b5D),
+		.ALUOp(ALUOpD),
+
+		.ALUControl(ALUControlD)
 	);
 
 endmodule

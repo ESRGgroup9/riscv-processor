@@ -1,4 +1,4 @@
-module pipelineEM(
+module pipelineEM_dp(
 	input clk,
 	input reset,
 	

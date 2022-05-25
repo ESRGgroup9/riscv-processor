@@ -1,4 +1,4 @@
-module pipelineDE(
+module pipelineDE_dp(
 	input clk,
 	input reset,
 
