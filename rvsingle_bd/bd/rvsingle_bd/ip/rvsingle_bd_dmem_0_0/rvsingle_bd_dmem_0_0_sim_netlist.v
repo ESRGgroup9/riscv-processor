@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-// Date        : Mon May 23 19:11:38 2022
-// Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top rvsingle_bd_dmem_0_0 -prefix
-//               rvsingle_bd_dmem_0_0_ rvsingle_bd_dmem_0_0_sim_netlist.v
+// Date        : Wed May 25 11:35:03 2022
+// Host        : duarte running 64-bit Ubuntu 20.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/duarterod/Documents/riscv-processor/rvsingle_bd/bd/rvsingle_bd/ip/rvsingle_bd_dmem_0_0/rvsingle_bd_dmem_0_0_sim_netlist.v
 // Design      : rvsingle_bd_dmem_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,6 +12,40 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "rvsingle_bd_dmem_0_0,dmem,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "dmem,Vivado 2019.2" *) 
+(* NotValidForBitStream *)
+module rvsingle_bd_dmem_0_0
+   (clk,
+    we,
+    a,
+    wd,
+    be,
+    rd);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0" *) input clk;
+  input we;
+  input [31:0]a;
+  input [31:0]wd;
+  input [1:0]be;
+  output [31:0]rd;
+
+  wire [31:0]a;
+  wire [1:0]be;
+  wire clk;
+  wire [31:0]rd;
+  wire [31:0]wd;
+  wire we;
+
+  rvsingle_bd_dmem_0_0_dmem inst
+       (.a(a[9:0]),
+        .be(be),
+        .clk(clk),
+        .rd(rd),
+        .wd(wd),
+        .we(we));
+endmodule
+
+(* ORIG_REF_NAME = "dmem" *) 
 module rvsingle_bd_dmem_0_0_dmem
    (rd,
     clk,
@@ -791,39 +825,6 @@ module rvsingle_bd_dmem_0_0_dmem
         .I3(wd[1]),
         .I4(be[1]),
         .O(p_2_in[9]));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "rvsingle_bd_dmem_0_0,dmem,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "dmem,Vivado 2019.2" *) 
-(* NotValidForBitStream *)
-module rvsingle_bd_dmem_0_0
-   (clk,
-    we,
-    a,
-    wd,
-    be,
-    rd);
-  input clk;
-  input we;
-  input [31:0]a;
-  input [31:0]wd;
-  input [1:0]be;
-  output [31:0]rd;
-
-  wire [31:0]a;
-  wire [1:0]be;
-  wire clk;
-  wire [31:0]rd;
-  wire [31:0]wd;
-  wire we;
-
-  rvsingle_bd_dmem_0_0_dmem inst
-       (.a(a[9:0]),
-        .be(be),
-        .clk(clk),
-        .rd(rd),
-        .wd(wd),
-        .we(we));
 endmodule
 `ifndef GLBL
 `define GLBL

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:imem:1.0
-// IP Revision: 6
+// IP Revision: 8
 
 (* X_CORE_INFO = "imem,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "rvsingle_bd_imem_0_0,imem,{}" *)

@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
--- Date        : Mon May 23 19:11:50 2022
--- Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top rvsingle_bd_riscvsingle_0_0 -prefix
---               rvsingle_bd_riscvsingle_0_0_ rvsingle_bd_riscvsingle_0_0_sim_netlist.vhdl
+-- Date        : Wed May 25 11:35:13 2022
+-- Host        : duarte running 64-bit Ubuntu 20.04.4 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/duarterod/Documents/riscv-processor/rvsingle_bd/bd/rvsingle_bd/ip/rvsingle_bd_riscvsingle_0_0/rvsingle_bd_riscvsingle_0_0_sim_netlist.vhdl
 -- Design      : rvsingle_bd_riscvsingle_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -51,6 +51,8 @@ entity rvsingle_bd_riscvsingle_0_0_adder is
     rf_reg_r1_0_31_6_11_i_2_0 : in STD_LOGIC;
     rf_reg_r1_0_31_0_5_i_6_3 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_adder : entity is "adder";
 end rvsingle_bd_riscvsingle_0_0_adder;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_adder is
@@ -715,6 +717,8 @@ entity rvsingle_bd_riscvsingle_0_0_alu is
     SrcB : in STD_LOGIC_VECTOR ( 30 downto 0 );
     \ALUResult_reg[31]_i_14\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_alu : entity is "alu";
 end rvsingle_bd_riscvsingle_0_0_alu;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_alu is
@@ -4149,6 +4153,8 @@ entity rvsingle_bd_riscvsingle_0_0_flopr is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     PCSrc : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_flopr : entity is "flopr";
 end rvsingle_bd_riscvsingle_0_0_flopr;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_flopr is
@@ -4861,6 +4867,8 @@ entity rvsingle_bd_riscvsingle_0_0_jumpdec is
     CO : in STD_LOGIC_VECTOR ( 0 to 0 );
     ALUControl : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_jumpdec : entity is "jumpdec";
 end rvsingle_bd_riscvsingle_0_0_jumpdec;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_jumpdec is
@@ -5000,6 +5008,8 @@ entity rvsingle_bd_riscvsingle_0_0_regfile is
     clk : in STD_LOGIC;
     wd3 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_regfile : entity is "regfile";
 end rvsingle_bd_riscvsingle_0_0_regfile;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_regfile is
@@ -12183,6 +12193,8 @@ entity rvsingle_bd_riscvsingle_0_0_controller is
     CO : in STD_LOGIC_VECTOR ( 0 to 0 );
     ALUControl : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_controller : entity is "controller";
 end rvsingle_bd_riscvsingle_0_0_controller;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_controller is
@@ -12230,6 +12242,8 @@ entity rvsingle_bd_riscvsingle_0_0_datapath is
     PCSrc : in STD_LOGIC;
     ReadData : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_datapath : entity is "datapath";
 end rvsingle_bd_riscvsingle_0_0_datapath;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_datapath is
@@ -13054,6 +13068,8 @@ entity rvsingle_bd_riscvsingle_0_0_riscvsingle is
     Instr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ReadData : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_riscvsingle_0_0_riscvsingle : entity is "riscvsingle";
 end rvsingle_bd_riscvsingle_0_0_riscvsingle;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0_riscvsingle is
@@ -13129,6 +13145,12 @@ entity rvsingle_bd_riscvsingle_0_0 is
 end rvsingle_bd_riscvsingle_0_0;
 
 architecture STRUCTURE of rvsingle_bd_riscvsingle_0_0 is
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
+  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
 begin
 MemWrite_INST_0: unisim.vcomponents.LUT3
     generic map(

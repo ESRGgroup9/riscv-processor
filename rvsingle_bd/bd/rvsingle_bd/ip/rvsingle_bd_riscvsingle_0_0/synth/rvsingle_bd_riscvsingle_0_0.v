@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:riscvsingle:1.0
-// IP Revision: 3
+// IP Revision: 7
 
 (* X_CORE_INFO = "riscvsingle,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "rvsingle_bd_riscvsingle_0_0,riscvsingle,{}" *)
@@ -65,7 +65,11 @@ module rvsingle_bd_riscvsingle_0_0 (
   ReadData
 );
 
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 input wire reset;
 output wire [31 : 0] PC;
 input wire [31 : 0] Instr;

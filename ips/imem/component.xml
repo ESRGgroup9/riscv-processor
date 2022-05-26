@@ -18,7 +18,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6be9627f</spirit:value>
+            <spirit:value>970d2fa5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -34,7 +34,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6be9627f</spirit:value>
+            <spirit:value>970d2fa5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -96,7 +96,7 @@
       <spirit:file>
         <spirit:name>src/imem.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_6be9627f</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_970d2fa5</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -155,8 +155,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>imem_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>6</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-05-23T21:17:22Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>8</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-05-26T13:56:08Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@161b50ce_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
@@ -223,11 +223,32 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55b30d1_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3e447e26_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@409e763d_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d74ee4_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a79a4d_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@444ed421_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d09bf94_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16986c38_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e669eb1_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f0ac2d1_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e6824fe_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@545333e1_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3434ddce_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@722ede74_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f8fe47b_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d99fb47_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38f2ff69_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@317d818b_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2aefbfe9_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@109ea481_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8907710_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@566ac8ba_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a237ec7_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22755e13_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/imem</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="36247275"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="36a31b00"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="93ae54c2"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="cf3cbe4e"/>
     </xilinx:packagingInfo>
