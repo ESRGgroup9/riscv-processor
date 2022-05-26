@@ -14,6 +14,6 @@ module flopenr (
 	always @(posedge clk or posedge reset)
 		if (reset)
 			q <= 0;
-		else if (en)
+		else if(en)
 			q <= d;
 endmodule

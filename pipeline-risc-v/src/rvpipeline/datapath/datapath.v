@@ -37,6 +37,7 @@ module datapath (
 
 	PCF,
 	InstrF,
+	InstrD,
 	ALUResultM,
 	WriteDataM,
 	MemDataM
@@ -76,6 +77,7 @@ module datapath (
 
 	output wire [31:0] PCF;
 	input wire [31:0] InstrF;
+	output wire [31:0] InstrD;
 	output wire [31:0] ALUResultM;
 	output wire [31:0] WriteDataM;
 	input wire [31:0] MemDataM;
@@ -96,7 +98,7 @@ module datapath (
 	wire [31:0] PCPlus4F;
 	
 	// outputs
-	wire [31:0] InstrD;
+	// wire [31:0] InstrD;
 	wire [31:0] PCD;
 	wire [31:0] PCPlus4D;
 
@@ -287,7 +289,7 @@ module datapath (
 	);
 	
 	regfile rf(
-		.clk(~clk),
+		.clk(clk),
 		.we3(RegWriteW),
 
 		.a1(InstrD[19:15]),

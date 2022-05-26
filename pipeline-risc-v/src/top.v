@@ -4,7 +4,10 @@ module top (
 
 	WriteDataM,
 	DataAdrM,
+	MemWriteD,
+	MemWriteE,
 	MemWriteM,
+	InstrF,
 
 	// ----------- debug
 	PCF,
@@ -13,13 +16,18 @@ module top (
 	StallF,
 	StallD,
 	FlushD,
-	FlushE
+	FlushE,
+
+	PCSrcE// debug
 );
 	input wire clk;
 	input wire reset;
 	
 	output wire [31:0] WriteDataM;
 	output wire [31:0] DataAdrM;
+	
+	output wire MemWriteD;// debug
+	output wire MemWriteE;// debug
 	output wire MemWriteM;
     
     output [31:0] PCF;    
@@ -30,9 +38,11 @@ module top (
 	output FlushD;
 	output FlushE;
 
+	output PCSrcE;
 	// ----- riscvpipeline wires
 //	wire [31:0] PCF;
-	wire [31:0] InstrF;
+	// wire [31:0] InstrF;
+	output wire [31:0] InstrF;
 	wire [31:0] ReadDataM;
 
 	riscvpipeline rvpipeline(
@@ -41,6 +51,8 @@ module top (
 
 		PCF,
 		InstrF,
+		MemWriteD,
+		MemWriteE,
 		MemWriteM,
 		DataAdrM, // ALUresult signal
 		WriteDataM,
@@ -51,7 +63,8 @@ module top (
 		StallF,
 		StallD,
 		FlushD,
-		FlushE
+		FlushE,
+		PCSrcE
 	);
 	
 	imem imem(
