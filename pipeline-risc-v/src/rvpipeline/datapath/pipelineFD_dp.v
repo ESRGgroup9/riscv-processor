@@ -1,6 +1,7 @@
 module pipelineFD_dp(
 	input clk,
 	input reset,
+	input enable,
 
 	// inputs
 	input wire [31:0] InstrF,
@@ -13,23 +14,26 @@ module pipelineFD_dp(
 	output wire [31:0] PCPlus4D
 );
 
-flopr #(32) instrreg(
+flopenr #(32) instrreg(
 	clk,
 	reset,
+	enable,
 	InstrF,
 	InstrD
 );
 
-flopr #(32) pcreg(
+flopenr #(32) pcreg(
 	clk,
 	reset,
+	enable,
 	PCF,
 	PCD
 );
 
-flopr #(32) pcplusreg(
+flopenr #(32) pcplusreg(
 	clk,
 	reset,
+	enable,
 	PCPlus4F,
 	PCPlus4D
 );

@@ -26,7 +26,7 @@ module regfile (
 	       rf[i] = 0;
 	end
 	
-	always @(posedge clk)
+	always @(negedge clk)
 		if (we3)
 			rf[a3] <= wd3;
 	

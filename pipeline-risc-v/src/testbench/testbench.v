@@ -11,14 +11,40 @@ reg clk;
 reg reset;
 wire [31:0] WriteData;
 wire [31:0] DataAdr;
+wire MemWriteD;
+wire MemWriteE;
 wire MemWrite;
+
+wire[31:0] InstrF;
+wire [31:0] PCF;
+wire [1:0] ForwardAE;
+wire [1:0] ForwardBE;
+wire StallF;
+wire StallD;
+wire FlushD;
+wire FlushE;
+wire PCSrcE;
 
 top dut(
 	clk,
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite
+	
+	MemWriteD,
+	MemWriteE,
+	MemWrite,
+	InstrF,
+
+	// -----------debug
+	PCF,
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE,
+	PCSrcE
 );
 
 initial begin
