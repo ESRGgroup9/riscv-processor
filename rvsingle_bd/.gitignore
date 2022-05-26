@@ -1,5 +1,5 @@
 # project name
-rvsingle_bd/
+./rvsingle_bd/
 .Xil/
 *.sublime-project
 *.sublime-workspace
