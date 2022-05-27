@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="175001fs"></ZoomEndTime>
-      <Cursor1Time time="175000fs"></Cursor1Time>
+      <ZoomEndTime time="245001fs"></ZoomEndTime>
+      <Cursor1Time time="181824fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="160"></NameColumnWidth>
-      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+      <NameColumnWidth column_width="159"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="14" />
+   <WVObjectSize size="31" />
    <wvobject type="logic" fp_name="/testbench/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -42,10 +42,74 @@
    </wvobject>
    <wvobject fp_name="divider13" type="divider">
    </wvobject>
+   <wvobject type="logic" fp_name="/testbench/ZeroE">
+      <obj_property name="ElementShortName">ZeroE</obj_property>
+      <obj_property name="ObjectShortName">ZeroE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/OverflowE">
+      <obj_property name="ElementShortName">OverflowE</obj_property>
+      <obj_property name="ObjectShortName">OverflowE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/CarryE">
+      <obj_property name="ElementShortName">CarryE</obj_property>
+      <obj_property name="ObjectShortName">CarryE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/NegativeE">
+      <obj_property name="ElementShortName">NegativeE</obj_property>
+      <obj_property name="ObjectShortName">NegativeE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/opE">
+      <obj_property name="ElementShortName">opE[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opE[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/funct3E">
+      <obj_property name="ElementShortName">funct3E[2:0]</obj_property>
+      <obj_property name="ObjectShortName">funct3E[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/PCSrcE">
+      <obj_property name="ElementShortName">PCSrcE</obj_property>
+      <obj_property name="ObjectShortName">PCSrcE</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/testbench/PCF">
       <obj_property name="ElementShortName">PCF[31:0]</obj_property>
       <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider19" type="divider">
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs1D">
+      <obj_property name="ElementShortName">Rs1D[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs1D[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs1E">
+      <obj_property name="ElementShortName">Rs1E[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs1E[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs2D">
+      <obj_property name="ElementShortName">Rs2D[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs2D[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs2E">
+      <obj_property name="ElementShortName">Rs2E[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs2E[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/RdE">
+      <obj_property name="ElementShortName">RdE[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RdE[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/RdM">
+      <obj_property name="ElementShortName">RdM[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RdM[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/RdW">
+      <obj_property name="ElementShortName">RdW[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RdW[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/ResultSrcb0E">
+      <obj_property name="ElementShortName">ResultSrcb0E</obj_property>
+      <obj_property name="ObjectShortName">ResultSrcb0E</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider31" type="divider">
    </wvobject>
    <wvobject type="array" fp_name="/testbench/ForwardAE">
       <obj_property name="ElementShortName">ForwardAE[1:0]</obj_property>

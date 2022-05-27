@@ -18,7 +18,25 @@ module top (
 	FlushD,
 	FlushE,
 
-	PCSrcE// debug
+	PCSrcE,// debug
+
+	ZeroE,
+	OverflowE,
+	CarryE,
+	NegativeE,
+	
+	opE,
+	funct3E,
+
+	Rs1D,
+	Rs2D,
+	Rs1E,
+	Rs2E,
+	RdE,
+
+	RdM,
+	RdW,
+	ResultSrcb0E
 );
 	input wire clk;
 	input wire reset;
@@ -45,6 +63,24 @@ module top (
 	output wire [31:0] InstrF;
 	wire [31:0] ReadDataM;
 
+	// debug
+	output wire ZeroE;
+	output wire OverflowE;
+	output wire CarryE;
+	output wire NegativeE;
+
+	output wire [6:0] opE;
+	output wire [2:0] funct3E;
+	
+	output wire [4:0] Rs1D;
+	output wire [4:0] Rs2D;
+	output wire [4:0] Rs1E;
+	output wire [4:0] Rs2E;
+	output wire [4:0] RdE;
+	
+	output wire [4:0] RdM;
+	output wire [4:0] RdW;
+	output wire ResultSrcb0E;
 	riscvpipeline rvpipeline(
 		clk,
 		reset,
@@ -64,7 +100,25 @@ module top (
 		StallD,
 		FlushD,
 		FlushE,
-		PCSrcE
+		PCSrcE,
+
+		ZeroE,
+		OverflowE,
+		CarryE,
+		NegativeE,
+		
+		opE,
+		funct3E,
+
+		Rs1D,
+		Rs2D,
+		Rs1E,
+		Rs2E,
+		RdE,
+
+		RdM,
+		RdW,
+		ResultSrcb0E
 	);
 	
 	imem imem(

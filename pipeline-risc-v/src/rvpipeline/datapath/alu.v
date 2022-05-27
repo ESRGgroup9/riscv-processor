@@ -56,8 +56,6 @@ module alu (
 			`SR_OP  : ALUResult = SrcA >> SrcB[4:0];
 			`SRA_OP : ALUResult = SrcA >>> SrcB[4:0];
 
-			//`_OP: ALUResult = {address[31:8], ;
-
 			default: ALUResult = ALUResult;
 		endcase
 		debug = 0;

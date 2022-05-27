@@ -149,7 +149,6 @@ module datapath (
 		clk,
 		reset | FlushD,
 		~StallD, 	// enable
-		// FlushD, 	// clear
 
 		InstrF,
 		PCF,
@@ -163,8 +162,7 @@ module datapath (
 	pipelineDE_dp pipeDE(
 		clk,
 		reset | FlushE,
-		// FlushE, 	// clear
-		
+
 		InstrD[14:12],
 		RD1D,
 		RD2D,

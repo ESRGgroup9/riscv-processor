@@ -59,7 +59,8 @@ module maindec (
 			// 103: jalr rd, rs1, imm (I)
 			7'b110_0111: controls = 12'b_1_000_1_0_010_10_1;
 
-			default: controls = {12{1'bx}};
+			// default: controls = {12{1'bx}};
+			default: controls = {12{1'b0}};
 		endcase
 		a = 0;
 end

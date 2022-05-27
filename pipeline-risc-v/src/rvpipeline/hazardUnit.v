@@ -1,5 +1,6 @@
 module hazardUnit(
 	input clk,
+	input rst,
 
 	input [4:0] Rs1D,
 	input [4:0] Rs2D,
@@ -20,8 +21,12 @@ module hazardUnit(
 	// output reg [1:0] ForwardAE,
 	// output reg [1:0] ForwardBE,
 
+	// output reg StallF,
+	// output reg StallD,
 	output StallF,
 	output StallD,
+	// output reg FlushD,
+	// output reg FlushE
 	output FlushD,
 	output FlushE
 );
@@ -45,7 +50,22 @@ assign lwStall = ResultSrcb0E & ((Rs1D == RdE) | (Rs2D == RdE));
 assign StallF = lwStall;
 assign StallD = lwStall;
 
-// forwarding logic for SrcAE
+// always @(posedge clk or posedge rst) begin
+// 	if(rst) begin
+// 		// StallF <= 0;
+// 		// StallD <= 0;
+// 		// FlushD <= 0;
+// 		// FlushE <= 0;
+// 	end
+// 	else begin
+// 		// StallF <= lwStall;
+// 		// StallD <= lwStall;
+// 		// FlushD <= PCSrcE;
+// 		// FlushE <= lwStall | PCSrcE;
+// 	end
+// end
+
+// // forwarding logic for SrcAE
 // always @(posedge clk) begin
 // 	if(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) begin
 // 		// forward from Memory stage

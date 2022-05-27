@@ -25,6 +25,24 @@ wire FlushD;
 wire FlushE;
 wire PCSrcE;
 
+wire ZeroE;
+wire OverflowE;
+wire CarryE;
+wire NegativeE;
+
+wire [6:0] opE;
+wire [2:0] funct3E;
+
+wire [4:0] Rs1D;
+wire [4:0] Rs2D;
+wire [4:0] Rs1E;
+wire [4:0] Rs2E;
+wire [4:0] RdE;
+
+wire [4:0] RdM;
+wire [4:0] RdW;
+wire ResultSrcb0E;
+
 top dut(
 	clk,
 	reset,
@@ -44,7 +62,25 @@ top dut(
 	StallD,
 	FlushD,
 	FlushE,
-	PCSrcE
+	PCSrcE,
+
+	ZeroE,
+	OverflowE,
+	CarryE,
+	NegativeE,
+	
+	opE,
+	funct3E,
+
+	Rs1D,
+	Rs2D,
+	Rs1E,
+	Rs2E,
+	RdE,
+
+	RdM,
+	RdW,
+	ResultSrcb0E
 );
 
 initial begin
