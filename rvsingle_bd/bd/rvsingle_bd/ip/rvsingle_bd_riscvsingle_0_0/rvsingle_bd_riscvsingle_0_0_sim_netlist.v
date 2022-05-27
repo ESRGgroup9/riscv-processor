@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-// Date        : Mon May 23 19:11:50 2022
-// Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top rvsingle_bd_riscvsingle_0_0 -prefix
-//               rvsingle_bd_riscvsingle_0_0_ rvsingle_bd_riscvsingle_0_0_sim_netlist.v
+// Date        : Wed May 25 11:35:13 2022
+// Host        : duarte running 64-bit Ubuntu 20.04.4 LTS
+// Command     : write_verilog -force -mode funcsim
+//               /home/duarterod/Documents/riscv-processor/rvsingle_bd/bd/rvsingle_bd/ip/rvsingle_bd_riscvsingle_0_0/rvsingle_bd_riscvsingle_0_0_sim_netlist.v
 // Design      : rvsingle_bd_riscvsingle_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,6 +12,55 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "rvsingle_bd_riscvsingle_0_0,riscvsingle,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "riscvsingle,Vivado 2019.2" *) 
+(* NotValidForBitStream *)
+module rvsingle_bd_riscvsingle_0_0
+   (clk,
+    reset,
+    PC,
+    Instr,
+    MemWrite,
+    ALUResult,
+    WriteData,
+    ReadData);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
+  output [31:0]PC;
+  input [31:0]Instr;
+  output MemWrite;
+  output [31:0]ALUResult;
+  output [31:0]WriteData;
+  input [31:0]ReadData;
+
+  wire [31:0]ALUResult;
+  wire [31:0]Instr;
+  wire MemWrite;
+  wire [31:0]PC;
+  wire [31:0]ReadData;
+  wire [31:0]WriteData;
+  wire clk;
+  wire reset;
+
+  LUT3 #(
+    .INIT(8'h02)) 
+    MemWrite_INST_0
+       (.I0(Instr[5]),
+        .I1(Instr[6]),
+        .I2(Instr[4]),
+        .O(MemWrite));
+  rvsingle_bd_riscvsingle_0_0_riscvsingle inst
+       (.Instr(Instr),
+        .PC(PC[31:1]),
+        .Q(ALUResult),
+        .ReadData(ReadData),
+        .WriteData(WriteData),
+        .clk(clk),
+        .\q_reg[0] (PC[0]),
+        .reset(reset));
+endmodule
+
+(* ORIG_REF_NAME = "adder" *) 
 module rvsingle_bd_riscvsingle_0_0_adder
    (\q_reg[31] ,
     wd3,
@@ -555,6 +604,7 @@ module rvsingle_bd_riscvsingle_0_0_adder_0
         .O(sel0[0]));
 endmodule
 
+(* ORIG_REF_NAME = "alu" *) 
 module rvsingle_bd_riscvsingle_0_0_alu
    (Instr_14_sp_1,
     ALUControl,
@@ -3382,6 +3432,7 @@ module rvsingle_bd_riscvsingle_0_0_alu
         .O(\Instr[2]_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "controller" *) 
 module rvsingle_bd_riscvsingle_0_0_controller
    (PCSrc,
     Instr_2_sp_1,
@@ -3418,6 +3469,7 @@ module rvsingle_bd_riscvsingle_0_0_controller
         .\q_reg[0] (\q_reg[0] ));
 endmodule
 
+(* ORIG_REF_NAME = "datapath" *) 
 module rvsingle_bd_riscvsingle_0_0_datapath
    (DI,
     \q_reg[7] ,
@@ -3957,6 +4009,7 @@ module rvsingle_bd_riscvsingle_0_0_datapath
         .wd3(wd3));
 endmodule
 
+(* ORIG_REF_NAME = "flopr" *) 
 module rvsingle_bd_riscvsingle_0_0_flopr
    (\q_reg[0]_0 ,
     S,
@@ -4579,6 +4632,7 @@ module rvsingle_bd_riscvsingle_0_0_flopr
         .O(\q_reg[3]_0 [0]));
 endmodule
 
+(* ORIG_REF_NAME = "jumpdec" *) 
 module rvsingle_bd_riscvsingle_0_0_jumpdec
    (PCSrc,
     Instr_2_sp_1,
@@ -4651,6 +4705,7 @@ module rvsingle_bd_riscvsingle_0_0_jumpdec
         .O(Instr_2_sn_1));
 endmodule
 
+(* ORIG_REF_NAME = "regfile" *) 
 module rvsingle_bd_riscvsingle_0_0_regfile
    (Instr_1_sp_1,
     Instr_19_sp_1,
@@ -10373,6 +10428,7 @@ module rvsingle_bd_riscvsingle_0_0_regfile
         .WE(we3));
 endmodule
 
+(* ORIG_REF_NAME = "riscvsingle" *) 
 module rvsingle_bd_riscvsingle_0_0_riscvsingle
    (\q_reg[0] ,
     PC,
@@ -10435,54 +10491,6 @@ module rvsingle_bd_riscvsingle_0_0_riscvsingle
         .\q_reg[27] (PC[26:23]),
         .\q_reg[30] (PC[29:27]),
         .\q_reg[7] (PC[6:3]),
-        .reset(reset));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "rvsingle_bd_riscvsingle_0_0,riscvsingle,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "riscvsingle,Vivado 2019.2" *) 
-(* NotValidForBitStream *)
-module rvsingle_bd_riscvsingle_0_0
-   (clk,
-    reset,
-    PC,
-    Instr,
-    MemWrite,
-    ALUResult,
-    WriteData,
-    ReadData);
-  input clk;
-  input reset;
-  output [31:0]PC;
-  input [31:0]Instr;
-  output MemWrite;
-  output [31:0]ALUResult;
-  output [31:0]WriteData;
-  input [31:0]ReadData;
-
-  wire [31:0]ALUResult;
-  wire [31:0]Instr;
-  wire MemWrite;
-  wire [31:0]PC;
-  wire [31:0]ReadData;
-  wire [31:0]WriteData;
-  wire clk;
-  wire reset;
-
-  LUT3 #(
-    .INIT(8'h02)) 
-    MemWrite_INST_0
-       (.I0(Instr[5]),
-        .I1(Instr[6]),
-        .I2(Instr[4]),
-        .O(MemWrite));
-  rvsingle_bd_riscvsingle_0_0_riscvsingle inst
-       (.Instr(Instr),
-        .PC(PC[31:1]),
-        .Q(ALUResult),
-        .ReadData(ReadData),
-        .WriteData(WriteData),
-        .clk(clk),
-        .\q_reg[0] (PC[0]),
         .reset(reset));
 endmodule
 `ifndef GLBL

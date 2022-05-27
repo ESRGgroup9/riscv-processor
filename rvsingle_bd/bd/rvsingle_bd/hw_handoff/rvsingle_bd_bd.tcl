@@ -59,7 +59,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./bd
+  set origin_dir ./riscv-processor/rvsingle_bd/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -156,12 +156,18 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set clk [ create_bd_port -dir I clk ]
+  set clk [ create_bd_port -dir I -type clk -freq_hz 125000000 clk ]
+  set_property -dict [ list \
+   CONFIG.PHASE {0.000} \
+ ] $clk
   set led1 [ create_bd_port -dir O led1 ]
   set led2 [ create_bd_port -dir O led2 ]
   set led3 [ create_bd_port -dir O led3 ]
   set led4 [ create_bd_port -dir O led4 ]
-  set reset [ create_bd_port -dir I reset ]
+  set reset [ create_bd_port -dir I -type rst reset ]
+  set_property -dict [ list \
+   CONFIG.POLARITY {ACTIVE_HIGH} \
+ ] $reset
 
   # Create instance: dmem_0, and set properties
   set dmem_0 [ create_bd_cell -type ip -vlnv user.org:user:dmem:1.0 dmem_0 ]
@@ -185,13 +191,13 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net Net [get_bd_pins imem_0/rd] [get_bd_pins ledController_0/instr] [get_bd_pins riscvsingle_0/Instr] [get_bd_pins xlslice_0/Din]
-  connect_bd_net -net clk_0_1 [get_bd_ports clk] [get_bd_pins dmem_0/clk] [get_bd_pins riscvsingle_0/clk]
+  connect_bd_net -net clk_wiz_clk_out1 [get_bd_ports clk] [get_bd_pins dmem_0/clk] [get_bd_pins ledController_0/clk] [get_bd_pins riscvsingle_0/clk]
   connect_bd_net -net dmem_0_rd [get_bd_pins dmem_0/rd] [get_bd_pins riscvsingle_0/ReadData]
   connect_bd_net -net ledController_0_led1 [get_bd_ports led1] [get_bd_pins ledController_0/led1]
   connect_bd_net -net ledController_0_led2 [get_bd_ports led2] [get_bd_pins ledController_0/led2]
   connect_bd_net -net ledController_0_led3 [get_bd_ports led3] [get_bd_pins ledController_0/led3]
   connect_bd_net -net ledController_0_led4 [get_bd_ports led4] [get_bd_pins ledController_0/led4]
-  connect_bd_net -net reset_0_1 [get_bd_ports reset] [get_bd_pins riscvsingle_0/reset]
+  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins ledController_0/reset] [get_bd_pins riscvsingle_0/reset]
   connect_bd_net -net riscvsingle_0_ALUResult [get_bd_pins dmem_0/a] [get_bd_pins ledController_0/DataAdr] [get_bd_pins riscvsingle_0/ALUResult]
   connect_bd_net -net riscvsingle_0_MemWrite [get_bd_pins dmem_0/we] [get_bd_pins riscvsingle_0/MemWrite]
   connect_bd_net -net riscvsingle_0_PC [get_bd_pins imem_0/a] [get_bd_pins riscvsingle_0/PC]

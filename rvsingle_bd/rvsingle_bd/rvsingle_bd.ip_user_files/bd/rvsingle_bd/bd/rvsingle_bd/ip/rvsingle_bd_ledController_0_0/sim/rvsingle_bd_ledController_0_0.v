@@ -48,13 +48,15 @@
 
 
 // IP VLNV: user.org:user:ledController:1.0
-// IP Revision: 14
+// IP Revision: 17
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "package_project" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module rvsingle_bd_ledController_0_0 (
+  reset,
+  clk,
   instr,
   WriteData,
   DataAdr,
@@ -64,6 +66,12 @@ module rvsingle_bd_ledController_0_0 (
   led4
 );
 
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
+input wire reset;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
+input wire clk;
 input wire [31 : 0] instr;
 input wire [31 : 0] WriteData;
 input wire [31 : 0] DataAdr;
@@ -73,6 +81,8 @@ output wire led3;
 output wire led4;
 
   ledController inst (
+    .reset(reset),
+    .clk(clk),
     .instr(instr),
     .WriteData(WriteData),
     .DataAdr(DataAdr),

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:dmem:1.0
-// IP Revision: 2
+// IP Revision: 4
 
 (* X_CORE_INFO = "dmem,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "rvsingle_bd_dmem_0_0,dmem,{}" *)
@@ -63,6 +63,8 @@ module rvsingle_bd_dmem_0_0 (
   rd
 );
 
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 input wire we;
 input wire [31 : 0] a;

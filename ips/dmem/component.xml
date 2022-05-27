@@ -4,6 +4,30 @@
   <spirit:library>user</spirit:library>
   <spirit:name>dmem</spirit:name>
   <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF">clk</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
   <spirit:model>
     <spirit:views>
       <spirit:view>
@@ -215,8 +239,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>dmem</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-05-20T11:05:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>4</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-05-25T10:33:13Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2c96abb1_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/dmem</xilinx:tag>
@@ -229,10 +253,25 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@54f91066_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/dmem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7121732_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/dmem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1c533d52_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5805bd3b_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45cc7268_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@724bf133_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46e065c0_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cc484b4_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d5202d5_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e26b2b8_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f7dd8cc_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58640611_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a19ef55_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a2b670d_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f740363_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@444f4e50_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28a42384_ARCHIVE_LOCATION">/home/duarterod/Documents/riscv-processor/ips/dmem</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="5feec1e4"/>
       <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="ccdc3c1e"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="d5061def"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="7c590cce"/>

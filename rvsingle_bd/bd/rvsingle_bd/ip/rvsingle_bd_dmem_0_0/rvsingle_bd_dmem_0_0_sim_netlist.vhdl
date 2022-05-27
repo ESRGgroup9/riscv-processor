@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
--- Date        : Mon May 23 19:11:38 2022
--- Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top rvsingle_bd_dmem_0_0 -prefix
---               rvsingle_bd_dmem_0_0_ rvsingle_bd_dmem_0_0_sim_netlist.vhdl
+-- Date        : Wed May 25 11:35:04 2022
+-- Host        : duarte running 64-bit Ubuntu 20.04.4 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/duarterod/Documents/riscv-processor/rvsingle_bd/bd/rvsingle_bd/ip/rvsingle_bd_dmem_0_0/rvsingle_bd_dmem_0_0_sim_netlist.vhdl
 -- Design      : rvsingle_bd_dmem_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,6 +23,8 @@ entity rvsingle_bd_dmem_0_0_dmem is
     we : in STD_LOGIC;
     wd : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of rvsingle_bd_dmem_0_0_dmem : entity is "dmem";
 end rvsingle_bd_dmem_0_0_dmem;
 
 architecture STRUCTURE of rvsingle_bd_dmem_0_0_dmem is
@@ -991,6 +993,10 @@ entity rvsingle_bd_dmem_0_0 is
 end rvsingle_bd_dmem_0_0;
 
 architecture STRUCTURE of rvsingle_bd_dmem_0_0 is
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF clk, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN rvsingle_bd_sys_clock, INSERT_VIP 0";
 begin
 inst: entity work.rvsingle_bd_dmem_0_0_dmem
      port map (
