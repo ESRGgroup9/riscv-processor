@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="91666fs"></ZoomStartTime>
-      <ZoomEndTime time="221667fs"></ZoomEndTime>
-      <Cursor1Time time="162168fs"></Cursor1Time>
+      <ZoomStartTime time="1067500fs"></ZoomStartTime>
+      <ZoomEndTime time="1292901fs"></ZoomEndTime>
+      <Cursor1Time time="1175500fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="155"></NameColumnWidth>
+      <NameColumnWidth column_width="151"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="31" />
+   <WVObjectSize size="34" />
    <wvobject type="logic" fp_name="/testbench/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -31,6 +31,7 @@
    <wvobject type="array" fp_name="/testbench/WriteData">
       <obj_property name="ElementShortName">WriteData[31:0]</obj_property>
       <obj_property name="ObjectShortName">WriteData[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/testbench/DataAdr">
       <obj_property name="ElementShortName">DataAdr[31:0]</obj_property>
@@ -66,6 +67,14 @@
    <wvobject type="array" fp_name="/testbench/funct3E">
       <obj_property name="ElementShortName">funct3E[2:0]</obj_property>
       <obj_property name="ObjectShortName">funct3E[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/InstrE">
+      <obj_property name="ElementShortName">InstrE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrE[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/InstrM">
+      <obj_property name="ElementShortName">InstrM[2:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrM[2:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/testbench/PCSrcE">
       <obj_property name="ElementShortName">PCSrcE</obj_property>
@@ -109,6 +118,10 @@
    <wvobject type="logic" fp_name="/testbench/ResultSrcb0E">
       <obj_property name="ElementShortName">ResultSrcb0E</obj_property>
       <obj_property name="ObjectShortName">ResultSrcb0E</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/ResultSrcW">
+      <obj_property name="ElementShortName">ResultSrcW[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ResultSrcW[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="divider31" type="divider">
    </wvobject>

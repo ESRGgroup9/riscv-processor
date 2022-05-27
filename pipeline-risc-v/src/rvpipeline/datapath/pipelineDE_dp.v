@@ -1,6 +1,7 @@
 module pipelineDE_dp(
 	input clk,
 	input reset,
+	input FlushE,
 
 	// inputs
 	input wire [2:0] InstrD,
@@ -25,6 +26,8 @@ module pipelineDE_dp(
 	output wire [31:0] PCPlus4E
 );
 
+wire clear = reset | FlushE;
+
 flopr #(3) instrreg(
 	clk,
 	reset,
@@ -34,56 +37,56 @@ flopr #(3) instrreg(
 
 flopr #(32) rd1reg(
 	clk,
-	reset,
+	clear,
 	RD1D,
 	RD1E
 );
 
 flopr #(32) rd2reg(
 	clk,
-	reset,
+	clear,
 	RD2D,
 	RD2E
 );
 
 flopr #(32) pcreg(
 	clk,
-	reset,
+	clear,
 	PCD,
 	PCE
 );
 
 flopr #(5) rs1reg(
 	clk,
-	reset,
+	clear,
 	Rs1D,
 	Rs1E
 );
 
 flopr #(5) rs2reg(
 	clk,
-	reset,
+	clear,
 	Rs2D,
 	Rs2E
 );
 
 flopr #(5) rdreg(
 	clk,
-	reset,
+	clear,
 	RdD,
 	RdE
 );
 
 flopr #(32) immextreg(
 	clk,
-	reset,
+	clear,
 	ImmExtD,
 	ImmExtE
 );
 
 flopr #(32) pcplusreg(
 	clk,
-	reset,
+	clear,
 	PCPlus4D,
 	PCPlus4E
 );

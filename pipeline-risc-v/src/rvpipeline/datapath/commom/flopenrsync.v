@@ -1,4 +1,4 @@
-module flopenr (
+module flopenrsync (
 	clk,
 	reset,
 	en,
@@ -11,7 +11,7 @@ module flopenr (
 	input wire en;
 	input wire [WIDTH - 1:0] d;
 	output reg [WIDTH - 1:0] q;
-	always @(posedge clk)
+	always @(posedge clk or posedge reset)
 		if (reset)
 			q <= 0;
 		else if(en)

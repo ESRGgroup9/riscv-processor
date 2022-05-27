@@ -40,7 +40,10 @@ module datapath (
 	InstrD,
 	ALUResultM,
 	WriteDataM,
-	MemDataM
+	MemDataM,
+	//DEBUG
+	InstrE,
+	InstrM
 );
 	input wire clk;
 	input wire reset;
@@ -112,7 +115,7 @@ module datapath (
 	wire [31:0] ImmExtD;
 
 	// outputs
-	wire [2:0] InstrE;
+	output wire [2:0] InstrE;
 	wire [31:0] RD1E;
 	wire [31:0] RD2E;
 	wire [31:0] PCE;
@@ -127,7 +130,7 @@ module datapath (
 	wire [31:0] ALUResultE;
 
 	// outputs
-	wire [2:0] InstrM;
+	output wire [2:0] InstrM;
 	wire [31:0] ImmExtM;
 	wire [31:0] PCResultM;
 	wire [31:0] PCPlus4M;
@@ -161,7 +164,8 @@ module datapath (
 
 	pipelineDE_dp pipeDE(
 		clk,
-		reset | FlushE,
+		reset,
+		FlushE,
 
 		InstrD[14:12],
 		RD1D,
@@ -251,7 +255,9 @@ module datapath (
 	assign Rs2D = InstrD[24:20];
 	assign RdD = InstrD[11:7];
 
-	flopenr #(32) pcreg(
+
+	//....
+	flopenrsync #(32) pcreg(
 		clk,
 		reset,
 		~StallF,
@@ -343,19 +349,27 @@ module datapath (
 	assign ResultW = ResultW_r;
 	always @(*) begin
 	   case(ResultSrcW)
-	      3'b000: ResultW_r = ALUResultW;
+	   	  3'b000: ResultW_r = ALUResultW;
+	      3'b111: ResultW_r = ALUResultW;
 	      3'b001: ResultW_r = ReadDataW;
 	      3'b010: ResultW_r = PCPlus4W;
-	      3'b100: ResultW_r = PCResultW;
-	      3'b110: ResultW_r = ImmExtW;
+	      3'b101: ResultW_r = PCResultW;
+	      3'b011: ResultW_r = ImmExtW;
 	      default: ResultW_r = {32{1'bx}};
         endcase
 	end
 
+	wire [2:0] Instrdec;
+	mux2 #(32) loaddecmux(
+		InstrE,
+		InstrM,
+		StallD,
+		Instrdec
+	);
 
 	loaddec loaddec(
 		MemDataM,
-		InstrM,
+		Instrdec,
 		ALUResultM[1:0],
 
 		ReadDataM

@@ -36,7 +36,11 @@ module top (
 
 	RdM,
 	RdW,
-	ResultSrcb0E
+	ResultSrcb0E,		
+	//DEBUG
+	InstrE,
+	InstrM,
+	ResultSrcW
 );
 	input wire clk;
 	input wire reset;
@@ -81,6 +85,11 @@ module top (
 	output wire [4:0] RdM;
 	output wire [4:0] RdW;
 	output wire ResultSrcb0E;
+
+	output wire [2:0] InstrE;
+	output wire [2:0] InstrM;
+	output wire [2:0] ResultSrcW;
+
 	riscvpipeline rvpipeline(
 		clk,
 		reset,
@@ -118,7 +127,11 @@ module top (
 
 		RdM,
 		RdW,
-		ResultSrcb0E
+		ResultSrcb0E,
+		//DEBUG
+		InstrE,
+		InstrM,
+		ResultSrcW
 	);
 	
 	imem imem(

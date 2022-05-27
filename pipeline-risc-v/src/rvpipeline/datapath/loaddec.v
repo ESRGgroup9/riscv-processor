@@ -14,6 +14,12 @@ wire [15:0] lh_w;
 wire [31:0] signed_w;
 wire [31:0] unsigned_w;
 
+wire [31:0] debug1; 
+wire [31:0] debug2;
+
+assign debug1 = ReadData;
+assign debug2 = MemData;
+
 mux4 #(8) lbmux(
 	MemData[7:0],
 	MemData[15:8],

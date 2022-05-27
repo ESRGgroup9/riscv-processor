@@ -43,6 +43,10 @@ wire [4:0] RdM;
 wire [4:0] RdW;
 wire ResultSrcb0E;
 
+wire [2:0] InstrE;
+wire [2:0] InstrM;	
+wire [2:0] ResultSrcW;
+
 top dut(
 	clk,
 	reset,
@@ -80,7 +84,11 @@ top dut(
 
 	RdM,
 	RdW,
-	ResultSrcb0E
+	ResultSrcb0E,
+	//DEBUG
+	InstrE,
+	InstrM,
+	ResultSrcW
 );
 
 initial begin
