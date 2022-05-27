@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="245001fs"></ZoomEndTime>
-      <Cursor1Time time="181824fs"></Cursor1Time>
+      <ZoomStartTime time="91666fs"></ZoomStartTime>
+      <ZoomEndTime time="221667fs"></ZoomEndTime>
+      <Cursor1Time time="162168fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="159"></NameColumnWidth>
+      <NameColumnWidth column_width="155"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="31" />
@@ -61,6 +61,7 @@
    <wvobject type="array" fp_name="/testbench/opE">
       <obj_property name="ElementShortName">opE[6:0]</obj_property>
       <obj_property name="ObjectShortName">opE[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/testbench/funct3E">
       <obj_property name="ElementShortName">funct3E[2:0]</obj_property>
@@ -73,7 +74,7 @@
    <wvobject type="array" fp_name="/testbench/PCF">
       <obj_property name="ElementShortName">PCF[31:0]</obj_property>
       <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="divider19" type="divider">
    </wvobject>

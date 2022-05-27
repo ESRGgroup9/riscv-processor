@@ -54,7 +54,8 @@ module maindec (
 			7'b001_0111: controls = 12'b_1_100_x_0_100_xx_0;
 
 			// 55: lui rd, upimm (U)
-			7'b011_0111: controls = 12'b_1_100_x_0_011_xx_0;
+			// 7'b011_0111: controls = 12'b_1_100_x_0_011_xx_0;
+			7'b011_0111: controls = 12'b_1_100_x_0_110_xx_0;
 
 			// 103: jalr rd, rs1, imm (I)
 			7'b110_0111: controls = 12'b_1_000_1_0_010_10_1;

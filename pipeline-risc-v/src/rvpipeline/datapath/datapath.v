@@ -325,16 +325,33 @@ module datapath (
 		.Negative(NegativeE)
 	);
 	
-	mux5 #(32) resultmux(
-		ALUResultW,
-		ReadDataW,
-		PCPlus4W,
-		ImmExtW,
-		PCResultW,
+	// mux5 #(32) resultmux(
+	// 	ALUResultW,	//000
+	// 	ReadDataW,	//001
+	// 	PCPlus4W,	//010
+	// 	{32{1'bx}}, //011
+	// 	PCResultW,	//100
+	// 	{32{1'bx}}, //101
+	// 	ImmExtW,	//110
 		
-		ResultSrcW,
-		ResultW
-	);
+	// 	ResultSrcW,
+	// 	ResultW
+	// );
+
+	reg [31:0] ResultW_r;
+
+	assign ResultW = ResultW_r;
+	always @(*) begin
+	   case(ResultSrcW)
+	      3'b000: ResultW_r = ALUResultW;
+	      3'b001: ResultW_r = ReadDataW;
+	      3'b010: ResultW_r = PCPlus4W;
+	      3'b100: ResultW_r = PCResultW;
+	      3'b110: ResultW_r = ImmExtW;
+	      default: ResultW_r = {32{1'bx}};
+        endcase
+	end
+
 
 	loaddec loaddec(
 		MemDataM,
