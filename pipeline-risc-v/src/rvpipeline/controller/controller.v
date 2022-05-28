@@ -14,8 +14,6 @@ module controller (
 
 	// outputs
 	ResultSrcW,
-	MemWriteD,// debug
-	MemWriteE,// debug
 	MemWriteM,
 	PCSrcE,
 	ALUSrcE,
@@ -26,10 +24,7 @@ module controller (
     PCResultSrcE,
 	ImmSrcD,
 	ALUControlE,
-	ResultSrcb0E,
-
-	opE,
-	funct3E
+	ResultSrcb0E
 );
 	input clk;
 	input reset;
@@ -46,8 +41,6 @@ module controller (
 	input wire NegativeE;
 
 	output wire [2:0] ResultSrcW;
-	output wire MemWriteD;// debug
-	output wire MemWriteE;// debug
 	output wire MemWriteM;
 
 	output wire PCSrcE;
@@ -69,17 +62,17 @@ module controller (
 	// inputs
 	wire RegWriteD;
 	wire [2:0] ResultSrcD;
-	// wire MemWriteD;
+	wire MemWriteD;
 	wire [3:0] ALUControlD;
 	wire ALUSrcD;
 	wire PCResultSrcD;
 
 	// outputs
-	output wire [6:0] opE;
-	output wire [2:0] funct3E;
+	wire [6:0] opE;
+	wire [2:0] funct3E;
 	wire RegWriteE;
 	wire [2:0] ResultSrcE;
-	// wire MemWriteE;
+	wire MemWriteE;
 
 	// ============================================================================
 	// pipeline Execute - Memory

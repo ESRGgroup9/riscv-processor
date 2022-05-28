@@ -9,88 +9,24 @@ module testbench;
 
 reg clk;
 reg reset;
-wire [31:0] WriteData;
-wire [31:0] DataAdr;
-wire MemWriteD;
-wire MemWriteE;
+
+wire [31:0] PCF; 
+wire [31:0] InstrF;
 wire MemWrite;
-
-wire[31:0] InstrF;
-wire [31:0] PCF;
-wire [1:0] ForwardAE;
-wire [1:0] ForwardBE;
-wire StallF;
-wire StallD;
-wire FlushD;
-wire FlushE;
-wire PCSrcE;
-
-wire ZeroE;
-wire OverflowE;
-wire CarryE;
-wire NegativeE;
-
-wire [6:0] opE;
-wire [2:0] funct3E;
-
-wire [4:0] Rs1D;
-wire [4:0] Rs2D;
-wire [4:0] Rs1E;
-wire [4:0] Rs2E;
-wire [4:0] RdE;
-
-wire [4:0] RdM;
-wire [4:0] RdW;
-wire ResultSrcb0E;
-
-wire [2:0] InstrE;
-wire [2:0] InstrM;	
-wire [2:0] ResultSrcW;
-wire [31:0] ReadDataW;
+wire [31:0] DataAdr;
+wire [31:0] WriteData;
+wire [31:0] ReadDataM;
 
 top dut(
 	clk,
 	reset,
-	WriteData,
-	DataAdr,
-	
-	MemWriteD,
-	MemWriteE,
-	MemWrite,
-	InstrF,
 
-	// -----------debug
 	PCF,
-	ForwardAE,
-	ForwardBE,
-	StallF,
-	StallD,
-	FlushD,
-	FlushE,
-	PCSrcE,
-
-	ZeroE,
-	OverflowE,
-	CarryE,
-	NegativeE,
-	
-	opE,
-	funct3E,
-
-	Rs1D,
-	Rs2D,
-	Rs1E,
-	Rs2E,
-	RdE,
-
-	RdM,
-	RdW,
-	ResultSrcb0E,
-	//DEBUG
-	InstrE,
-	InstrM,
-	ResultSrcW,
-	ReadDataW
+	InstrF,
+	MemWrite,
+	DataAdr,
+	WriteData,
+	ReadDataM
 );
 
 initial begin

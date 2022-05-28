@@ -4,72 +4,25 @@ module riscvpipeline (
 
 	PCF,
 	InstrF,
-	MemWriteD,
-	MemWriteE,
-	MemWriteM,
-	ALUResultM,
-	WriteDataM,
-	ReadDataM,
-
-	// ----------- debug
-	ForwardAE,
-	ForwardBE,
-	StallF,
-	StallD,
-	FlushD,
-	FlushE,
-	PCSrcE,
-
-	ZeroE,
-	OverflowE,
-	CarryE,
-	NegativeE,
-
-	opE,
-	funct3E,
-
-	Rs1D,
-	Rs2D,
-	Rs1E,
-	Rs2E,
-	RdE,
-
-	RdM,
-	RdW,
-	ResultSrcb0E,
-	//DEBUG
-	InstrE,
 	InstrM,
-	ResultSrcW,
-	ReadDataW
+	MemWriteM,
+	ALUResultM, // ALUresult signal
+	WriteDataM,
+	ReadDataM
 );
 	input wire clk;
 	input wire reset;
 
 	output wire [31:0] PCF;
 	input wire [31:0] InstrF;
-	
-	output wire MemWriteD;// debug
-	output wire MemWriteE;// debug
-
+	output wire [2:0] InstrM;
 	output wire MemWriteM;
 	output wire [31:0] ALUResultM;
 	output wire [31:0] WriteDataM;
 	input wire [31:0] ReadDataM;
-    
-    // debug
-    output [1:0] ForwardAE;
-	output [1:0] ForwardBE;
-	output StallF;
-	output StallD;
-	output FlushD;
-	output FlushE;
-	output wire [2:0] InstrE;
-	output wire [2:0] InstrM;
-	output wire [2:0] ResultSrcW;
-	output wire [31:0] ReadDataW;
+	
 	// ------ controler outputs
-	//wire [2:0] ResultSrcW;
+	wire [2:0] ResultSrcW;
 	wire ALUSrcE;
 
 	wire RegWriteW;
@@ -78,35 +31,33 @@ module riscvpipeline (
 	wire PCResultSrcE;
 	wire [2:0] ImmSrcD;
 	wire [3:0] ALUControlE;
-	output wire ResultSrcb0E;
+	wire ResultSrcb0E;
 	
 	// ------ datapath outputs	
-	output wire [4:0] Rs1D;
-	output wire [4:0] Rs2D;
-	output wire [4:0] Rs1E;
-	output wire [4:0] Rs2E;
-	output wire [4:0] RdE;
-	output wire PCSrcE;
+	wire [4:0] Rs1D;
+	wire [4:0] Rs2D;
+	wire [4:0] Rs1E;
+	wire [4:0] Rs2E;
+	wire [4:0] RdE;
+	wire PCSrcE;
 	
-	output wire [4:0] RdM;
-	output wire [4:0] RdW;
+	wire [4:0] RdM;
+	wire [4:0] RdW;
 
 	wire [31:0] InstrD;
 	// ALU flags
-	output wire ZeroE;
-	output wire OverflowE;
-	output wire CarryE;
-	output wire NegativeE;
+	wire ZeroE;
+	wire OverflowE;
+	wire CarryE;
+	wire NegativeE;
 
-	output wire [6:0] opE;
-	output wire [2:0] funct3E;
 	// ------ hazard unit flags
-	// wire [1:0] ForwardAE;
-	// wire [1:0] ForwardBE;
-	// wire StallF;
-	// wire StallD;
-	// wire FlushD;
-	// wire FlushE;
+	wire [1:0] ForwardAE;
+	wire [1:0] ForwardBE;
+	wire StallF;
+	wire StallD;
+	wire FlushD;
+	wire FlushE;
 
 	wire [6:0] opD;
 	wire [2:0] funct3D;
@@ -136,8 +87,6 @@ module riscvpipeline (
 		NegativeE,
 		
 		ResultSrcW,
-		MemWriteD,// debug
-		MemWriteE,// debug
 		MemWriteM,
 		PCSrcE,
 		ALUSrcE,
@@ -148,10 +97,7 @@ module riscvpipeline (
         PCResultSrcE,
 		ImmSrcD,
 		ALUControlE,
-		ResultSrcb0E,
-
-		opE,// debug
-		funct3E
+		ResultSrcb0E
 	);
 	
 	datapath dp(
@@ -198,10 +144,7 @@ module riscvpipeline (
 		ALUResultM,
 		WriteDataM,
 		ReadDataM,
-		//DEBUG
-		InstrE,
-		InstrM,
-		ReadDataW
+		InstrM
 	);
 
 	hazardUnit hu(
