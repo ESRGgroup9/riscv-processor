@@ -40,7 +40,8 @@ module riscvpipeline (
 	//DEBUG
 	InstrE,
 	InstrM,
-	ResultSrcW
+	ResultSrcW,
+	ReadDataW
 );
 	input wire clk;
 	input wire reset;
@@ -66,6 +67,7 @@ module riscvpipeline (
 	output wire [2:0] InstrE;
 	output wire [2:0] InstrM;
 	output wire [2:0] ResultSrcW;
+	output wire [31:0] ReadDataW;
 	// ------ controler outputs
 	//wire [2:0] ResultSrcW;
 	wire ALUSrcE;
@@ -198,7 +200,8 @@ module riscvpipeline (
 		ReadDataM,
 		//DEBUG
 		InstrE,
-		InstrM
+		InstrM,
+		ReadDataW
 	);
 
 	hazardUnit hu(

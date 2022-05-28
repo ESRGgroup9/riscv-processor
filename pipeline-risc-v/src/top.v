@@ -40,7 +40,8 @@ module top (
 	//DEBUG
 	InstrE,
 	InstrM,
-	ResultSrcW
+	ResultSrcW,
+	ReadDataW
 );
 	input wire clk;
 	input wire reset;
@@ -89,6 +90,7 @@ module top (
 	output wire [2:0] InstrE;
 	output wire [2:0] InstrM;
 	output wire [2:0] ResultSrcW;
+	output wire [31:0] ReadDataW;
 
 	riscvpipeline rvpipeline(
 		clk,
@@ -131,7 +133,8 @@ module top (
 		//DEBUG
 		InstrE,
 		InstrM,
-		ResultSrcW
+		ResultSrcW,
+		ReadDataW
 	);
 	
 	imem imem(
@@ -144,7 +147,7 @@ module top (
 		.we(MemWriteM),
 		.a(DataAdrM),
 		.wd(WriteDataM),
-		.be(InstrF[13:12]),
+		.be(InstrM),
 		.rd(ReadDataM)
 	);
 endmodule

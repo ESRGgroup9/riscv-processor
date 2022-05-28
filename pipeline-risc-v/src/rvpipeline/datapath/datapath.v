@@ -43,7 +43,8 @@ module datapath (
 	MemDataM,
 	//DEBUG
 	InstrE,
-	InstrM
+	InstrM,
+	ReadDataW
 );
 	input wire clk;
 	input wire reset;
@@ -141,7 +142,7 @@ module datapath (
 	// outputs
 	wire [31:0] ImmExtW;
 	wire [31:0] ALUResultW;
-	wire [31:0] ReadDataW;
+	output wire [31:0] ReadDataW;
 	wire [31:0] PCResultW;
 	wire [31:0] PCPlus4W;
 
@@ -359,17 +360,9 @@ module datapath (
         endcase
 	end
 
-	wire [2:0] Instrdec;
-	mux2 #(32) loaddecmux(
-		InstrE,
-		InstrM,
-		StallD,
-		Instrdec
-	);
-
 	loaddec loaddec(
 		MemDataM,
-		Instrdec,
+		InstrM,
 		ALUResultM[1:0],
 
 		ReadDataM

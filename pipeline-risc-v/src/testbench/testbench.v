@@ -46,6 +46,7 @@ wire ResultSrcb0E;
 wire [2:0] InstrE;
 wire [2:0] InstrM;	
 wire [2:0] ResultSrcW;
+wire [31:0] ReadDataW;
 
 top dut(
 	clk,
@@ -88,7 +89,8 @@ top dut(
 	//DEBUG
 	InstrE,
 	InstrM,
-	ResultSrcW
+	ResultSrcW,
+	ReadDataW
 );
 
 initial begin
