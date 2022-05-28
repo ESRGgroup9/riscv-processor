@@ -9,10 +9,10 @@
       "validated": "true"
     },
     "design_tree": {
-      "imem_0": "",
       "dmem_0": "",
       "ledController_0": "",
-      "riscvpipeline_0": ""
+      "riscvpipeline_0": "",
+      "imem_0": ""
     },
     "ports": {
       "reset": {
@@ -67,10 +67,6 @@
       }
     },
     "components": {
-      "imem_0": {
-        "vlnv": "user.org:user:imem:1.0",
-        "xci_name": "rvpipeline_imem_0_0"
-      },
       "dmem_0": {
         "vlnv": "user.org:user:dmem:1.0",
         "xci_name": "rvpipeline_dmem_0_0"
@@ -82,6 +78,10 @@
       "riscvpipeline_0": {
         "vlnv": "user.org:user:riscvpipeline:1.0",
         "xci_name": "rvpipeline_riscvpipeline_0_0"
+      },
+      "imem_0": {
+        "vlnv": "user.org:user:imem:1.0",
+        "xci_name": "rvpipeline_imem_0_0"
       }
     },
     "nets": {

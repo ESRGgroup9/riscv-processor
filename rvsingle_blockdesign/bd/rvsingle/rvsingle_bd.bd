@@ -12,8 +12,8 @@
       "xlslice_0": "",
       "dmem_0": "",
       "riscvsingle_0": "",
-      "imem_0": "",
-      "ledController_0": ""
+      "ledController_0": "",
+      "imem_0": ""
     },
     "ports": {
       "led3": {
@@ -90,13 +90,13 @@
         "vlnv": "user.org:user:riscvsingle:1.0",
         "xci_name": "rvsingle_bd_riscvsingle_0_0"
       },
-      "imem_0": {
-        "vlnv": "user.org:user:imem:1.0",
-        "xci_name": "rvsingle_bd_imem_0_0"
-      },
       "ledController_0": {
         "vlnv": "user.org:user:ledController:1.0",
         "xci_name": "rvsingle_bd_ledController_0_0"
+      },
+      "imem_0": {
+        "vlnv": "user.org:user:imem:1.0",
+        "xci_name": "rvsingle_bd_imem_0_0"
       }
     },
     "nets": {

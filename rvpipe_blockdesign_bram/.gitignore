@@ -1,0 +1,5 @@
+# project name
+rvpipe_bd_bram/
+.Xil/
+*.sublime-project
+*.sublime-workspace
