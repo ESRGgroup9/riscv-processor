@@ -41,7 +41,7 @@ module datapath (
 	ALUResultM,
 	WriteDataM,
 	MemDataM,
-	InstrM
+	InstrM_2b		//last 2 bits to be used on dmem
 );
 	input wire clk;
 	input wire reset;
@@ -82,7 +82,7 @@ module datapath (
 	output wire [31:0] ALUResultM;
 	output wire [31:0] WriteDataM;
 	input wire [31:0] MemDataM;
-	output wire [2:0] InstrM;
+	output wire [1:0] InstrM_2b;		//last 2 bits to be used on dmem
 	
 	wire [31:0] ReadDataM;
 	wire [31:0] PCNextF;
@@ -129,6 +129,7 @@ module datapath (
 	wire [31:0] ALUResultE;
 
 	// outputs
+	wire [2:0] InstrM;
 	wire [31:0] ImmExtM;
 	wire [31:0] PCResultM;
 	wire [31:0] PCPlus4M;
@@ -142,6 +143,8 @@ module datapath (
 	wire [31:0] ReadDataW;
 	wire [31:0] PCResultW;
 	wire [31:0] PCPlus4W;
+
+	assign InstrM_2b = InstrM[1:0];
 
 	// ============================================================================
 	// pipelines instantiation
