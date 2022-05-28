@@ -145,14 +145,14 @@ update_ip_catalog -rebuild
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/bd/rvsingle_bd/rvsingle_bd.bd"] \
- [file normalize "${origin_dir}/bd/rvsingle_bd/hdl/rvsingle_bd_wrapper.v"] \
+ [file normalize "${origin_dir}/bd/rvsingle/rvsingle_bd.bd"] \
+ [file normalize "${origin_dir}/bd/rvsingle/hdl/rvsingle_bd_wrapper.v"] \
  [file normalize "${origin_dir}/../ips/imem/mem_init.COE"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/bd/rvsingle_bd/rvsingle_bd.bd"
+set file "$origin_dir/bd/rvsingle/rvsingle_bd.bd"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "registered_with_manager" -value "1" -objects $file_obj
