@@ -1,8 +1,10 @@
 ## Overview
-It is intended to build:
+It is intended to build a 32-bit:
 
 - single cycle RISC-V processor;
 - pipeline RISC-V processor;
+
+Deploy the RISC-V core to the Xilinx Zynq-7000 AP SoC, integrated into the Zybo Z7 development board, by Digilent.
 
 ## Tools
 - Xilinx Vivado 2019.02
@@ -15,9 +17,17 @@ Firstly, clone the repo:
 $ git clone git@github.com:TomasLAbreu/riscv-processor.git
 $ cd riscv-processor/
 ```
-Create the single-cycle-risc-v processor Vivado project:
+### Create the single-cycle-risc-v processor Vivado project:
 ```
 $ cd single-cycle-risc-v/
+$ vivado &
+```
+When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**.
+**Enjoy**!
+
+### Create the pipeline-risc-v processor Vivado project:
+```
+$ cd pipeline-risc-v/
 $ vivado &
 ```
 When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**.
@@ -33,12 +43,19 @@ When Vivado opens, go to `Tools > Run Tcl Script...` and run **create_proj.tcl**
 # Single-cycle Processor
 
 ### Datapath and Control Unit Diagram
-![Datapath_SC_Diagram](single-cycle-risc-v/doc/diagram.png)
+![Datapath_SC_Diagram](doc/diagrams/SingleCycle_Design_Datapath.png)
 
 ### ALU
-![Datapath_SC_Diagram](single-cycle-risc-v/doc/ALU.png)
+![Datapath_SC_Diagram](single-cycle-risc-v/doc/diagrams/ALU.png)
 
-Supported instructions:
+# Pipeline Processor
+
+### Datapath, Control Unit and Hazard Unit Diagram
+![Datapath_SC_Diagram](doc/diagrams/Pipeline_Design_Datapath_HazardUnit.png)
+
+
+# Supported instructions:
+The RISC-V core supports the following ISA instructions:
 
 **I Type**
 - [x] lb
