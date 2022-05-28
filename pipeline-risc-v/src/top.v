@@ -20,7 +20,7 @@ module top (
 	output wire [31:0] WriteDataM;
 	output wire [31:0] ReadDataM;
 
-	wire [2:0] InstrM;
+	wire [1:0] InstrM;
 
 	riscvpipeline rvpipeline(
 		clk,

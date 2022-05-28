@@ -31,7 +31,7 @@ top dut(
 	MemWrite,
 	DataAdr,
 	WriteData,
-	ReadDataM
+	ReadData
 );
 
 initial begin

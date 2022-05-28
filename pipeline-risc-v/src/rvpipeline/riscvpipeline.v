@@ -15,7 +15,7 @@ module riscvpipeline (
 
 	output wire [31:0] PCF;
 	input wire [31:0] InstrF;
-	output wire [2:0] InstrM;
+	output wire [1:0] InstrM;
 	output wire MemWriteM;
 	output wire [31:0] ALUResultM;
 	output wire [31:0] WriteDataM;
@@ -148,9 +148,6 @@ module riscvpipeline (
 	);
 
 	hazardUnit hu(
-		clk,
-		reset,
-
 		Rs1D,
 		Rs2D,
 

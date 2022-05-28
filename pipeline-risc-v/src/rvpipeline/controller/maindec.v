@@ -1,7 +1,6 @@
 module maindec (
 	op,
-	funct3,
-	
+
 	ResultSrc,
 	MemWrite,
 	ALUSrc,
@@ -11,8 +10,7 @@ module maindec (
 	ALUOp
 );
 	input wire [6:0] op;
-	input wire [2:0] funct3;
-
+	
 	output wire [2:0] ResultSrc;
 	output wire MemWrite;
 	output wire ALUSrc;
