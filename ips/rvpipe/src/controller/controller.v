@@ -151,7 +151,6 @@ module controller (
 
 	maindec md(
 		.op(opD),
-		.funct3(funct3D),
 		
 		.ResultSrc(ResultSrcD),
 		.MemWrite(MemWriteD),

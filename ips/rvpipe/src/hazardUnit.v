@@ -1,7 +1,4 @@
 module hazardUnit(
-	input clk,
-	input rst,
-
 	input [4:0] Rs1D,
 	input [4:0] Rs2D,
 
