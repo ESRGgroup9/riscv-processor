@@ -36,12 +36,15 @@ module top (
 	);
 	
 	imem imem(
+		.clk(clk),
 		.a(PCF),
 		.rd(InstrF)
 	);
 	
 	dmem dmem(
 		.clk(clk),
+		.rst(reset),
+
 		.we(MemWriteM),
 		.a(DataAdrM),
 		.wd(WriteDataM),

@@ -4,6 +4,7 @@ module hazardUnit(
 
 	input [4:0] Rs1E,
 	input [4:0] Rs2E,
+	input [4:0] RdD,
 	input [4:0] RdE,
 	input PCSrcE,
 	input ResultSrcb0E,
@@ -38,6 +39,7 @@ assign FlushE = lwStall | PCSrcE;
 
 // load word stalls
 assign lwStall = ResultSrcb0E & ((Rs1D == RdE) | (Rs2D == RdE));
+
 assign StallF = lwStall;
 assign StallD = lwStall;
 

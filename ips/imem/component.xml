@@ -18,7 +18,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6ffab070</spirit:value>
+            <spirit:value>970d2fa5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -34,7 +34,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6ffab070</spirit:value>
+            <spirit:value>970d2fa5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -94,10 +94,6 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>mem_init.COE</spirit:name>
-        <spirit:userFileType>coe</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>src/imem.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_970d2fa5</spirit:userFileType>
@@ -105,10 +101,6 @@
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>mem_init.COE</spirit:name>
-        <spirit:userFileType>coe</spirit:userFileType>
-      </spirit:file>
       <spirit:file>
         <spirit:name>src/imem.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
@@ -163,8 +155,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>imem_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>9</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-05-28T17:14:16Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>10</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-05-30T13:43:14Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@161b50ce_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
@@ -271,11 +263,22 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@67915668_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@6f925d3f_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7d47c064_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e2b5fe6_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@554452f6_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50def76a_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a42990e_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cd48f71_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64a6b8c9_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60d40996_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ba8ea66_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77ee7aad_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d5f3cb7_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393b959e_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5ed64f4f"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="36a31b00"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="93ae54c2"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="cf3cbe4e"/>
     </xilinx:packagingInfo>

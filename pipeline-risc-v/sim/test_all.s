@@ -129,6 +129,7 @@ lui x1, 0xaa0bc
 addi x1, x1, 0xdd
 sw x1, 96(x0) # x1 = 0xaa0bc0dd
 
+
 lb x2, 96(x0) # x2 = 0xFFFFFFdd = -35
 sw x2, 160(x0)
 

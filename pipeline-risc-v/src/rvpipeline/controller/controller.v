@@ -68,10 +68,10 @@ module controller (
 	wire PCResultSrcD;
 
 	// outputs
+	wire [2:0] ResultSrcE;
 	wire [6:0] opE;
 	wire [2:0] funct3E;
 	wire RegWriteE;
-	wire [2:0] ResultSrcE;
 	wire MemWriteE;
 
 	// ============================================================================

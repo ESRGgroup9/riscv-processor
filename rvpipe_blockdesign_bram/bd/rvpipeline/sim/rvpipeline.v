@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Sat May 28 18:45:47 2022
+//Date        : Mon May 30 14:05:40 2022
 //Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
 //Command     : generate_target rvpipeline.bd
 //Design      : rvpipeline
@@ -17,7 +17,7 @@ module rvpipeline
     led3,
     led4,
     reset);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvpipeline_clk, FREQ_HZ 142857143, INSERT_VIP 0, PHASE 0.000" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvpipeline_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) input clk;
   output led1;
   output led2;
   output led3;
@@ -26,7 +26,7 @@ module rvpipeline
 
   wire [31:0]Net;
   wire clk_1;
-  wire [31:0]dmem_0_rd;
+  wire [31:0]dmem_bram_0_rd;
   wire ledController_0_led1;
   wire ledController_0_led2;
   wire ledController_0_led3;
@@ -44,11 +44,12 @@ module rvpipeline
   assign led3 = ledController_0_led3;
   assign led4 = ledController_0_led4;
   assign reset_1 = reset;
-  rvpipeline_dmem_0_0 dmem_0
+  rvpipeline_dmem_bram_0_1 dmem_bram_0
        (.a(riscvpipeline_0_ALUResultM),
         .be(riscvpipeline_0_InstrM),
         .clk(clk_1),
-        .rd(dmem_0_rd),
+        .rd(dmem_bram_0_rd),
+        .rst(reset_1),
         .wd(riscvpipeline_0_WriteDataM),
         .we(riscvpipeline_0_MemWriteM));
   rvpipeline_imem_bram_0_0 imem_bram_0
@@ -71,7 +72,7 @@ module rvpipeline
         .InstrM(riscvpipeline_0_InstrM),
         .MemWriteM(riscvpipeline_0_MemWriteM),
         .PCF(riscvpipeline_0_PCF),
-        .ReadDataM(dmem_0_rd),
+        .ReadDataM(dmem_bram_0_rd),
         .WriteDataM(riscvpipeline_0_WriteDataM),
         .clk(clk_1),
         .reset(reset_1));

@@ -38,6 +38,7 @@ module riscvpipeline (
 	wire [4:0] Rs2D;
 	wire [4:0] Rs1E;
 	wire [4:0] Rs2E;
+	wire [4:0] RdD;
 	wire [4:0] RdE;
 	wire PCSrcE;
 	
@@ -127,6 +128,7 @@ module riscvpipeline (
 		Rs2D,
 		Rs1E,
 		Rs2E,
+		RdD,
 		RdE,
 
 		RdM,
@@ -153,6 +155,7 @@ module riscvpipeline (
 
 		Rs1E,
 		Rs2E,
+		RdD,
 		RdE,
 		PCSrcE,
 		ResultSrcb0E,

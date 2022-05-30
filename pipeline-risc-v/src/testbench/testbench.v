@@ -23,7 +23,7 @@ wire [31:0] WriteData;
 wire [31:0] ReadData;
 
 top dut(
-		clk,
+	clk,
 	reset,
 
 	PCF,
