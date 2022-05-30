@@ -30,7 +30,7 @@ wire clear = reset | FlushE;
 
 flopr #(3) instrreg(
 	clk,
-	reset,
+	clear,
 	InstrD,
 	InstrE
 );

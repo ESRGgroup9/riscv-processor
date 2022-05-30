@@ -32,9 +32,11 @@ module maindec (
 		case (op)
 		    // 3: load - lx, rd, imm(rs1)
 			7'b000_0011: controls = 12'b_1_000_1_0_001_00_0;
+			// 7'b000_0011: controls = 12'b_1_000_1_0_110_00_0;
 			
 			// 0x23 = 35: store - sx, rs2, imm(rs1) 
-			7'b010_0011: controls = 12'b_0_001_1_1_111_00_0;
+			// 7'b010_0011: controls = 12'b_0_001_1_1_111_00_0;
+			7'b010_0011: controls = 12'b_0_001_1_1_110_00_0;
 
 			// 0x33 = 51: Type R - xxx, rd, rs1, rs2
 			//7'b011_0011: controls = 12'b_1_xxx_0_0_000_10_0;

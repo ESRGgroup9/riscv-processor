@@ -22,6 +22,24 @@ wire [31:0] DataAdr;
 wire [31:0] WriteData;
 wire [31:0] ReadData;
 
+wire [3:0] we_bram;
+wire [1:0] InstrM;
+
+wire [31:0] addr_debug;
+wire [1:0] ForwardAE;
+wire [1:0] ForwardBE;
+wire StallF;
+wire StallD;
+wire FlushD;
+wire FlushE;
+
+wire [4:0] Rs1D;
+wire [4:0] Rs2D;
+wire [4:0] RdD;
+wire [4:0] RdE;
+wire PCSrcE;
+wire [2:0] ResultSrcE;
+
 top dut(
 		clk,
 	reset,
@@ -31,7 +49,26 @@ top dut(
 	MemWrite,
 	DataAdr,
 	WriteData,
-	ReadData
+	ReadData,
+
+	we_bram,
+	InstrM,
+	addr_debug,
+
+	// outputs
+	ForwardAE,
+	ForwardBE,
+	StallF,
+	StallD,
+	FlushD,
+	FlushE,
+
+	Rs1D,
+	Rs2D,
+	RdD,
+	RdE,
+	PCSrcE,
+	ResultSrcE
 );
 
 initial begin
@@ -39,6 +76,8 @@ initial begin
 	#(22)
 		;
 	reset <= 0;
+
+	#200; $stop;
 end
 
 always begin

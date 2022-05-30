@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="148204fs"></ZoomEndTime>
-      <Cursor1Time time="2315000fs"></Cursor1Time>
+      <ZoomStartTime time="1162369fs"></ZoomStartTime>
+      <ZoomEndTime time="1288670fs"></ZoomEndTime>
+      <Cursor1Time time="1215100fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="166"></NameColumnWidth>
-      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="23" />
    <wvobject type="logic" fp_name="/testbench/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -47,8 +47,71 @@
       <obj_property name="ElementShortName">DataAdr[31:0]</obj_property>
       <obj_property name="ObjectShortName">DataAdr[31:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/testbench/ReadData">
+      <obj_property name="ElementShortName">ReadData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ReadData[31:0]</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/testbench/MemWrite">
       <obj_property name="ElementShortName">MemWrite</obj_property>
       <obj_property name="ObjectShortName">MemWrite</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/we_bram">
+      <obj_property name="ElementShortName">we_bram[3:0]</obj_property>
+      <obj_property name="ObjectShortName">we_bram[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/InstrM">
+      <obj_property name="ElementShortName">InstrM[1:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrM[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/addr_debug">
+      <obj_property name="ElementShortName">addr_debug[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_debug[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider12" type="divider">
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs1D">
+      <obj_property name="ElementShortName">Rs1D[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs1D[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/Rs2D">
+      <obj_property name="ElementShortName">Rs2D[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Rs2D[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/RdE">
+      <obj_property name="ElementShortName">RdE[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RdE[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/PCSrcE">
+      <obj_property name="ElementShortName">PCSrcE</obj_property>
+      <obj_property name="ObjectShortName">PCSrcE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/ResultSrcb0E">
+      <obj_property name="ElementShortName">ResultSrcb0E</obj_property>
+      <obj_property name="ObjectShortName">ResultSrcb0E</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/ForwardAE">
+      <obj_property name="ElementShortName">ForwardAE[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ForwardAE[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench/ForwardBE">
+      <obj_property name="ElementShortName">ForwardBE[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ForwardBE[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/StallF">
+      <obj_property name="ElementShortName">StallF</obj_property>
+      <obj_property name="ObjectShortName">StallF</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/StallD">
+      <obj_property name="ElementShortName">StallD</obj_property>
+      <obj_property name="ObjectShortName">StallD</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/FlushD">
+      <obj_property name="ElementShortName">FlushD</obj_property>
+      <obj_property name="ObjectShortName">FlushD</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench/FlushE">
+      <obj_property name="ElementShortName">FlushE</obj_property>
+      <obj_property name="ObjectShortName">FlushE</obj_property>
    </wvobject>
 </wave_config>

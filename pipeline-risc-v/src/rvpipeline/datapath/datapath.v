@@ -24,6 +24,7 @@ module datapath (
 	Rs2D,
 	Rs1E,
 	Rs2E,
+	RdD,
 	RdE,
 
 	RdM,
@@ -65,6 +66,7 @@ module datapath (
 	output [4:0] Rs2D;
 	output [4:0] Rs1E;
 	output [4:0] Rs2E;
+	output [4:0] RdD;
 	output [4:0] RdE;
 
 	output [4:0] RdM;
@@ -110,7 +112,6 @@ module datapath (
 	// inputs
 	wire [31:0] RD1D;
 	wire [31:0] RD2D;
-	wire [4:0] RdD;
 	wire [31:0] ImmExtD;
 
 	// outputs
@@ -336,11 +337,17 @@ module datapath (
 	assign ResultW = ResultW_r;
 	always @(*) begin
 	   case(ResultSrcW)
+	   	  // type R, I, ...
 	   	  3'b000: ResultW_r = ALUResultW;
-	      3'b111: ResultW_r = ALUResultW;
+	      // store
+	      3'b110: ResultW_r = ALUResultW;
+	      // load
 	      3'b001: ResultW_r = ReadDataW;
+	      // branch
 	      3'b010: ResultW_r = PCPlus4W;
+	      // auipc
 	      3'b101: ResultW_r = PCResultW;
+	      // lui
 	      3'b011: ResultW_r = ImmExtW;
 	      default: ResultW_r = {32{1'bx}};
         endcase
