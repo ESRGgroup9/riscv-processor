@@ -7,7 +7,7 @@ module hazardUnit(
 	input [4:0] RdD,
 	input [4:0] RdE,
 	input PCSrcE,
-	input [2:0] ResultSrcE,
+	input ResultSrcb0E,
 
 	input [4:0] RdM,
 	input [4:0] RdW,
@@ -24,7 +24,6 @@ module hazardUnit(
 );
 
 wire lwStall;
-wire swStall;
 
 // ============================================================================
 // control hazards
@@ -32,20 +31,17 @@ wire swStall;
 
 // branch control hazard
 assign FlushD = PCSrcE; 
-assign FlushE = lwStall | PCSrcE | swStall;
+assign FlushE = lwStall | PCSrcE;
 
 // ============================================================================
 // data hazards
 // ============================================================================
 
 // load word stalls
-assign lwStall = ResultSrcE[0] & ((Rs1D == RdE) | (Rs2D == RdE));
+assign lwStall = ResultSrcb0E & ((Rs1D == RdE) | (Rs2D == RdE));
 
-// store word stalls
-assign swStall = &ResultSrcE[2:1] & (Rs2E == RdD);
-
-assign StallF = lwStall | swStall;
-assign StallD = lwStall | swStall;
+assign StallF = lwStall;
+assign StallD = lwStall;
 
 assign ForwardAE = 
 	(((Rs1E == RdM) & RegWriteM) & (Rs1E != 0)) ? 2'b10 :

@@ -24,7 +24,7 @@ module controller (
     PCResultSrcE,
 	ImmSrcD,
 	ALUControlE,
-	ResultSrcE
+	ResultSrcb0E
 );
 	input clk;
 	input reset;
@@ -52,7 +52,7 @@ module controller (
     output wire PCResultSrcE;
 	output wire [2:0] ImmSrcD;
 	output wire [3:0] ALUControlE;
-	output wire [2:0] ResultSrcE;
+	output wire ResultSrcb0E;
 	
 	wire [1:0] ALUOpD;
 
@@ -68,6 +68,7 @@ module controller (
 	wire PCResultSrcD;
 
 	// outputs
+	wire [2:0] ResultSrcE;
 	wire [6:0] opE;
 	wire [2:0] funct3E;
 	wire RegWriteE;

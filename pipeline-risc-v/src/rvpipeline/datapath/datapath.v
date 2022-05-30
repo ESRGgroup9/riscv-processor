@@ -102,7 +102,6 @@ module datapath (
 	wire [31:0] PCPlus4F;
 	
 	// outputs
-	// wire [31:0] InstrD;
 	wire [31:0] PCD;
 	wire [31:0] PCPlus4D;
 
@@ -144,8 +143,6 @@ module datapath (
 	wire [31:0] ReadDataW;
 	wire [31:0] PCResultW;
 	wire [31:0] PCPlus4W;
-
-	assign InstrM_2b = InstrM[1:0];
 
 	// ============================================================================
 	// pipelines instantiation
@@ -257,6 +254,7 @@ module datapath (
 	assign Rs2D = InstrD[24:20];
 	assign RdD = InstrD[11:7];
 
+	assign InstrM_2b = InstrM[1:0];
 
 	flopenrsync #(32) pcreg(
 		clk,
@@ -333,8 +331,8 @@ module datapath (
 	);
 
 	reg [31:0] ResultW_r;
-
 	assign ResultW = ResultW_r;
+
 	always @(*) begin
 	   case(ResultSrcW)
 	   	  // type R, I, ...

@@ -32,14 +32,11 @@ module maindec (
 		case (op)
 		    // 3: load - lx, rd, imm(rs1)
 			7'b000_0011: controls = 12'b_1_000_1_0_001_00_0;
-			// 7'b000_0011: controls = 12'b_1_000_1_0_110_00_0;
 			
 			// 0x23 = 35: store - sx, rs2, imm(rs1) 
-			// 7'b010_0011: controls = 12'b_0_001_1_1_111_00_0;
 			7'b010_0011: controls = 12'b_0_001_1_1_110_00_0;
-
+			
 			// 0x33 = 51: Type R - xxx, rd, rs1, rs2
-			//7'b011_0011: controls = 12'b_1_xxx_0_0_000_10_0;
 			7'b011_0011: controls = 12'b_1_000_0_0_000_10_0;
 
 			// 0x63 = 99: branch - bxx, rs1, rs2, label
@@ -52,18 +49,14 @@ module maindec (
 			7'b110_1111: controls = 12'b_1_011_0_0_010_00_0;
 			
 			// 23: auipc rd, upimm (U)
-			//7'b001_0111: controls = 12'b_1_100_x_0_100_xx_0;
 			7'b001_0111: controls = 12'b_1_100_0_0_101_00_0;
 
 			// 55: lui rd, upimm (U)
-			// 7'b011_0111: controls = 12'b_1_100_x_0_011_xx_0;
-			//7'b011_0111: controls = 12'b_1_100_x_0_110_xx_0;
 			7'b011_0111: controls = 12'b_1_100_0_0_011_00_0;
 
 			// 103: jalr rd, rs1, imm (I)
 			7'b110_0111: controls = 12'b_1_000_1_0_010_10_1;
 
-			// default: controls = {12{1'bx}};
 			default: controls = {12{1'b0}};
 		endcase
 		a = 0;
