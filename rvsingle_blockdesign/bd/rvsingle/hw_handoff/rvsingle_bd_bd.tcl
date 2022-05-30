@@ -156,7 +156,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set clk [ create_bd_port -dir I -type clk -freq_hz 125000000 clk ]
+  set clk [ create_bd_port -dir I -type clk -freq_hz 62500000 clk ]
   set_property -dict [ list \
    CONFIG.PHASE {0.000} \
  ] $clk
@@ -170,7 +170,7 @@ proc create_root_design { parentCell } {
  ] $reset
 
   # Create instance: dmem_0, and set properties
-  set dmem_0 [ create_bd_cell -type ip -vlnv user.org:user:dmem:1.0 dmem_0 ]
+  set dmem_0 [ create_bd_cell -type ip -vlnv user.org:user:dmem_bram:1.0 dmem_0 ]
 
   # Create instance: imem_0, and set properties
   set imem_0 [ create_bd_cell -type ip -vlnv user.org:user:imem:1.0 imem_0 ]
@@ -197,7 +197,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ledController_0_led2 [get_bd_ports led2] [get_bd_pins ledController_0/led2]
   connect_bd_net -net ledController_0_led3 [get_bd_ports led3] [get_bd_pins ledController_0/led3]
   connect_bd_net -net ledController_0_led4 [get_bd_ports led4] [get_bd_pins ledController_0/led4]
-  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins ledController_0/reset] [get_bd_pins riscvsingle_0/reset]
+  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins dmem_0/rst] [get_bd_pins ledController_0/reset] [get_bd_pins riscvsingle_0/reset]
   connect_bd_net -net riscvsingle_0_ALUResult [get_bd_pins dmem_0/a] [get_bd_pins ledController_0/DataAdr] [get_bd_pins riscvsingle_0/ALUResult]
   connect_bd_net -net riscvsingle_0_MemWrite [get_bd_pins dmem_0/we] [get_bd_pins riscvsingle_0/MemWrite]
   connect_bd_net -net riscvsingle_0_PC [get_bd_pins imem_0/a] [get_bd_pins riscvsingle_0/PC]

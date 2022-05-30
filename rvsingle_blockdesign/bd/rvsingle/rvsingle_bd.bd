@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x885B1C8355E9FBAF",
+      "boundary_crc": "0x885B1C830F7C3053",
       "device": "xc7z010clg400-1",
       "name": "rvsingle_bd",
       "synth_flow_mode": "Hierarchical",
@@ -10,9 +10,9 @@
     },
     "design_tree": {
       "xlslice_0": "",
-      "dmem_0": "",
       "riscvsingle_0": "",
       "ledController_0": "",
+      "dmem_0": "",
       "imem_0": ""
     },
     "ports": {
@@ -41,7 +41,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "125000000"
+            "value": "62500000"
           },
           "INSERT_VIP": {
             "value": "0",
@@ -82,10 +82,6 @@
           }
         }
       },
-      "dmem_0": {
-        "vlnv": "user.org:user:dmem:1.0",
-        "xci_name": "rvsingle_bd_dmem_0_0"
-      },
       "riscvsingle_0": {
         "vlnv": "user.org:user:riscvsingle:1.0",
         "xci_name": "rvsingle_bd_riscvsingle_0_0"
@@ -94,18 +90,16 @@
         "vlnv": "user.org:user:ledController:1.0",
         "xci_name": "rvsingle_bd_ledController_0_0"
       },
+      "dmem_0": {
+        "vlnv": "user.org:user:dmem_bram:1.0",
+        "xci_name": "rvsingle_bd_dmem_0_0"
+      },
       "imem_0": {
         "vlnv": "user.org:user:imem:1.0",
-        "xci_name": "rvsingle_bd_imem_0_0"
+        "xci_name": "rvsingle_bd_imem_0_1"
       }
     },
     "nets": {
-      "riscvsingle_0_PC": {
-        "ports": [
-          "riscvsingle_0/PC",
-          "imem_0/a"
-        ]
-      },
       "Net": {
         "ports": [
           "imem_0/rd",
@@ -114,30 +108,18 @@
           "ledController_0/instr"
         ]
       },
-      "xlslice_0_Dout": {
-        "ports": [
-          "xlslice_0/Dout",
-          "dmem_0/be"
-        ]
-      },
       "riscvsingle_0_ALUResult": {
         "ports": [
           "riscvsingle_0/ALUResult",
-          "dmem_0/a",
-          "ledController_0/DataAdr"
+          "ledController_0/DataAdr",
+          "dmem_0/a"
         ]
       },
       "riscvsingle_0_WriteData": {
         "ports": [
           "riscvsingle_0/WriteData",
-          "dmem_0/wd",
-          "ledController_0/WriteData"
-        ]
-      },
-      "dmem_0_rd": {
-        "ports": [
-          "dmem_0/rd",
-          "riscvsingle_0/ReadData"
+          "ledController_0/WriteData",
+          "dmem_0/wd"
         ]
       },
       "ledController_0_led3": {
@@ -164,25 +146,44 @@
           "led4"
         ]
       },
-      "riscvsingle_0_MemWrite": {
-        "ports": [
-          "riscvsingle_0/MemWrite",
-          "dmem_0/we"
-        ]
-      },
       "clk_wiz_clk_out1": {
         "ports": [
           "clk",
-          "dmem_0/clk",
           "riscvsingle_0/clk",
-          "ledController_0/clk"
+          "ledController_0/clk",
+          "dmem_0/clk"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
           "riscvsingle_0/reset",
-          "ledController_0/reset"
+          "ledController_0/reset",
+          "dmem_0/rst"
+        ]
+      },
+      "dmem_0_rd": {
+        "ports": [
+          "dmem_0/rd",
+          "riscvsingle_0/ReadData"
+        ]
+      },
+      "riscvsingle_0_MemWrite": {
+        "ports": [
+          "riscvsingle_0/MemWrite",
+          "dmem_0/we"
+        ]
+      },
+      "xlslice_0_Dout": {
+        "ports": [
+          "xlslice_0/Dout",
+          "dmem_0/be"
+        ]
+      },
+      "riscvsingle_0_PC": {
+        "ports": [
+          "riscvsingle_0/PC",
+          "imem_0/a"
         ]
       }
     }

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Sat May 28 18:16:59 2022
+//Date        : Mon May 30 14:43:43 2022
 //Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
 //Command     : generate_target rvsingle_bd.bd
 //Design      : rvsingle_bd
@@ -17,7 +17,7 @@ module rvsingle_bd
     led3,
     led4,
     reset);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvsingle_bd_clk, FREQ_HZ 125000000, INSERT_VIP 0, PHASE 0.000" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvsingle_bd_clk, FREQ_HZ 62500000, INSERT_VIP 0, PHASE 0.000" *) input clk;
   output led1;
   output led2;
   output led3;
@@ -49,9 +49,10 @@ module rvsingle_bd
         .be(xlslice_0_Dout),
         .clk(clk_wiz_clk_out1),
         .rd(dmem_0_rd),
+        .rst(reset_1),
         .wd(riscvsingle_0_WriteData),
         .we(riscvsingle_0_MemWrite));
-  rvsingle_bd_imem_0_0 imem_0
+  rvsingle_bd_imem_0_1 imem_0
        (.a(riscvsingle_0_PC),
         .rd(Net));
   rvsingle_bd_ledController_0_0 ledController_0
