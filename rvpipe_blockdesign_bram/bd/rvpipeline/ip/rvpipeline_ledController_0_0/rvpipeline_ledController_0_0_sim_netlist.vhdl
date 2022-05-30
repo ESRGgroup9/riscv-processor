@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
--- Date        : Sat May 28 18:21:46 2022
+-- Date        : Mon May 30 18:38:44 2022
 -- Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/tomas/riscv-processor/rvpipe_blockdesign/bd/rvpipeline/ip/rvpipeline_ledController_0_0/rvpipeline_ledController_0_0_sim_netlist.vhdl
+--               /home/tomas/riscv-processor/rvpipe_blockdesign_bram/bd/rvpipeline/ip/rvpipeline_ledController_0_0/rvpipeline_ledController_0_0_sim_netlist.vhdl
 -- Design      : rvpipeline_ledController_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
