@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-// Date        : Sat May 28 18:48:03 2022
+// Date        : Mon May 30 13:29:12 2022
 // Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/tomas/riscv-processor/rvpipe_blockdesign_bram/bd/rvpipeline/ip/rvpipeline_imem_bram_0_0/rvpipeline_imem_bram_0_0_sim_netlist.v
@@ -28,7 +28,7 @@ module rvpipeline_imem_bram_0_0
   wire [31:0]rd;
 
   rvpipeline_imem_bram_0_0_imem inst
-       (.a(a[7:0]),
+       (.a(a[9:2]),
         .clka(clk),
         .rd(rd));
 endmodule
@@ -231,7 +231,7 @@ module rvpipeline_imem_bram_0_0_imem
   (* CHECK_LICENSE_TYPE = "bram,blk_mem_gen_v8_4_4,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2019.2" *) 
-  rvpipeline_imem_bram_0_0_bram your_instance_name
+  rvpipeline_imem_bram_0_0_bram imem_bram
        (.addra(a),
         .clka(clka),
         .dina({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),

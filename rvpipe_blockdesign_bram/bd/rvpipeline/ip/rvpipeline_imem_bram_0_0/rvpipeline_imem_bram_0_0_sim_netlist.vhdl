@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
--- Date        : Sat May 28 18:48:03 2022
+-- Date        : Mon May 30 13:29:12 2022
 -- Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/tomas/riscv-processor/rvpipe_blockdesign_bram/bd/rvpipeline/ip/rvpipeline_imem_bram_0_0/rvpipeline_imem_bram_0_0_sim_netlist.vhdl
@@ -912,13 +912,13 @@ end rvpipeline_imem_bram_0_0_imem;
 
 architecture STRUCTURE of rvpipeline_imem_bram_0_0_imem is
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of your_instance_name : label is "bram,blk_mem_gen_v8_4_4,{}";
+  attribute CHECK_LICENSE_TYPE of imem_bram : label is "bram,blk_mem_gen_v8_4_4,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of your_instance_name : label is "yes";
+  attribute downgradeipidentifiedwarnings of imem_bram : label is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of your_instance_name : label is "blk_mem_gen_v8_4_4,Vivado 2019.2";
+  attribute x_core_info of imem_bram : label is "blk_mem_gen_v8_4_4,Vivado 2019.2";
 begin
-your_instance_name: entity work.rvpipeline_imem_bram_0_0_bram
+imem_bram: entity work.rvpipeline_imem_bram_0_0_bram
      port map (
       addra(7 downto 0) => a(7 downto 0),
       clka => clka,
@@ -957,7 +957,7 @@ architecture STRUCTURE of rvpipeline_imem_bram_0_0 is
 begin
 inst: entity work.rvpipeline_imem_bram_0_0_imem
      port map (
-      a(7 downto 0) => a(7 downto 0),
+      a(7 downto 0) => a(9 downto 2),
       clka => clk,
       rd(31 downto 0) => rd(31 downto 0)
     );
