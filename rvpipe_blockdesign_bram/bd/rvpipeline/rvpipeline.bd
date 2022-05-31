@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x885B1C83B0CFA489",
+      "boundary_crc": "0x885B1C8336B605D0",
       "device": "xc7z010clg400-1",
       "name": "rvpipeline",
       "synth_flow_mode": "Hierarchical",
@@ -9,29 +9,16 @@
       "validated": "true"
     },
     "design_tree": {
-      "ledController_0": "",
       "imem_bram_0": "",
       "dmem_bram_0": "",
       "axi_interconnect_0": {
         "s00_couplers": {}
       },
       "axi_gpio_0": "",
+      "ledController_0": "",
       "rvpipeline_axiM_0": ""
     },
     "ports": {
-      "reset": {
-        "type": "rst",
-        "direction": "I",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_HIGH"
-          }
-        }
-      },
       "clk": {
         "type": "clk",
         "direction": "I",
@@ -45,7 +32,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "100000000"
+            "value": "50000000"
           },
           "INSERT_VIP": {
             "value": "0",
@@ -66,15 +53,24 @@
       "led4": {
         "direction": "O"
       },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
       "led1": {
         "direction": "O"
       }
     },
     "components": {
-      "ledController_0": {
-        "vlnv": "user.org:user:ledController:1.0",
-        "xci_name": "rvpipeline_ledController_0_0"
-      },
       "imem_bram_0": {
         "vlnv": "user.org:user:imem_bram:1.0",
         "xci_name": "rvpipeline_imem_bram_0_0"
@@ -249,6 +245,10 @@
         "vlnv": "user.org:user:axi_gpio:1.0",
         "xci_name": "rvpipeline_axi_gpio_0_2"
       },
+      "ledController_0": {
+        "vlnv": "user.org:user:ledController:1.0",
+        "xci_name": "rvpipeline_ledController_0_1"
+      },
       "rvpipeline_axiM_0": {
         "vlnv": "user.org:user:rvpipeline_axiM:1.0",
         "xci_name": "rvpipeline_rvpipeline_axiM_0_0"
@@ -269,68 +269,17 @@
       }
     },
     "nets": {
-      "clk_1": {
-        "ports": [
-          "clk",
-          "ledController_0/clk",
-          "imem_bram_0/clk",
-          "dmem_bram_0/clk",
-          "axi_interconnect_0/ACLK",
-          "axi_interconnect_0/S00_ACLK",
-          "axi_interconnect_0/M00_ACLK",
-          "axi_gpio_0/s00_axi_aclk",
-          "rvpipeline_axiM_0/m00_axi_aclk"
-        ]
-      },
-      "reset_1": {
-        "ports": [
-          "reset",
-          "ledController_0/reset",
-          "dmem_bram_0/rst",
-          "axi_interconnect_0/ARESETN",
-          "axi_interconnect_0/S00_ARESETN",
-          "axi_interconnect_0/M00_ARESETN",
-          "axi_gpio_0/s00_axi_aresetn",
-          "rvpipeline_axiM_0/m00_axi_aresetn"
-        ]
-      },
-      "Net": {
-        "ports": [
-          "imem_bram_0/rd",
-          "ledController_0/instr",
-          "rvpipeline_axiM_0/instrF"
-        ]
-      },
       "riscvpipeline_0_ALUResultM": {
         "ports": [
           "rvpipeline_axiM_0/AluResultM",
-          "ledController_0/DataAdr",
           "dmem_bram_0/a"
         ]
       },
       "riscvpipeline_0_WriteDataM": {
         "ports": [
           "rvpipeline_axiM_0/WriteDataM",
-          "ledController_0/WriteData",
-          "dmem_bram_0/wd"
-        ]
-      },
-      "ledController_0_led3": {
-        "ports": [
-          "ledController_0/led3",
-          "led3"
-        ]
-      },
-      "ledController_0_led2": {
-        "ports": [
-          "ledController_0/led2",
-          "led2"
-        ]
-      },
-      "ledController_0_led4": {
-        "ports": [
-          "ledController_0/led4",
-          "led4"
+          "dmem_bram_0/wd",
+          "ledController_0/WriteData"
         ]
       },
       "dmem_bram_0_rd": {
@@ -357,10 +306,63 @@
           "dmem_bram_0/be"
         ]
       },
-      "axi_gpio_0_gpio_led0": {
+      "clk_1": {
         "ports": [
-          "axi_gpio_0/gpio_led0",
+          "clk",
+          "imem_bram_0/clk",
+          "axi_interconnect_0/ACLK",
+          "axi_interconnect_0/M00_ACLK",
+          "axi_interconnect_0/S00_ACLK",
+          "dmem_bram_0/clk",
+          "axi_gpio_0/s00_axi_aclk",
+          "ledController_0/clk",
+          "rvpipeline_axiM_0/clk",
+          "rvpipeline_axiM_0/m00_axi_init_axi_txn",
+          "rvpipeline_axiM_0/m00_axi_aclk"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "dmem_bram_0/rst",
+          "axi_gpio_0/s00_axi_aresetn",
+          "axi_interconnect_0/ARESETN",
+          "axi_interconnect_0/S00_ARESETN",
+          "axi_interconnect_0/M00_ARESETN",
+          "ledController_0/reset",
+          "rvpipeline_axiM_0/reset",
+          "rvpipeline_axiM_0/m00_axi_aresetn"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "imem_bram_0/rd",
+          "ledController_0/instr",
+          "rvpipeline_axiM_0/instrF"
+        ]
+      },
+      "ledController_0_led1": {
+        "ports": [
+          "ledController_0/led1",
           "led1"
+        ]
+      },
+      "ledController_0_led2": {
+        "ports": [
+          "ledController_0/led2",
+          "led2"
+        ]
+      },
+      "ledController_0_led3": {
+        "ports": [
+          "ledController_0/led3",
+          "led3"
+        ]
+      },
+      "ledController_0_led4": {
+        "ports": [
+          "ledController_0/led4",
+          "led4"
         ]
       }
     },

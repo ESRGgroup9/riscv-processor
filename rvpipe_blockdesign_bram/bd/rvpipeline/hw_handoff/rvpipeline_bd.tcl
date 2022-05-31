@@ -59,7 +59,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./riscv-processor/rvpipe_blockdesign_bram/bd
+  set origin_dir ./code/riscv-processor/rvpipe_blockdesign_bram/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -156,7 +156,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set clk [ create_bd_port -dir I -type clk -freq_hz 100000000 clk ]
+  set clk [ create_bd_port -dir I -type clk -freq_hz 50000000 clk ]
   set led1 [ create_bd_port -dir O led1 ]
   set led2 [ create_bd_port -dir O led2 ]
   set led3 [ create_bd_port -dir O led3 ]
@@ -193,14 +193,14 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net Net [get_bd_pins imem_bram_0/rd] [get_bd_pins ledController_0/instr] [get_bd_pins rvpipeline_axiM_0/instrF]
-  connect_bd_net -net axi_gpio_0_gpio_led0 [get_bd_ports led1] [get_bd_pins axi_gpio_0/gpio_led0]
-  connect_bd_net -net clk_1 [get_bd_ports clk] [get_bd_pins axi_gpio_0/s00_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins dmem_bram_0/clk] [get_bd_pins imem_bram_0/clk] [get_bd_pins ledController_0/clk] [get_bd_pins rvpipeline_axiM_0/m00_axi_aclk]
+  connect_bd_net -net clk_1 [get_bd_ports clk] [get_bd_pins axi_gpio_0/s00_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins dmem_bram_0/clk] [get_bd_pins imem_bram_0/clk] [get_bd_pins ledController_0/clk] [get_bd_pins rvpipeline_axiM_0/clk] [get_bd_pins rvpipeline_axiM_0/m00_axi_aclk] [get_bd_pins rvpipeline_axiM_0/m00_axi_init_axi_txn]
   connect_bd_net -net dmem_bram_0_rd [get_bd_pins dmem_bram_0/rd] [get_bd_pins rvpipeline_axiM_0/ReadData]
+  connect_bd_net -net ledController_0_led1 [get_bd_ports led1] [get_bd_pins ledController_0/led1]
   connect_bd_net -net ledController_0_led2 [get_bd_ports led2] [get_bd_pins ledController_0/led2]
   connect_bd_net -net ledController_0_led3 [get_bd_ports led3] [get_bd_pins ledController_0/led3]
   connect_bd_net -net ledController_0_led4 [get_bd_ports led4] [get_bd_pins ledController_0/led4]
-  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins axi_gpio_0/s00_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dmem_bram_0/rst] [get_bd_pins ledController_0/reset] [get_bd_pins rvpipeline_axiM_0/m00_axi_aresetn]
-  connect_bd_net -net riscvpipeline_0_ALUResultM [get_bd_pins dmem_bram_0/a] [get_bd_pins ledController_0/DataAdr] [get_bd_pins rvpipeline_axiM_0/AluResultM]
+  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins axi_gpio_0/s00_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins dmem_bram_0/rst] [get_bd_pins ledController_0/reset] [get_bd_pins rvpipeline_axiM_0/m00_axi_aresetn] [get_bd_pins rvpipeline_axiM_0/reset]
+  connect_bd_net -net riscvpipeline_0_ALUResultM [get_bd_pins dmem_bram_0/a] [get_bd_pins rvpipeline_axiM_0/AluResultM]
   connect_bd_net -net riscvpipeline_0_WriteDataM [get_bd_pins dmem_bram_0/wd] [get_bd_pins ledController_0/WriteData] [get_bd_pins rvpipeline_axiM_0/WriteDataM]
   connect_bd_net -net rvpipeline_axiM_0_MemWriteM [get_bd_pins dmem_bram_0/we] [get_bd_pins rvpipeline_axiM_0/MemWriteM]
   connect_bd_net -net rvpipeline_axiM_0_PCF [get_bd_pins imem_bram_0/a] [get_bd_pins rvpipeline_axiM_0/PCF]

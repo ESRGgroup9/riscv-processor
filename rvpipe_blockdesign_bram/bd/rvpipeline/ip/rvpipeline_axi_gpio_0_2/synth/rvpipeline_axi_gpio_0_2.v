@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:axi_gpio:1.0
-// IP Revision: 7
+// IP Revision: 9
 
 (* X_CORE_INFO = "axi_gpio_v1_0,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "rvpipeline_axi_gpio_0_2,axi_gpio_v1_0,{}" *)

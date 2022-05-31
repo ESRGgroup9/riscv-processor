@@ -195,7 +195,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXI.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXI.FREQ_HZ">50000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -504,7 +504,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXI_CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M00_AXI_CLK.FREQ_HZ">50000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -540,6 +540,104 @@
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>reset</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>reset</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.RESET.POLARITY">ACTIVE_HIGH</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.RESET.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF">clk</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">50000000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHASE</spirit:name>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.PHASE">0.000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CLK_DOMAIN</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">rvpipeline_clk</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.CLK.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
   </spirit:busInterfaces>
   <spirit:addressSpaces>
     <spirit:addressSpace>
@@ -562,11 +660,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 30 20:54:47 UTC 2022</spirit:value>
+            <spirit:value>Tue May 31 11:00:57 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ff325b58</spirit:value>
+            <spirit:value>9:78c604bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -577,7 +675,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ff325b58</spirit:value>
+            <spirit:value>9:78c604bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -593,11 +691,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 30 20:54:47 UTC 2022</spirit:value>
+            <spirit:value>Tue May 31 11:00:57 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ff325b58</spirit:value>
+            <spirit:value>9:78c604bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -613,11 +711,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 30 20:54:47 UTC 2022</spirit:value>
+            <spirit:value>Tue May 31 11:00:57 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bddc1284</spirit:value>
+            <spirit:value>9:9ef917dd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -633,11 +731,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 30 20:54:47 UTC 2022</spirit:value>
+            <spirit:value>Tue May 31 11:00:57 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bddc1284</spirit:value>
+            <spirit:value>9:9ef917dd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -651,16 +749,42 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 30 20:55:47 UTC 2022</spirit:value>
+            <spirit:value>Tue May 31 11:01:46 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ff325b58</spirit:value>
+            <spirit:value>9:78c604bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
     </spirit:views>
     <spirit:ports>
+      <spirit:port>
+        <spirit:name>clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>reset</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
       <spirit:port>
         <spirit:name>instrF</spirit:name>
         <spirit:wire>
@@ -1186,11 +1310,11 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/49a1/hdl/master_v1_0_M00_AXI.v</spirit:name>
+        <spirit:name>../../ipshared/36e6/hdl/master_v1_0_M00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/49a1/hdl/master_v1_0.v</spirit:name>
+        <spirit:name>../../ipshared/36e6/hdl/master_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1209,11 +1333,11 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/49a1/hdl/master_v1_0_M00_AXI.v</spirit:name>
+        <spirit:name>../../ipshared/36e6/hdl/master_v1_0_M00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/49a1/hdl/master_v1_0.v</spirit:name>
+        <spirit:name>../../ipshared/36e6/hdl/master_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1320,7 +1444,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>rvpipeline_axiM</xilinx:displayName>
-      <xilinx:coreRevision>8</xilinx:coreRevision>
+      <xilinx:coreRevision>16</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4fba5d69_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/master_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@315eb2cc_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/master_1.0</xilinx:tag>
@@ -1478,8 +1602,102 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@24daf7da_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/master_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@66fccd08_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/master_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@60a54c_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ec0177d_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f6c3656_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c188d3_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ee26ea_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1486fdf3_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c01efc7_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@706e7339_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c567776_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73a9d05a_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7492c746_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35c2219f_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4155e95e_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27036a38_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@570fb2e0_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52dfdca9_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5eb99896_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4275a717_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78fb59b6_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@177af6ec_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21d8e6b6_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1886832e_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac7c3af_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@489146fa_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b71d83_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@117b417c_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4584d7eb_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f50731c_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@786da3_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15736068_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d2d2de2_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58f100c3_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33116a61_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2be4408f_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@184b6118_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70eee53_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a7e6a53_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@143be01d_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23049352_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52af8400_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54c342ff_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e779f7f_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@250ba702_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61d4b60c_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a195978_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e0dba69_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ef8d25b_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17701a4a_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ca25c33_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fa72f8c_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54a1bf38_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@450f7ed7_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@703c57bb_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b1c22da_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28958337_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70a3c68e_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f9ffdfe_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cdd5265_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4434b070_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5925dc03_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a371ff4_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39934005_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11748ada_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6870fd79_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f455844_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@768e1634_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@389266ed_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c71699c_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36d78dde_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23d6c9bf_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@648ec377_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48f72a12_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ad74e71_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c05c9ab_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9304f25_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2187d6f6_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4074bebd_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44d52a7d_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@943a7a0_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15b06c4b_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@713ffbb1_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f91ac6f_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42b392c0_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43e43ffa_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66c5216_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1657e5d9_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@293b9739_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4552ecec_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44b5cf92_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7362e6db_ARCHIVE_LOCATION">/home/fernandes/code/riscv-processor/ips/master_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI.ADDR_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI.AWUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -1517,14 +1735,15 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI_CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI_CLK.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXI_RST.POLARITY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RESET.POLARITY" xilinx:valuePermission="bd"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="6b14700e"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="184d4aaf"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="55bfeea0"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="10900b88"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="ffd742fe"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6d7eacb7"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="0d8cde69"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="49205b8b"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="b42ab1b7"/>
     </xilinx:packagingInfo>

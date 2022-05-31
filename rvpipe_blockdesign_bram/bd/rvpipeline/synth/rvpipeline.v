@@ -1,15 +1,15 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Mon May 30 21:54:46 2022
-//Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
+//Date        : Tue May 31 12:00:56 2022
+//Host        : fernandes420 running 64-bit Ubuntu 20.04.4 LTS
 //Command     : generate_target rvpipeline.bd
 //Design      : rvpipeline
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "rvpipeline,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=rvpipeline,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=5,numNonXlnxBlks=5,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "rvpipeline.hwdef" *) 
+(* CORE_GENERATION_INFO = "rvpipeline,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=rvpipeline,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=5,numNonXlnxBlks=5,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=10,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "rvpipeline.hwdef" *) 
 module rvpipeline
    (clk,
     led1,
@@ -17,7 +17,7 @@ module rvpipeline
     led3,
     led4,
     reset);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvpipeline_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_RESET reset, CLK_DOMAIN rvpipeline_clk, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input clk;
   output led1;
   output led2;
   output led3;
@@ -25,7 +25,6 @@ module rvpipeline
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
 
   wire [31:0]Net;
-  wire axi_gpio_0_gpio_led0;
   wire [31:0]axi_interconnect_0_M00_AXI_ARADDR;
   wire [2:0]axi_interconnect_0_M00_AXI_ARPROT;
   wire axi_interconnect_0_M00_AXI_ARREADY;
@@ -47,6 +46,7 @@ module rvpipeline
   wire axi_interconnect_0_M00_AXI_WVALID;
   wire clk_1;
   wire [31:0]dmem_bram_0_rd;
+  wire ledController_0_led1;
   wire ledController_0_led2;
   wire ledController_0_led3;
   wire ledController_0_led4;
@@ -77,14 +77,13 @@ module rvpipeline
   wire [1:0]rvpipeline_axiM_0_instrM;
 
   assign clk_1 = clk;
-  assign led1 = axi_gpio_0_gpio_led0;
+  assign led1 = ledController_0_led1;
   assign led2 = ledController_0_led2;
   assign led3 = ledController_0_led3;
   assign led4 = ledController_0_led4;
   assign reset_1 = reset;
   rvpipeline_axi_gpio_0_2 axi_gpio_0
-       (.gpio_led0(axi_gpio_0_gpio_led0),
-        .s00_axi_aclk(clk_1),
+       (.s00_axi_aclk(clk_1),
         .s00_axi_araddr(axi_interconnect_0_M00_AXI_ARADDR[3:0]),
         .s00_axi_aresetn(reset_1),
         .s00_axi_arprot(axi_interconnect_0_M00_AXI_ARPROT),
@@ -162,11 +161,11 @@ module rvpipeline
        (.a(rvpipeline_axiM_0_PCF),
         .clk(clk_1),
         .rd(Net));
-  rvpipeline_ledController_0_0 ledController_0
-       (.DataAdr(riscvpipeline_0_ALUResultM),
-        .WriteData(riscvpipeline_0_WriteDataM),
+  rvpipeline_ledController_0_1 ledController_0
+       (.WriteData(riscvpipeline_0_WriteDataM),
         .clk(clk_1),
         .instr(Net),
+        .led1(ledController_0_led1),
         .led2(ledController_0_led2),
         .led3(ledController_0_led3),
         .led4(ledController_0_led4),
@@ -177,6 +176,7 @@ module rvpipeline
         .PCF(rvpipeline_axiM_0_PCF),
         .ReadData(dmem_bram_0_rd),
         .WriteDataM(riscvpipeline_0_WriteDataM),
+        .clk(clk_1),
         .instrF(Net),
         .instrM(rvpipeline_axiM_0_instrM),
         .m00_axi_aclk(clk_1),
@@ -192,7 +192,7 @@ module rvpipeline
         .m00_axi_bready(rvpipeline_axiM_0_M00_AXI_BREADY),
         .m00_axi_bresp(rvpipeline_axiM_0_M00_AXI_BRESP),
         .m00_axi_bvalid(rvpipeline_axiM_0_M00_AXI_BVALID),
-        .m00_axi_init_axi_txn(1'b0),
+        .m00_axi_init_axi_txn(clk_1),
         .m00_axi_rdata(rvpipeline_axiM_0_M00_AXI_RDATA),
         .m00_axi_rready(rvpipeline_axiM_0_M00_AXI_RREADY),
         .m00_axi_rresp(rvpipeline_axiM_0_M00_AXI_RRESP),
@@ -200,7 +200,8 @@ module rvpipeline
         .m00_axi_wdata(rvpipeline_axiM_0_M00_AXI_WDATA),
         .m00_axi_wready(rvpipeline_axiM_0_M00_AXI_WREADY),
         .m00_axi_wstrb(rvpipeline_axiM_0_M00_AXI_WSTRB),
-        .m00_axi_wvalid(rvpipeline_axiM_0_M00_AXI_WVALID));
+        .m00_axi_wvalid(rvpipeline_axiM_0_M00_AXI_WVALID),
+        .reset(reset_1));
 endmodule
 
 module rvpipeline_axi_interconnect_0_0
