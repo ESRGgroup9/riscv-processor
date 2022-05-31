@@ -4,6 +4,10 @@ $display("%10s OK", INSTR); \
 COUNT = COUNT + 1; \
 end \
 
+`define printOK_NC(INSTR, COUNT) begin \
+$display("%10s OK", INSTR); \
+COUNT = COUNT; \
+end \
 // ===========================================================================
 module testbench;
 
@@ -12,15 +16,13 @@ reg reset;
 wire [31:0] WriteData;
 wire [31:0] DataAdr;
 wire MemWrite;
-wire [1:0] func3_debug;
 
 top dut(
 	clk,
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite,
-	func3_debug
+	MemWrite
 );
 
 initial begin
@@ -44,7 +46,7 @@ integer count = 0;
 always @(negedge clk) begin
 	if (MemWrite) begin
 		if ((DataAdr == 100) & (WriteData == 25)) begin
-			$display("\n%10s OK", "lw");
+			`printOK("lw", count)
 			`printOK("addi", count)
 			`printOK("sw", count)
 			`printOK("add", count)
@@ -90,39 +92,38 @@ always @(negedge clk) begin
 		 // else if ((DataAdr == 152) & (WriteData == 170)) 	`printOK("lbu",count)
 		 // else if ((DataAdr == 156) & (WriteData == 41130)) 	`printOK("lhu",count)
 	 	else if ((DataAdr == 160) & (WriteData == -35)) 	`printOK("lb 96",count)
-	 	else if ((DataAdr == 164) & (WriteData == -64)) 	`printOK("lb 97",count)
-	 	else if ((DataAdr == 168) & (WriteData == 11)) 	    `printOK("lb 98",count)
-	 	else if ((DataAdr == 172) & (WriteData == -86)) 	`printOK("lb 99",count)
+	 	else if ((DataAdr == 164) & (WriteData == -64)) 	`printOK_NC("lb 97",count)
+	 	else if ((DataAdr == 168) & (WriteData == 11)) 	    `printOK_NC("lb 98",count)
+	 	else if ((DataAdr == 172) & (WriteData == -86)) 	`printOK_NC("lb 99",count)
 
     	else if ((DataAdr == 176) & (WriteData == -16163)) 	`printOK("lh 96",count)
-	 	else if ((DataAdr == 180) & (WriteData == 3008)) 	`printOK("lh 97",count)
-	 	else if ((DataAdr == 184) & (WriteData == -22005)) 	`printOK("lh 98",count)
-	 	else if ((DataAdr == 188) & (WriteData == -8790)) 	`printOK("lh 99",count)
+	 	else if ((DataAdr == 180) & (WriteData == 3008)) 	`printOK_NC("lh 97",count)
+	 	else if ((DataAdr == 184) & (WriteData == -22005)) 	`printOK_NC("lh 98",count)
+	 	else if ((DataAdr == 188) & (WriteData == -8790)) 	`printOK_NC("lh 99",count)
 	 	
 	 	else if ((DataAdr == 100) & (WriteData == 221)) 	`printOK("lbu 96",count)
-	 	else if ((DataAdr == 104) & (WriteData == 192)) 	`printOK("lbu 97",count)
-	 	else if ((DataAdr == 108) & (WriteData == 11)) 	    `printOK("lbu 98",count)
-	 	else if ((DataAdr == 112) & (WriteData == 170)) 	`printOK("lbu 99",count)
+	 	else if ((DataAdr == 104) & (WriteData == 192)) 	`printOK_NC("lbu 97",count)
+	 	else if ((DataAdr == 108) & (WriteData == 11)) 	    `printOK_NC("lbu 98",count)
+	 	else if ((DataAdr == 112) & (WriteData == 170)) 	`printOK_NC("lbu 99",count)
 
     	else if ((DataAdr == 116) & (WriteData == 49373)) 	`printOK("lhu 96",count)
-	 	else if ((DataAdr == 120) & (WriteData == 3008)) 	`printOK("lhu 97",count)
-	 	else if ((DataAdr == 124) & (WriteData == 43531)) 	`printOK("lhu 98",count)
-	 	else if ((DataAdr == 128) & (WriteData == 56746)) 	
-	 	     `printOK("lhu 99",count)
+	 	else if ((DataAdr == 120) & (WriteData == 3008)) 	`printOK_NC("lhu 97",count)
+	 	else if ((DataAdr == 124) & (WriteData == 43531)) 	`printOK_NC("lhu 98",count)
+	 	else if ((DataAdr == 128) & (WriteData == 56746)) 	`printOK_NC("lhu 99",count)
 
 		// store
 		// else if ((DataAdr == 172) & (WriteData == -24338)) 	`printOK("sb",count)
 		// else if ((DataAdr == 164) & (WriteData == -65298)) 	`printOK("sh",count)
 		
 		else if ((DataAdr == 100) & (WriteData == 1997258973)) 	`printOK("sb 99",count)
-	 	else if ((DataAdr == 104) & (WriteData == 1997652189)) 	`printOK("sb 98",count)
-	 	else if ((DataAdr == 108) & (WriteData == 1997611741)) 	`printOK("sb 97",count)
-	 	else if ((DataAdr == 112) & (WriteData == 1997611571)) 	`printOK("sb 96",count)
+	 	else if ((DataAdr == 104) & (WriteData == 1997652189)) 	`printOK_NC("sb 98",count)
+	 	else if ((DataAdr == 108) & (WriteData == 1997611741)) 	`printOK_NC("sb 97",count)
+	 	else if ((DataAdr == 112) & (WriteData == 1997611571)) 	`printOK_NC("sb 96",count)
 
 		else if ((DataAdr == 116) & (WriteData == -1156857686)) 	`printOK("sh 99",count)
-	 	else if ((DataAdr == 120) & (WriteData == -857882454)) 	`printOK("sh 98",count)
-	 	else if ((DataAdr == 124) & (WriteData == -869055318)) 	`printOK("sh 97",count)
-	 	else if ((DataAdr == 128) & (WriteData == -869051034)) 	`printOK("sh 96",count)
+	 	else if ((DataAdr == 120) & (WriteData == -857882454)) 	`printOK_NC("sh 98",count)
+	 	else if ((DataAdr == 124) & (WriteData == -869055318)) 	`printOK_NC("sh 97",count)
+	 	else if ((DataAdr == 128) & (WriteData == -869051034)) 	`printOK_NC("sh 96",count)
 
 		// --------------------------------------------------------
 		else if ((DataAdr == 40) && (WriteData == 30)) begin

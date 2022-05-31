@@ -17,7 +17,7 @@ reg reset;
 
 wire [31:0] PCF; 
 wire [31:0] InstrF;
-wire MemWriteM;
+wire MemWrite;
 wire [31:0] DataAdr;
 wire [31:0] WriteData;
 wire [31:0] ReadData;

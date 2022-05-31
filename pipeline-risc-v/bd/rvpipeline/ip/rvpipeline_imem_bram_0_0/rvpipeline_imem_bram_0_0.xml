@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>user.org</spirit:vendor>
+  <spirit:library>customized_ip</spirit:library>
+  <spirit:name>rvpipeline_imem_bram_0_0</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF">clk</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHASE</spirit:name>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.PHASE">0.000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CLK_DOMAIN</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">rvpipeline_clk</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.CLK.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:modelName>imem</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Mon May 30 12:26:08 UTC 2022</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:30f2ba39</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:30f2ba39</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesiswrapper</spirit:name>
+        <spirit:displayName>Verilog Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>rvpipeline_imem_bram_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Mon May 30 12:26:08 UTC 2022</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:30f2ba39</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:modelName>imem</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Mon May 30 12:26:08 UTC 2022</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:716f03d6</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsimulationwrapper</spirit:name>
+        <spirit:displayName>Verilog Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>rvpipeline_imem_bram_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsimulationwrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Mon May 30 12:26:08 UTC 2022</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:716f03d6</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_externalfiles</spirit:name>
+        <spirit:displayName>External Files</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Mon May 30 12:29:12 UTC 2022</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:30f2ba39</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>a</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>rd</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+  </spirit:model>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/bram/bram.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>instr.COE</spirit:name>
+        <spirit:userFileType>coe</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/a425/src/imem.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/rvpipeline_imem_bram_0_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/bram/bram.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>instr.COE</spirit:name>
+        <spirit:userFileType>coe</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/a425/src/imem.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/rvpipeline_imem_bram_0_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>rvpipeline_imem_bram_0_0.dcp</spirit:name>
+        <spirit:userFileType>dcp</spirit:userFileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>rvpipeline_imem_bram_0_0_stub.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>rvpipeline_imem_bram_0_0_stub.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>rvpipeline_imem_bram_0_0_sim_netlist.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>rvpipeline_imem_bram_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>imem_bram</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">rvpipeline_imem_bram_0_0</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:displayName>imem_bram</xilinx:displayName>
+      <xilinx:definitionSource>package_project</xilinx:definitionSource>
+      <xilinx:xpmLibraries>
+        <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
+      </xilinx:xpmLibraries>
+      <xilinx:coreRevision>4</xilinx:coreRevision>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="nopcore"/>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d37bd00_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@be84408_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64ee226c_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5df0e614_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57cba61c_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c65b280_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a8b77d4_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1008410b_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@321e1dbd_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71df432d_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f90c099_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@860a178_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67704b05_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65043a53_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@611c681d_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19530e29_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31fc00a_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@789fe5ce_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@592614d6_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@aefa63a_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3745166_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3897d97_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7119ae11_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51e53f03_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14ad8be1_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a0789a7_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e7105be_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@381dc20b_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1599914a_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@299c7111_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6118edc5_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c0ef835_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f1d4493_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a9bd1a4_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20e136a3_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4544eb70_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3609f9f8_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@261efdd2_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a669e63_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fd45203_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f2cf220_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e73f1ba_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52b2e594_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54e23452_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78036ff_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dd77e90_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4de9efc7_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bc56217_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78c9f4d3_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a094332_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a1f751f_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1eaef05c_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@301b3dd_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e6047bb_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3caa6894_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71777d27_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39fec7b6_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2996ae89_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23b10cf4_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@541609a8_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bbf0933_ARCHIVE_LOCATION">/home/tomas/riscv-processor/ips/imem_bram</xilinx:tag>
+      </xilinx:tags>
+      <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE" xilinx:valuePermission="bd_and_user"/>
+      </xilinx:configElementInfos>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="5feec1e4"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6b790303"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="f6f013ba"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="cf3cbe4e"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>
