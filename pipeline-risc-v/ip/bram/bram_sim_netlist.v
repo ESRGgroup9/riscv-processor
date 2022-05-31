@@ -1,10 +1,9 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-// Date        : Sun May 29 10:45:10 2022
+// Date        : Tue May 31 10:41:46 2022
 // Host        : tomas-abreu running 64-bit Ubuntu 20.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/tomas/riscv-processor/pipeline-risc-v/pipeline-riscv/pipeline-riscv.srcs/sources_1/ip/bram/bram_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim /home/tomas/riscv-processor/pipeline-risc-v/ip/bram/bram_sim_netlist.v
 // Design      : bram
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
